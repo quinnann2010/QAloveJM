@@ -872,15 +872,13 @@ document.addEventListener('visibilitychange', () => {
 
 
 /* =========================================
-   14. LOVE POST OFFICE ♡
+   14. LOVE POST OFFICE ♡ — FORMSUBMIT
 
-   Open Gmail Compose in the current tab.
-   Jarod confirms sending in Gmail.
-   No Firebase, FormSubmit or backend.
+   Native HTML form POST (no AJAX, Gmail login,
+   Firebase, or backend).
 ========================================= */
 
 const LOVE_MAIL_EMAIL = 'quinnann.hoang.2010@gmail.com';
-
 const loveMailForm = document.querySelector('#love-mail-form');
 const noteInput = document.querySelector('#jarod-note');
 const noteLength = document.querySelector('#note-length');
@@ -889,58 +887,70 @@ const sendMailButton = document.querySelector('#send-love-note');
 
 noteInput?.addEventListener('input', () => {
     if (noteLength) {
-        noteLength.textContent =
-            `${noteInput.value.length} / 2000`;
+        noteLength.textContent = `${noteInput.value.length} / 2000`;
     }
 });
 
-loveMailForm?.addEventListener('submit', (event) => {
+function setLoveMailField(form, name, value) {
+    let field = Array.from(form.querySelectorAll('input[type="hidden"]'))
+        .find(input => input.name === name);
+
+    if (!field) {
+        field = document.createElement('input');
+        field.type = 'hidden';
+        field.name = name;
+        form.appendChild(field);
+    }
+
+    field.value = value;
+}
+
+loveMailForm?.addEventListener('submit', event => {
     event.preventDefault();
 
     const message = noteInput?.value.trim() || '';
-
     if (!message) {
         if (mailStatus) {
-            mailStatus.textContent =
-                'Write a little something first, handsome! ♡';
+            mailStatus.textContent = 'Write a little something first, handsome! ♡';
         }
-
         noteInput?.focus();
         return;
     }
 
-    const stamp = loveMailForm.querySelector(
-        'input[name="stamp"]:checked'
-    )?.value || '💗';
+    const stamp = loveMailForm.querySelector('input[name="stamp"]:checked')?.value || '💗';
+    const subject = `${stamp} A Little Love Letter from Jarod`;
+    const body = `Dear Quỳnh Anh,\n\n${message}\n\nLove,\nJarod ♡\n\nSent with love from our little Loveverse ${stamp}`;
 
-    const subject =
-        `${stamp} A Little Love Letter from Jarod`;
+    // FormSubmit's standard form endpoint: no JavaScript fetch or CORS needed.
+    loveMailForm.action = `https://formsubmit.co/${LOVE_MAIL_EMAIL}`;
+    loveMailForm.method = 'POST';
+    loveMailForm.target = '_self';
 
-    const body = `Dear Quỳnh Anh,
+    // _next must be a full public URL; GitHub Pages hosts this project here.
+    const thankYouURL = 'https://quinnann2010.github.io/QAloveJM/thank-you.html';
 
-${message}
+    setLoveMailField(loveMailForm, '_subject', subject);
+    setLoveMailField(loveMailForm, '_next', thankYouURL);
+    setLoveMailField(loveMailForm, '_template', 'table');
+    setLoveMailField(loveMailForm, '_captcha', 'true');
+    setLoveMailField(loveMailForm, 'message', body);
+    setLoveMailField(loveMailForm, 'From', 'Jarod — Loveverse');
+    setLoveMailField(loveMailForm, 'Stamp', stamp);
 
-Love,
-Jarod ♡
-
-Sent with love from our little Loveverse ${stamp}`;
-
-    const gmailURL = new URL(
-        'https://mail.google.com/mail/'
-    );
-
-    gmailURL.searchParams.set('view', 'cm');
-    gmailURL.searchParams.set('fs', '1');
-    gmailURL.searchParams.set('to', LOVE_MAIL_EMAIL);
-    gmailURL.searchParams.set('su', subject);
-    gmailURL.searchParams.set('body', body);
-
-    // Navigate in the current tab.
-    // This avoids opening an empty pop-up window.
-    if (mailStatus) {
-        mailStatus.textContent =
-            'Opening Gmail with your letter... 💌';
+    // Prevent sending duplicate message fields if the textarea has name="message".
+    // The textarea is still used for typing, while the hidden field holds the
+    // formatted letter that FormSubmit receives.
+    if (noteInput && noteInput.name === 'message') {
+        noteInput.name = 'loveverse_draft';
     }
 
-    window.location.assign(gmailURL.toString());
+    if (mailStatus) {
+        mailStatus.textContent = 'Sending your letter securely... 💌';
+    }
+    if (sendMailButton) {
+        sendMailButton.disabled = true;
+    }
+
+    // Native submit bypasses the event handler, so it won't loop.
+    HTMLFormElement.prototype.submit.call(loveMailForm);
 });
