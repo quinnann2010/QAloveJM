@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff5f4">
+  <title>Our Little Memory Museum ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="back" href="../index.html">← Back to Loveverse</a>
+      <span class="brand">♡ our tiny universe</span>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="museum-title">
+        <span class="eyebrow">✿ A COLLECTION OF OUR LITTLE MOMENTS ✿</span>
+        <h1 id="museum-title">Our Little<br><em>Memory Museum</em> ♡</h1>
+        <p>Some days are too lovely to leave behind. So I made a little place to keep them with you.</p>
+        <div class="hero-stickers" aria-hidden="true"><span>🌷</span><span>💌</span><span>🧸</span></div>
+        <a class="pill" href="#timeline">Explore our memories ↓</a>
+      </section>
+
+      <section class="section" id="timeline">
+        <div class="heading"><div><span class="eyebrow">CHAPTER BY CHAPTER</span><h2>Our Timeline <span>♡</span></h2><p>The days that made our little story ours.</p></div><span class="doodle">✦ ✿</span></div>
+        <div id="timeline-list" class="timeline-list"></div>
+      </section>
+
+      <section class="section" id="photos">
+        <div class="heading"><div><span class="eyebrow">SMILES, SAVED FOREVER</span><h2>Our Polaroid Wall <span>📸</span></h2><p>Tap a photo to open its little story.</p></div></div>
+        <div id="photo-grid" class="photo-grid"></div>
+      </section>
+
+      <section class="section" id="keepsakes">
+        <div class="heading"><div><span class="eyebrow">THE LITTLE THINGS MATTER</span><h2>Our Keepsake Drawer <span>🎟️</span></h2><p>Tickets, notes, and tiny things worth keeping.</p></div></div>
+        <div id="keepsake-grid" class="keepsake-grid"></div>
+      </section>
+
+      <section class="closing"><div class="closing-heart">♡</div><h2>To be continued...</h2><p>There are so many little memories we haven't made yet.</p><a class="pill" href="../index.html">Return to our Loveverse ↗</a></section>
+    </main>
+    <footer>Made by your little programmer, with all her love ♡ <span>Quỳnh Anh × Jarod · Since 20.10.2026</span></footer>
+  </div>
+
+  <dialog id="memory-dialog" class="memory-dialog" aria-labelledby="dialog-title">
+    <button type="button" class="close-dialog" id="close-dialog" aria-label="Close memory">×</button>
+    <div id="dialog-media" class="dialog-media"></div>
+    <div id="gallery-controls" class="gallery-controls" hidden>
+      <button type="button" id="gallery-prev" aria-label="Previous photo">❮</button>
+      <span id="gallery-counter" aria-live="polite"></span>
+      <button type="button" id="gallery-next" aria-label="Next photo">❯</button>
+    </div>
+    <div id="gallery-thumbs" class="gallery-thumbs"></div>
+    <span id="dialog-date" class="eyebrow"></span>
+    <h2 id="dialog-title"></h2>
+    <p id="dialog-story"></p>
+    <p id="dialog-detail" class="dialog-detail"></p>
+  </dialog>
+</body>
+</html>

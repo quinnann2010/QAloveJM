@@ -1,87 +1,803 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#170d2d" />
+
   <title>Quỳnh Anh™ | Jarod's Renewal Notice</title>
+
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
+
+  <!-- Cute font for the back button -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Back to Loveverse button styling -->
+  <style>
+    .back-to-loveverse {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 9999;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      padding: 11px 17px;
+
+      background: rgba(255, 240, 248, 0.96);
+      color: #a64d80;
+
+      border: 1.5px solid #ffc4dd;
+      border-radius: 999px;
+
+      font-family: 'Quicksand', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+
+      box-shadow:
+        0 5px 20px rgba(255, 134, 190, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+      backdrop-filter: blur(10px);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .back-to-loveverse:hover {
+      background: #ffe0ee;
+      color: #96386e;
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 8px 25px rgba(255, 134, 190, 0.35);
+    }
+
+    .back-to-loveverse:focus-visible {
+      outline: 3px solid #ffc4dd;
+      outline-offset: 4px;
+    }
+
+    .back-arrow {
+      font-size: 18px;
+      line-height: 1;
+
+      transition: transform 0.25s ease;
+    }
+
+    .back-to-loveverse:hover .back-arrow {
+      transform: translateX(-4px);
+    }
+
+    .back-heart {
+      color: #ed82b4;
+      font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .back-to-loveverse {
+        top: 12px;
+        left: 12px;
+
+        padding: 9px 12px;
+        gap: 6px;
+
+        font-size: 11px;
+      }
+
+      .back-arrow {
+        font-size: 15px;
+      }
+    }
+  </style>
+
 </head>
+
 <body>
+
+  <!-- =====================================
+       BACK TO LOVEVERSE
+  ====================================== -->
+
+  <a
+    href="../../index.html"
+    class="back-to-loveverse"
+    aria-label="Back to Loveverse homepage"
+  >
+    <span class="back-arrow">←</span>
+    <span>Back to Loveverse</span>
+    <span class="back-heart">♡</span>
+  </a>
+
+
+  <!-- =====================================
+       BACKGROUND EFFECTS
+  ====================================== -->
+
   <div class="stars" aria-hidden="true"></div>
   <div id="effects" aria-hidden="true"></div>
+
+
   <main class="shell">
-    <header class="brand"><span>✦ QUỲNH ANH™</span><span>JAROD EXCLUSIVE ♡</span></header>
 
-    <section class="panel active" id="email" aria-labelledby="email-title">
-      <div class="mail-top"><span class="mail-icon">✉</span><span class="pill">ACTION REQUIRED</span></div>
-      <p class="eyebrow">OFFICIAL SUBSCRIPTION NOTICE</p>
-      <h1 id="email-title">Your girlfriend free trial has expired. 💌</h1>
-      <div class="mail-details"><p><b>From:</b> Quỳnh Anh™ Customer Love Department</p><p><b>To:</b> Jarod, the current boyfriend</p><p><b>Subject:</b> Important: Renew your girlfriend subscription</p><p><b>Anniversary:</b> October 20</p></div>
-      <p>Dear Jarod,</p>
-      <p>Congratulations! You've survived the trial period with <b>Quỳnh Anh™</b> — including unlimited cuteness, occasional stubbornness, and unexpected “Daddyyyy~” notifications.</p>
-      <p>To continue receiving girlfriend privileges, please renew your subscription immediately. 💗</p>
-      <div class="notice">⚠ Failure to renew may result in dramatic pouting and suspiciously sad puppy eyes.</div>
-      <button class="primary full" data-go="renew">Review my subscription →</button>
-      <p class="fine">This is a joke. No money, no actual subscription, just one very silly girlfriend.</p>
-    </section>
+    <!-- =====================================
+         BRAND HEADER
+    ====================================== -->
 
-    <section class="panel" id="renew" aria-labelledby="renew-title">
-      <p class="eyebrow">STEP 01 / RENEWAL</p>
-      <h2 id="renew-title">So... are you keeping me? 🥺</h2>
-      <p>Your free trial is over, Jarod. Would you like to renew Quỳnh Anh™?</p>
-      <div class="choice-area"><button class="primary" id="yes-renew">YES! RENEW 💖</button><button class="secondary" id="no-renew">No, thanks</button></div>
-      <p class="reaction" id="renew-reaction" aria-live="polite">Choose carefully. Your girlfriend is watching. 👀</p>
-    </section>
+    <header class="brand">
+      <span>✦ QUỲNH ANH™</span>
+      <span>JAROD EXCLUSIVE ♡</span>
+    </header>
 
-    <section class="panel" id="plans" aria-labelledby="plans-title">
-      <p class="eyebrow">STEP 02 / CHOOSE YOUR PLAN</p>
-      <h2 id="plans-title">Pick your boyfriend package 👑</h2>
-      <p>All plans cost <b>0€</b>. Payment accepted exclusively in love and effort.</p>
-      <div class="plans">
-        <article class="plan" id="plan-standard"><div class="plan-emoji">🌙</div><h3>Standard</h3><p class="price">Free</p><ul><li>Good morning texts</li><li>Regular hugs</li><li>Occasional silly selfies</li></ul><button class="secondary plan-button" data-plan="Standard">Choose Standard</button></article>
-        <article class="plan popular" id="plan-premium"><span class="ribbon">MOST POPULAR</span><div class="plan-emoji">💗</div><h3>Premium</h3><p class="price">1 kiss/day*</p><ul><li>Everything in Standard</li><li>Priority cuddles & kisses</li><li>Surprise date ideas</li></ul><button class="primary plan-button" data-plan="Premium">Choose Premium</button></article>
-        <article class="plan" id="plan-vip"><div class="plan-emoji">👑</div><h3>VIP Daddy</h3><p class="price">Unlimited love</p><ul><li>Everything in Premium</li><li>Unlimited “Daddyyyy~”</li><li>Exclusive clingy mode</li><li>Extra forehead kisses</li></ul><button class="primary plan-button" data-plan="VIP Daddy">Choose VIP Daddy</button></article>
+
+    <!-- =====================================
+         STEP 00: SUBSCRIPTION EMAIL
+    ====================================== -->
+
+    <section
+      class="panel active"
+      id="email"
+      aria-labelledby="email-title"
+    >
+
+      <div class="mail-top">
+        <span class="mail-icon">✉</span>
+        <span class="pill">ACTION REQUIRED</span>
       </div>
-      <p class="fine">*Prices are fictional. All hugs, kisses and dates require mutual enthusiasm.</p>
+
+      <p class="eyebrow">
+        OFFICIAL SUBSCRIPTION NOTICE
+      </p>
+
+      <h1 id="email-title">
+        Your girlfriend free trial has expired. 💌
+      </h1>
+
+      <div class="mail-details">
+
+        <p>
+          <b>From:</b>
+          Quỳnh Anh™ Customer Love Department
+        </p>
+
+        <p>
+          <b>To:</b>
+          Jarod, the current boyfriend
+        </p>
+
+        <p>
+          <b>Subject:</b>
+          Important: Renew your girlfriend subscription
+        </p>
+
+        <p>
+          <b>Anniversary:</b>
+          October 20
+        </p>
+
+      </div>
+
+      <p>Dear Jarod,</p>
+
+      <p>
+        Congratulations! You've survived the trial period
+        with <b>Quỳnh Anh™</b> — including unlimited
+        cuteness, occasional stubbornness, and unexpected
+        “Daddyyyy~” notifications.
+      </p>
+
+      <p>
+        To continue receiving girlfriend privileges,
+        please renew your subscription immediately. 💗
+      </p>
+
+      <div class="notice">
+        ⚠ Failure to renew may result in dramatic
+        pouting and suspiciously sad puppy eyes.
+      </div>
+
+      <button
+        type="button"
+        class="primary full"
+        data-go="renew"
+      >
+        Review my subscription →
+      </button>
+
+      <p class="fine">
+        This is a joke. No money, no actual subscription,
+        just one very silly girlfriend.
+      </p>
+
     </section>
 
-    <section class="panel" id="upsell" aria-labelledby="upsell-title">
-      <p class="eyebrow">A VERY IMPORTANT QUESTION</p>
-      <div class="big-emoji">🥹</div><h2 id="upsell-title">Are you sure, Jarod?</h2>
-      <p id="upsell-text">You could unlock so much more cuteness...</p>
-      <div class="choice-area"><button class="primary" id="upgrade">Upgrade me! 💞</button><button class="secondary" id="keep-plan">Keep my plan</button></div>
-      <p class="reaction" id="upsell-reaction" aria-live="polite">A little upgrade never hurt anyone. 😇</p>
+
+    <!-- =====================================
+         STEP 01: RENEWAL
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="renew"
+      aria-labelledby="renew-title"
+    >
+
+      <p class="eyebrow">
+        STEP 01 / RENEWAL
+      </p>
+
+      <h2 id="renew-title">
+        So... are you keeping me? 🥺
+      </h2>
+
+      <p>
+        Your free trial is over, Jarod.
+        Would you like to renew Quỳnh Anh™?
+      </p>
+
+      <div class="choice-area">
+
+        <button
+          type="button"
+          class="primary"
+          id="yes-renew"
+        >
+          YES! RENEW 💖
+        </button>
+
+        <button
+          type="button"
+          class="secondary"
+          id="no-renew"
+        >
+          No, thanks
+        </button>
+
+      </div>
+
+      <p
+        class="reaction"
+        id="renew-reaction"
+        aria-live="polite"
+      >
+        Choose carefully.
+        Your girlfriend is watching. 👀
+      </p>
+
     </section>
 
-    <section class="panel" id="duration" aria-labelledby="duration-title">
-      <p class="eyebrow">STEP 03 / SUBSCRIPTION LENGTH</p>
-      <h2 id="duration-title">How long would you like to keep me? ♾️</h2>
-      <p id="selected-plan-text">Selected plan: VIP Daddy</p>
-      <div class="duration-grid"><button class="duration" data-duration="30 days">🌷<b>30 days</b><small>Just one more month?</small></button><button class="duration" data-duration="1 year">🌙<b>1 year</b><small>Getting serious, huh?</small></button><button class="duration" data-duration="A lifetime">💍<b>A lifetime</b><small>Bold choice. I like it.</small></button></div>
+
+    <!-- =====================================
+         STEP 02: CHOOSE A PLAN
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="plans"
+      aria-labelledby="plans-title"
+    >
+
+      <p class="eyebrow">
+        STEP 02 / CHOOSE YOUR PLAN
+      </p>
+
+      <h2 id="plans-title">
+        Pick your boyfriend package 👑
+      </h2>
+
+      <p>
+        All plans cost <b>0€</b>.
+        Payment accepted exclusively in love and effort.
+      </p>
+
+      <div class="plans">
+
+        <!-- STANDARD PLAN -->
+        <article
+          class="plan"
+          id="plan-standard"
+        >
+
+          <div class="plan-emoji">
+            🌙
+          </div>
+
+          <h3>Standard</h3>
+
+          <p class="price">
+            Free
+          </p>
+
+          <ul>
+            <li>Good morning texts</li>
+            <li>Regular hugs</li>
+            <li>Occasional silly selfies</li>
+          </ul>
+
+          <button
+            type="button"
+            class="secondary plan-button"
+            data-plan="Standard"
+          >
+            Choose Standard
+          </button>
+
+        </article>
+
+
+        <!-- PREMIUM PLAN -->
+        <article
+          class="plan popular"
+          id="plan-premium"
+        >
+
+          <span class="ribbon">
+            MOST POPULAR
+          </span>
+
+          <div class="plan-emoji">
+            💗
+          </div>
+
+          <h3>Premium</h3>
+
+          <p class="price">
+            1 kiss/day*
+          </p>
+
+          <ul>
+            <li>Everything in Standard</li>
+            <li>Priority cuddles &amp; kisses</li>
+            <li>Surprise date ideas</li>
+          </ul>
+
+          <button
+            type="button"
+            class="primary plan-button"
+            data-plan="Premium"
+          >
+            Choose Premium
+          </button>
+
+        </article>
+
+
+        <!-- VIP PLAN -->
+        <article
+          class="plan"
+          id="plan-vip"
+        >
+
+          <div class="plan-emoji">
+            👑
+          </div>
+
+          <h3>VIP Daddy</h3>
+
+          <p class="price">
+            Unlimited love
+          </p>
+
+          <ul>
+            <li>Everything in Premium</li>
+            <li>Unlimited “Daddyyyy~”</li>
+            <li>Exclusive clingy mode</li>
+            <li>Extra forehead kisses</li>
+          </ul>
+
+          <button
+            type="button"
+            class="primary plan-button"
+            data-plan="VIP Daddy"
+          >
+            Choose VIP Daddy
+          </button>
+
+        </article>
+
+      </div>
+
+      <p class="fine">
+        *Prices are fictional. All hugs, kisses and
+        dates require mutual enthusiasm.
+      </p>
+
     </section>
 
-    <section class="panel" id="lifetime" aria-labelledby="lifetime-title">
-      <div class="big-emoji">💍</div><h2 id="lifetime-title">A LIFETIME?!</h2><p>Jarod, are you absolutely sure? That's a whole lot of Quỳnh Anh. Including the dramatic moments, random cuddles and terrible jokes.</p>
-      <div class="choice-area"><button class="primary" id="confirm-lifetime">Yes, I'm sure ♾️</button><button class="secondary" data-go="duration">Let me reconsider</button></div>
+
+    <!-- =====================================
+         UPSELL / UPGRADE
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="upsell"
+      aria-labelledby="upsell-title"
+    >
+
+      <p class="eyebrow">
+        A VERY IMPORTANT QUESTION
+      </p>
+
+      <div class="big-emoji">
+        🥹
+      </div>
+
+      <h2 id="upsell-title">
+        Are you sure, Jarod?
+      </h2>
+
+      <p id="upsell-text">
+        You could unlock so much more cuteness...
+      </p>
+
+      <div class="choice-area">
+
+        <button
+          type="button"
+          class="primary"
+          id="upgrade"
+        >
+          Upgrade me! 💞
+        </button>
+
+        <button
+          type="button"
+          class="secondary"
+          id="keep-plan"
+        >
+          Keep my plan
+        </button>
+
+      </div>
+
+      <p
+        class="reaction"
+        id="upsell-reaction"
+        aria-live="polite"
+      >
+        A little upgrade never hurt anyone. 😇
+      </p>
+
     </section>
 
-    <section class="panel" id="success" aria-labelledby="success-title">
-      <p class="eyebrow">PAYMENT RECEIVED: 100% LOVE</p><div class="big-emoji">🎉</div>
-      <h2 id="success-title">Subscription renewed!</h2><p>Congratulations, Jarod! Your girlfriend privileges are officially active.</p>
-      <div class="certificate"><div class="cert-label">CERTIFICATE OF BOYFRIEND EXCELLENCE</div><h3>Jarod ♡ Quỳnh Anh</h3><p id="certificate-plan">Plan: VIP Daddy</p><p id="certificate-duration">Duration: A lifetime</p><p>Anniversary: October 20</p><div class="seal">APPROVED WITH KISSES 💋</div></div>
-      <div class="reward"><span class="ticket-icon">🎟️</span><h3>JAROD'S CHOICE TICKET</h3><p>Redeem for <b>one date of your choice</b> OR <b>one special wish</b> that we both happily agree to.</p><small>No expiration • Subject to mutual consent, schedules and reasonable logistics</small></div>
-      <button class="primary full" id="open-letter">Open your secret letter 💌</button>
+
+    <!-- =====================================
+         STEP 03: SUBSCRIPTION DURATION
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="duration"
+      aria-labelledby="duration-title"
+    >
+
+      <p class="eyebrow">
+        STEP 03 / SUBSCRIPTION LENGTH
+      </p>
+
+      <h2 id="duration-title">
+        How long would you like to keep me? ♾️
+      </h2>
+
+      <p id="selected-plan-text">
+        Selected plan: VIP Daddy
+      </p>
+
+      <div class="duration-grid">
+
+        <button
+          type="button"
+          class="duration"
+          data-duration="30 days"
+        >
+          🌷
+          <b>30 days</b>
+          <small>Just one more month?</small>
+        </button>
+
+        <button
+          type="button"
+          class="duration"
+          data-duration="1 year"
+        >
+          🌙
+          <b>1 year</b>
+          <small>Getting serious, huh?</small>
+        </button>
+
+        <button
+          type="button"
+          class="duration"
+          data-duration="A lifetime"
+        >
+          💍
+          <b>A lifetime</b>
+          <small>Bold choice. I like it.</small>
+        </button>
+
+      </div>
+
     </section>
 
-    <section class="panel" id="letter" aria-labelledby="letter-title">
-      <p class="eyebrow">A LITTLE NOTE FROM YOUR GIRL</p><h2 id="letter-title">To my Jarod, 💗</h2>
-      <div class="letter-text"><p>Happy anniversary, Daddy!</p><p>First of all, I'm sorry for the times I've annoyed you, been stubborn, or accidentally driven you a little crazy. I know I'm not always the easiest girlfriend to deal with.</p><p>But I bet you'll never find another girl who can make you feel so loved and drive you so crazy at the exact same time. That's a very special talent, you know. 😌💕</p><p>Jokes aside, thank you for the sweet moments, the patience, the laughter, and for being part of my little universe. I really love spending time with you, even when I'm being a tiny menace.</p><p>Here's to more dates, more silly memories, more cuddles, and learning how to love each other better, one day at a time.</p><p>Love,<br><b>Your Quỳnh Anh ♡</b></p></div>
-      <div class="kiss-box"><p>One last thing... send your girlfriend a kiss! 💋</p><button class="primary" id="send-kiss">SEND KISS 💋</button><p class="kiss-count" id="kiss-count" aria-live="polite">0 kisses delivered</p><p class="reaction" id="kiss-message">Warning: kisses may cause extreme happiness.</p></div>
-      <button class="text-button" id="restart">↻ Replay our little universe</button>
+
+    <!-- =====================================
+         LIFETIME CONFIRMATION
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="lifetime"
+      aria-labelledby="lifetime-title"
+    >
+
+      <div class="big-emoji">
+        💍
+      </div>
+
+      <h2 id="lifetime-title">
+        A LIFETIME?!
+      </h2>
+
+      <p>
+        Jarod, are you absolutely sure?
+        That's a whole lot of Quỳnh Anh.
+        Including the dramatic moments,
+        random cuddles and terrible jokes.
+      </p>
+
+      <div class="choice-area">
+
+        <button
+          type="button"
+          class="primary"
+          id="confirm-lifetime"
+        >
+          Yes, I'm sure ♾️
+        </button>
+
+        <button
+          type="button"
+          class="secondary"
+          data-go="duration"
+        >
+          Let me reconsider
+        </button>
+
+      </div>
+
     </section>
-    <footer>Made with ♡ by Quỳnh Anh, exclusively for Jarod · 20 October</footer>
+
+
+    <!-- =====================================
+         SUBSCRIPTION SUCCESS
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="success"
+      aria-labelledby="success-title"
+    >
+
+      <p class="eyebrow">
+        PAYMENT RECEIVED: 100% LOVE
+      </p>
+
+      <div class="big-emoji">
+        🎉
+      </div>
+
+      <h2 id="success-title">
+        Subscription renewed!
+      </h2>
+
+      <p>
+        Congratulations, Jarod!
+        Your girlfriend privileges are officially active.
+      </p>
+
+
+      <!-- CERTIFICATE -->
+      <div class="certificate">
+
+        <div class="cert-label">
+          CERTIFICATE OF BOYFRIEND EXCELLENCE
+        </div>
+
+        <h3>
+          Jarod ♡ Quỳnh Anh
+        </h3>
+
+        <p id="certificate-plan">
+          Plan: VIP Daddy
+        </p>
+
+        <p id="certificate-duration">
+          Duration: A lifetime
+        </p>
+
+        <p>
+          Anniversary: October 20
+        </p>
+
+        <div class="seal">
+          APPROVED WITH KISSES 💋
+        </div>
+
+      </div>
+
+
+      <!-- REWARD TICKET -->
+      <div class="reward">
+
+        <span class="ticket-icon">
+          🎟️
+        </span>
+
+        <h3>
+          JAROD'S CHOICE TICKET
+        </h3>
+
+        <p>
+          Redeem for
+          <b>one date of your choice</b>
+          OR
+          <b>one special wish</b>
+          that we both happily agree to.
+        </p>
+
+        <small>
+          No expiration • Subject to mutual consent,
+          schedules and reasonable logistics
+        </small>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="primary full"
+        id="open-letter"
+      >
+        Open your secret letter 💌
+      </button>
+
+    </section>
+
+
+    <!-- =====================================
+         SECRET LOVE LETTER
+    ====================================== -->
+
+    <section
+      class="panel"
+      id="letter"
+      aria-labelledby="letter-title"
+    >
+
+      <p class="eyebrow">
+        A LITTLE NOTE FROM YOUR GIRL
+      </p>
+
+      <h2 id="letter-title">
+        To my Jarod, 💗
+      </h2>
+
+
+      <div class="letter-text">
+
+        <p>
+          Happy anniversary, Daddy!
+        </p>
+
+        <p>
+          First of all, I'm sorry for the times
+          I've annoyed you, been stubborn,
+          or accidentally driven you a little crazy.
+          I know I'm not always the easiest
+          girlfriend to deal with.
+        </p>
+
+        <p>
+          But I bet you'll never find another girl
+          who can make you feel so loved and drive
+          you so crazy at the exact same time.
+          That's a very special talent, you know.
+          😌💕
+        </p>
+
+        <p>
+          Jokes aside, thank you for the sweet moments,
+          the patience, the laughter, and for being part
+          of my little universe. I really love spending
+          time with you, even when I'm being a tiny menace.
+        </p>
+
+        <p>
+          Here's to more dates, more silly memories,
+          more cuddles, and learning how to love
+          each other better, one day at a time.
+        </p>
+
+        <p>
+          Love,<br>
+          <b>Your Quỳnh Anh ♡</b>
+        </p>
+
+      </div>
+
+
+      <!-- SEND KISS -->
+      <div class="kiss-box">
+
+        <p>
+          One last thing...
+          send your girlfriend a kiss! 💋
+        </p>
+
+        <button
+          type="button"
+          class="primary"
+          id="send-kiss"
+        >
+          SEND KISS 💋
+        </button>
+
+        <p
+          class="kiss-count"
+          id="kiss-count"
+          aria-live="polite"
+        >
+          0 kisses delivered
+        </p>
+
+        <p
+          class="reaction"
+          id="kiss-message"
+        >
+          Warning: kisses may cause extreme happiness.
+        </p>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="text-button"
+        id="restart"
+      >
+        ↻ Replay our little universe
+      </button>
+
+    </section>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer>
+      Made with ♡ by Quỳnh Anh,
+      exclusively for Jarod · 20 October
+    </footer>
+
   </main>
+
 </body>
 </html>
