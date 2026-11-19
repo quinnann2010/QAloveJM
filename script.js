@@ -3,32 +3,10 @@
 
 /* =========================================
    LOVEVERSE ♡ QUỲNH ANH & JAROD
-
-   Repository structure:
-
-   QAloveJM/
-   ├── index.html
-   ├── style.css
-   ├── script.js
-   ├── assets/
-   └── projects/
-       ├── firstmonth/
-       │   ├── index.html
-       │   ├── style.css
-       │   └── script.js
-       ├── secondmonth/
-       └── ...
-
-   path: null = unfinished / secret gift
-   path: './projects/folder/index.html'
-         = completed gift
-
-   Month 01 is always unlocked.
 ========================================= */
 
-
 /* =========================================
-   ANNIVERSARY COLLECTION
+   1. ANNIVERSARY COLLECTION
 ========================================= */
 
 const anniversaries = [
@@ -156,7 +134,7 @@ const anniversaries = [
 
 
 /* =========================================
-   SPECIAL OCCASIONS
+   2. SPECIAL OCCASIONS
 ========================================= */
 
 const specials = [
@@ -218,7 +196,7 @@ const specials = [
 
 
 /* =========================================
-   CONFIGURATION & HELPERS
+   3. CONFIGURATION & HELPERS
 ========================================= */
 
 const START = '2026-10-20';
@@ -261,7 +239,7 @@ function daysBetween(start, end) {
 
 
 /* =========================================
-   RELATIONSHIP COUNTER
+   4. RELATIONSHIP COUNTER
 ========================================= */
 
 function updateClock() {
@@ -302,17 +280,10 @@ function updateClock() {
 
 
 /* =========================================
-   SECRET GIFT CARD SYSTEM
+   5. SECRET GIFT CARD SYSTEM
 
-   MONTH 01:
-   - Always unlocked
-   - Opens firstmonth/index.html directly
-
-   OTHER PROJECTS:
-   - path exists = unlocked
-   - path null = secret
-
-   No date restriction for completed gifts.
+   Month 01 is always unlocked.
+   Other projects unlock when path exists.
 ========================================= */
 
 function card(item, special = false) {
@@ -402,8 +373,6 @@ function card(item, special = false) {
 
         link.className = 'open-gift';
 
-        // Open the HTML file directly.
-        // Works locally and on GitHub Pages.
         link.href = isFirstMonth
             ? './projects/firstmonth/index.html'
             : item.path;
@@ -431,7 +400,7 @@ function card(item, special = false) {
 
 
 /* =========================================
-   RENDER GIFT COLLECTIONS
+   6. RENDER GIFT COLLECTIONS
 ========================================= */
 
 function render() {
@@ -454,7 +423,7 @@ function render() {
 
 
 /* =========================================
-   ANNIVERSARY FILTERS
+   7. ANNIVERSARY FILTERS
 ========================================= */
 
 function applyFilter(filter) {
@@ -485,10 +454,8 @@ document.querySelectorAll('.filter').forEach(button => {
 });
 
 
-
 /* =========================================
-   100 LITTLE LOVE NOTES ♡
-   Made by your little programmer
+   8. 100 LITTLE LOVE NOTES ♡
 ========================================= */
 
 const notes = [
@@ -715,14 +682,15 @@ const notes = [
 ];
 
 
-
 /* =========================================
-   LITTLE NOTES — SHUFFLE SYSTEM
-   All 100 notes appear before repeating
+   9. LITTLE NOTES — SHUFFLE SYSTEM
+
+   All 100 notes appear before repeating.
 ========================================= */
 
 let remainingNotes = [];
 let lastNoteIndex = -1;
+
 
 function shuffleNotes() {
     remainingNotes = notes.map((_, index) => index);
@@ -744,6 +712,7 @@ function shuffleNotes() {
     }
 }
 
+
 document.querySelector('#new-note').addEventListener('click', () => {
     if (remainingNotes.length === 0) {
         shuffleNotes();
@@ -764,9 +733,8 @@ document.querySelector('#new-note').addEventListener('click', () => {
 });
 
 
-
 /* =========================================
-   TOAST NOTIFICATIONS
+   10. TOAST NOTIFICATIONS
 ========================================= */
 
 let toastTimer;
@@ -786,7 +754,7 @@ function toast(message) {
 
 
 /* =========================================
-   DIGITAL KISSES & FLOATING HEARTS
+   11. DIGITAL KISSES & FLOATING HEARTS
 ========================================= */
 
 let kisses = 0;
@@ -841,7 +809,7 @@ $('#kiss-button').addEventListener('click', event => {
 
 
 /* =========================================
-   ACTIVE SIDEBAR NAVIGATION
+   12. ACTIVE SIDEBAR NAVIGATION
 ========================================= */
 
 const sections = [
@@ -880,7 +848,7 @@ sections.forEach(section => {
 
 
 /* =========================================
-   INITIALIZATION
+   13. INITIALIZATION
 ========================================= */
 
 updateClock();
@@ -903,109 +871,108 @@ document.addEventListener('visibilitychange', () => {
 });
 
 
-
 /* =========================================
-   LOVE POST OFFICE ♡
+   14. LOVE POST OFFICE ♡
+
+   Uses mailto: instead of FormSubmit.
+
+   No Firebase.
+   No API keys.
+   No backend.
+
+   Jarod must confirm sending the email
+   in his email application.
 ========================================= */
 
+// Email address that receives the love letters.
 const LOVE_MAIL_EMAIL = 'quinnann.hoang.2010@gmail.com';
 
+// HTML elements.
 const loveMailForm = document.querySelector('#love-mail-form');
 const noteInput = document.querySelector('#jarod-note');
 const noteLength = document.querySelector('#note-length');
 const mailStatus = document.querySelector('#mail-status');
 const sendMailButton = document.querySelector('#send-love-note');
 
-noteInput.addEventListener('input', () => {
+
+/* =========================================
+   CHARACTER COUNTER
+========================================= */
+
+noteInput?.addEventListener('input', () => {
+
     noteLength.textContent =
         `${noteInput.value.length} / 2000`;
+
 });
 
-loveMailForm.addEventListener('submit', async (event) => {
+
+/* =========================================
+   SEND LOVE LETTER
+========================================= */
+
+loveMailForm?.addEventListener('submit', (event) => {
+
+    // Prevent page refresh.
     event.preventDefault();
 
-    if (!noteInput.value.trim()) {
+    // Read the letter.
+    const message = noteInput.value.trim();
+
+    // Validate input.
+    if (!message) {
         mailStatus.textContent =
             'Write a little something first, handsome! ♡';
+
+        noteInput.focus();
         return;
     }
 
-    if (LOVE_MAIL_EMAIL === 'YOUR_EMAIL@example.com') {
-        mailStatus.textContent =
-            'Love Mail is not configured yet. ♡';
-        return;
-    }
-
+    // Get selected stamp.
     const stamp = loveMailForm.querySelector(
         'input[name="stamp"]:checked'
-    ).value;
+    )?.value || '💗';
 
-    const payload = {
-        name: 'Jarod ♡',
-        message: noteInput.value.trim(),
-        stamp: stamp,
-        _subject: '💌 New Loveverse note from Jarod!',
-        _captcha: 'true',
-        _template: 'table'
-    };
+    // Email subject.
+    const subject =
+        `${stamp} A Little Love Letter from Jarod`;
 
-    sendMailButton.disabled = true;
-    sendMailButton.textContent = 'Sending your love... 💌';
-    mailStatus.textContent = '';
+    // Email content.
+    const body = `Dear Quỳnh Anh,
 
-    try {
-        const response = await fetch(
-            `https://formsubmit.co/ajax/${encodeURIComponent(LOVE_MAIL_EMAIL)}`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            }
-        );
+${message}
 
-        const result = await response.json();
+Love,
+Jarod ♡
 
-        if (!response.ok || result.success === false ||
-            result.success === 'false') {
-            throw new Error('Mail submission failed');
-        }
+────────────────────
+Sent with love from our little Loveverse ${stamp}
+────────────────────`;
 
-        mailStatus.textContent =
-            'Your little love letter has been sent! 💗';
+    // Build mailto link.
+    const mailtoURL =
+        `mailto:${LOVE_MAIL_EMAIL}` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`;
 
-        loveMailForm.reset();
-        noteLength.textContent = '0 / 2000';
+    // Update the button.
+    sendMailButton.textContent =
+        'Opening your love letter... 💌';
 
-        // Cute floating hearts
-        for (let i = 0; i < 18; i++) {
-            const heart = document.createElement('span');
+    // Explain that the email is not sent yet.
+    mailStatus.textContent =
+        'Your love letter is ready! Please press Send in your email app 💗';
 
-            heart.className = 'floating-heart';
-            heart.textContent = ['💗', '♡', '✦'][i % 3];
+    // Open default email application.
+    window.location.href = mailtoURL;
 
-            const rect =
-                sendMailButton.getBoundingClientRect();
-
-            heart.style.left =
-                (rect.left + Math.random() * rect.width) + 'px';
-
-            heart.style.top =
-                (rect.top + Math.random() * rect.height) + 'px';
-
-            document.body.appendChild(heart);
-
-            setTimeout(() => heart.remove(), 2500);
-        }
-
-    } catch (error) {
-        mailStatus.textContent =
-            'Oops! The letter could not be sent. Please try again. 💌';
-    } finally {
-        sendMailButton.disabled = false;
+    // Restore the button.
+    setTimeout(() => {
         sendMailButton.textContent =
             'Send to my little girl 💌';
-    }
+    }, 1500);
+
+    // Do not reset the form here.
+    // The letter stays visible in case the
+    // email application does not open.
 });
