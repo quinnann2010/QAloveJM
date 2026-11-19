@@ -1153,10 +1153,132 @@ Sent with love from our little Loveverse ${stamp}`;
   HTMLFormElement.prototype.submit.call(
     loveMailForm
   );
-
-  addField(
-  "_next",
-  "https://quinnann2010.github.io/QAloveJM/thank-you.html"
-);
 });
 
+
+
+/* =========================================
+   SHARED LOVE WALLET — ALL CHAPTERS
+   Keep legacy M02 storage to preserve vouchers.
+========================================= */
+const LOVE_WALLET_KEY = "loveverse_m02_rewards_v1";
+const LOVE_WALLET_EMAIL = "quinnann.hoang.2010@gmail.com";
+const LOVE_WALLET_THANKS = "https://quinnann2010.github.io/QAloveJM/thank-you.html";
+
+function walletRead() {
+  try {
+    const items = JSON.parse(localStorage.getItem(LOVE_WALLET_KEY) || "[]");
+    return Array.isArray(items) ? items : [];
+  } catch { return []; }
+}
+function walletSave(items) {
+  localStorage.setItem(LOVE_WALLET_KEY, JSON.stringify(items));
+}
+function walletEscape(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function walletRender() {
+  const list = document.getElementById("love-wallet-list");
+  const summary = document.getElementById("wallet-summary");
+  if (!list || !summary) return;
+  const rewards = walletRead();
+  const available = rewards.filter(r => !r.redeemed).length;
+  summary.textContent = `${rewards.length} collected ♡  ·  ${available} available`;
+  list.innerHTML = rewards.length ? rewards.map(r => {
+    const pending = r.status === "pending_approval" || r.redeemed;
+    return `<article class="wallet-voucher">
+      <div class="wallet-voucher-top"><span>🎟️ LOVEVERSE REWARD</span><span>${pending ? "💌 REQUESTED" : "✨ AVAILABLE"}</span></div>
+      <h3>${walletEscape(r.title)}</h3>
+      <p>${pending ? "Request submitted · awaiting girlfriend confirmation" : "A little gift from your girlfriend, just for you ♡"}</p>
+      <small>Voucher ID: ${walletEscape(r.id)}</small>
+      ${pending ? "" : `<button class="wallet-redeem" data-wallet-redeem="${walletEscape(r.id)}">Request Redemption ♡</button>`}
+    </article>`;
+  }).join("") : `<div class="wallet-empty">🎀<h3>No vouchers yet!</h3><p>Explore our chapters to collect your first little surprise. ♡</p></div>`;
+}
+function walletOpen(id) {
+  const reward = walletRead().find(r => r.id === id && !r.redeemed);
+  if (!reward) return;
+  const naughty = reward.title === "One Naughty Wish 😈";
+  const body = document.getElementById("wallet-dialog-body");
+  body.innerHTML = `<div class="wallet-modal-head">💌<h2>${walletEscape(reward.title)}</h2>
+    <p>${naughty ? "So, Mr. Mendes... what's your one naughty little wish? 😈💋" : "Tell your girlfriend how you'd like to use this little reward."}</p></div>
+    <form id="wallet-redeem-form" data-voucher="${walletEscape(reward.id)}">
+    ${naughty ? `<label>Your secret wish ♡<textarea name="wish" maxlength="1500" required placeholder="Dear girlfriend, my one naughty wish is..."></textarea></label>`
+    : `<label>Preferred date<input name="day" type="date" required></label>
+       <label>Preferred time<input name="time" type="time" required></label>
+       <label>Where?<select name="place"><option>Your place</option><option>My place</option><option>To be decided</option><option>Other</option></select></label>
+       <label>What would you like us to do?<textarea name="plan" maxlength="1500" placeholder="Your ideal plan..."></textarea></label>`}
+    <p class="wallet-note">This is a request, not automatic approval. Mutual consent always matters. ♡</p>
+    <p class="wallet-error" id="wallet-error" role="status"></p>
+    <button type="submit" class="wallet-redeem">Send My Request 💌</button></form>`;
+  document.getElementById("wallet-dialog").showModal();
+}
+document.addEventListener("click", e => {
+  const button = e.target.closest("[data-wallet-redeem]");
+  if (button) walletOpen(button.dataset.walletRedeem);
+  if (e.target.id === "wallet-close") document.getElementById("wallet-dialog").close();
+});
+document.getElementById("wallet-dialog")?.addEventListener("click", e => {
+  if (e.target.id === "wallet-dialog") e.target.close();
+});
+document.addEventListener("submit", e => {
+  if (e.target.id !== "wallet-redeem-form") return;
+  e.preventDefault();
+  const form = e.target, id = form.dataset.voucher;
+  const rewards = walletRead();
+  const reward = rewards.find(r => r.id === id && !r.redeemed);
+  if (!reward) return;
+  const naughty = reward.title === "One Naughty Wish 😈";
+  const data = new FormData(form);
+  const error = document.getElementById("wallet-error");
+  if (!naughty && new Date(`${data.get("day")}T${data.get("time")}`) <= new Date()) {
+    error.textContent = "Please choose a future date and time ♡"; return;
+  }
+  const message = naughty
+    ? `ONE NAUGHTY WISH — PRIVATE REQUEST 😈💋\nVoucher: ${reward.title}\nVoucher ID: ${id}\n\nJarod's naughty wish:\n${data.get("wish")}\n\nStatus: Pending Girlfriend Approval\nMutual consent required.`
+    : `VOUCHER REDEMPTION REQUEST\nVoucher: ${reward.title}\nVoucher ID: ${id}\n\nPreferred date: ${data.get("day")}\nPreferred time: ${data.get("time")}\nLocation: ${data.get("place")}\nRequested plan: ${data.get("plan") || "To be decided"}\n\nAwaiting mutual confirmation.`;
+  const submit = form.querySelector('[type="submit"]');
+  submit.disabled = true;
+  submit.textContent = "Preparing your request... 💌";
+  // Save attempted request before navigation, consistent with original M02 behavior.
+  reward.redeemed = true;
+  reward.status = "pending_approval";
+  reward.requestedAt = new Date().toISOString();
+  try {
+    walletSave(rewards);
+    const post = document.createElement("form");
+    post.method = "POST";
+    post.action = "https://formsubmit.co/" + LOVE_WALLET_EMAIL;
+    post.target = "_self";
+    post.style.display = "none";
+    const fields = {
+      _subject: `💌 Loveverse — ${reward.title} — ${id}`,
+      _next: LOVE_WALLET_THANKS,
+      _template: "table",
+      _captcha: "false",
+      From: "Jarod — Loveverse Love Wallet",
+      "Voucher ID": id,
+      Category: reward.title,
+      message
+    };
+    Object.entries(fields).forEach(([name, value]) => {
+      const input = document.createElement("input");
+      input.type = "hidden"; input.name = name; input.value = value;
+      post.appendChild(input);
+    });
+    document.body.appendChild(post);
+    HTMLFormElement.prototype.submit.call(post);
+  } catch (err) {
+    reward.redeemed = false;
+    delete reward.status;
+    delete reward.requestedAt;
+    try { walletSave(rewards); } catch {}
+    error.textContent = "Couldn't prepare request: " + err.message;
+    submit.disabled = false;
+    submit.textContent = "Send My Request 💌";
+  }
+});
+window.addEventListener("pageshow", walletRender);
+window.addEventListener("storage", walletRender);
+walletRender();

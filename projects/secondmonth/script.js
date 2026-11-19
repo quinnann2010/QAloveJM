@@ -946,11 +946,11 @@ const views = {
 
     </div>
 
-    <h2 class="section-title">
-      My Voucher Wallet
-    </h2>
-
-    <div id="rewardWallet"></div>
+    <div class="card">
+      <h3>💌 Your Love Wallet has moved!</h3>
+      <p>All your compensation vouchers now live in our Loveverse.</p>
+      <a class="btn secondary" href="../../index.html#wallet">Open Love Wallet ♡ →</a>
+    </div>
   `,
 
 
@@ -1020,9 +1020,7 @@ function go(destination) {
     renderHistory();
   }
 
-  if (destination === "rewards") {
-    renderRewards();
-  }
+
 
   if (destination === "complaints") {
     updateEmailOption();
@@ -1422,9 +1420,10 @@ function classified() {
         <button
           class="btn"
           type="button"
-          data-go="rewards"
+          id="openSharedWallet"
+          type="button"
         >
-          View My Voucher Wallet ♡
+          View My Love Wallet ♡
         </button>
 
       </div>
@@ -1613,6 +1612,11 @@ document.addEventListener("click", event => {
 }
 
 
+  if (event.target.id === "openSharedWallet") {
+    window.location.href = "../../index.html#wallet";
+    return;
+  }
+
   /* ---------------------------------------
      17.2 CLOSE MODAL
   --------------------------------------- */
@@ -1738,7 +1742,6 @@ document.addEventListener("click", event => {
       </p>
     `;
 
-    renderRewards();
     hearts();
 
     return;
