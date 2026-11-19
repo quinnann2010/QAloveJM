@@ -1286,3 +1286,36 @@ footer {
         padding: 18px;
     }
 }
+
+
+/* =========================================
+   LITTLE EXTRAS ♡
+========================================= */
+
+#little-extras {
+  scroll-margin-top: 80px;
+}
+
+#extras-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 270px), 1fr)
+  );
+  gap: 24px;
+  margin-top: 28px;
+}
+
+#extras-grid .gift-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#extras-grid .gift-card:hover {
+  transform: translateY(-5px);
+}
+
+#extras-grid .gift-emoji {
+  font-size: 3.5rem;
+}

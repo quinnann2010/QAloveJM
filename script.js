@@ -468,23 +468,90 @@ function card(item, special = false) {
    6. RENDER GIFT COLLECTIONS
 ========================================= */
 
+
 function render() {
-    const anniversaryGrid = $('#anniversary-grid');
-    const specialGrid = $('#special-grid');
+  const anniversaryGrid = $("#anniversary-grid");
+  const specialGrid = $("#special-grid");
+  const extrasGrid = $("#extras-grid");
 
-    anniversaryGrid.replaceChildren(
-        ...anniversaries.map(item => card(item))
-    );
+  anniversaryGrid?.replaceChildren(
+    ...anniversaries.map(item => card(item))
+  );
 
-    specialGrid.replaceChildren(
-        ...specials.map(item => card(item, true))
-    );
+  specialGrid?.replaceChildren(
+    ...specials.map(item => card(item, true))
+  );
 
-    const activeFilter =
-        $('.filter.active')?.dataset.filter || 'all';
+  extrasGrid?.replaceChildren(
+    ...littleExtras.map(item => extraCard(item))
+  );
 
-    applyFilter(activeFilter);
+  const activeFilter =
+    $(".filter.active")?.dataset.filter || "all";
+
+  applyFilter(activeFilter);
 }
+
+
+/* =========================================
+   LITTLE EXTRAS ♡
+========================================= */
+
+const littleExtras = [
+  {
+    title: "How to Deal with Your Dramatic Girlfriend",
+    desc: "The official survival guide for Mr. Jarod Mendes. 28 pages of girlfriend secrets, operating modes, and lifetime love warranty.",
+    icon: "📖",
+    tech: "Girlfriend Manual · Canva",
+    path: "https://canva.link/86rmepps8f7yju7",
+    color: "#ffe3ec"
+  }
+];
+
+
+function extraCard(item) {
+  const el = document.createElement("article");
+
+  el.className = "gift-card";
+  el.dataset.state = "available";
+
+  el.style.setProperty("--card-bg", item.color);
+
+  el.innerHTML = `
+    <div class="gift-visual">
+      <span class="gift-emoji" aria-hidden="true">
+        ${item.icon}
+      </span>
+    </div>
+
+    <div class="gift-body">
+      <div class="gift-meta">
+        <span>LITTLE EXTRAS ♡</span>
+        <span class="status ready">AVAILABLE</span>
+      </div>
+
+      <h3>${item.title}</h3>
+      <p>${item.desc}</p>
+
+      <div class="gift-bottom">
+        <span class="tech">${item.tech}</span>
+
+        <a
+          class="open-gift"
+          href="${item.path}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read Manual ♡
+        </a>
+      </div>
+    </div>
+  `;
+
+  return el;
+}
+
+
 
 
 /* =========================================
