@@ -874,7 +874,7 @@ document.addEventListener('visibilitychange', () => {
 /* =========================================
    14. LOVE POST OFFICE ♡
 
-   Open Gmail Compose directly.
+   Open Gmail Compose in the current tab.
    Jarod confirms sending in Gmail.
    No Firebase, FormSubmit or backend.
 ========================================= */
@@ -935,21 +935,12 @@ Sent with love from our little Loveverse ${stamp}`;
     gmailURL.searchParams.set('su', subject);
     gmailURL.searchParams.set('body', body);
 
-    // Open Gmail directly from the submit interaction.
-    const gmailWindow = window.open(
-        gmailURL.toString(),
-        '_blank'
-    );
-
+    // Navigate in the current tab.
+    // This avoids opening an empty pop-up window.
     if (mailStatus) {
-        mailStatus.textContent = gmailWindow
-            ? 'Your letter is ready! Please press Send in Gmail 💗'
-            : 'Pop-up blocked. Please allow pop-ups for Loveverse and try again 💌';
+        mailStatus.textContent =
+            'Opening Gmail with your letter... 💌';
     }
 
-    // Keep the letter in case Jarod needs to retry.
-    if (sendMailButton) {
-        sendMailButton.textContent =
-            'Send to my little girl 💌';
-    }
+    window.location.assign(gmailURL.toString());
 });
