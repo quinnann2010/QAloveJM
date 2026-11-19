@@ -874,70 +874,48 @@ document.addEventListener('visibilitychange', () => {
 /* =========================================
    14. LOVE POST OFFICE ♡
 
-   Uses mailto: instead of FormSubmit.
-
-   No Firebase.
-   No API keys.
-   No backend.
-
-   Jarod must confirm sending the email
-   in his email application.
+   Open Gmail Compose directly.
+   Jarod confirms sending in Gmail.
+   No Firebase, FormSubmit or backend.
 ========================================= */
 
-// Email address that receives the love letters.
 const LOVE_MAIL_EMAIL = 'quinnann.hoang.2010@gmail.com';
 
-// HTML elements.
 const loveMailForm = document.querySelector('#love-mail-form');
 const noteInput = document.querySelector('#jarod-note');
 const noteLength = document.querySelector('#note-length');
 const mailStatus = document.querySelector('#mail-status');
 const sendMailButton = document.querySelector('#send-love-note');
 
-
-/* =========================================
-   CHARACTER COUNTER
-========================================= */
-
 noteInput?.addEventListener('input', () => {
-
-    noteLength.textContent =
-        `${noteInput.value.length} / 2000`;
-
+    if (noteLength) {
+        noteLength.textContent =
+            `${noteInput.value.length} / 2000`;
+    }
 });
 
-
-/* =========================================
-   SEND LOVE LETTER
-========================================= */
-
 loveMailForm?.addEventListener('submit', (event) => {
-
-    // Prevent page refresh.
     event.preventDefault();
 
-    // Read the letter.
-    const message = noteInput.value.trim();
+    const message = noteInput?.value.trim() || '';
 
-    // Validate input.
     if (!message) {
-        mailStatus.textContent =
-            'Write a little something first, handsome! ♡';
+        if (mailStatus) {
+            mailStatus.textContent =
+                'Write a little something first, handsome! ♡';
+        }
 
-        noteInput.focus();
+        noteInput?.focus();
         return;
     }
 
-    // Get selected stamp.
     const stamp = loveMailForm.querySelector(
         'input[name="stamp"]:checked'
     )?.value || '💗';
 
-    // Email subject.
     const subject =
         `${stamp} A Little Love Letter from Jarod`;
 
-    // Email content.
     const body = `Dear Quỳnh Anh,
 
 ${message}
@@ -945,50 +923,33 @@ ${message}
 Love,
 Jarod ♡
 
-────────────────────
-Sent with love from our little Loveverse ${stamp}
-────────────────────`;
+Sent with love from our little Loveverse ${stamp}`;
 
-    // Build mailto link.
     const gmailURL = new URL(
-    'https://mail.google.com/mail/?view=cm&fs=1'
-);
+        'https://mail.google.com/mail/'
+    );
 
-gmailURL.searchParams.set('to', LOVE_MAIL_EMAIL);
-gmailURL.searchParams.set('su', subject);
-gmailURL.searchParams.set('body', body);
+    gmailURL.searchParams.set('view', 'cm');
+    gmailURL.searchParams.set('fs', '1');
+    gmailURL.searchParams.set('to', LOVE_MAIL_EMAIL);
+    gmailURL.searchParams.set('su', subject);
+    gmailURL.searchParams.set('body', body);
 
-const gmailWindow = window.open(
-    gmailURL.toString(),
-    '_blank'
-);
+    // Open Gmail directly from the submit interaction.
+    const gmailWindow = window.open(
+        gmailURL.toString(),
+        '_blank'
+    );
 
-if (!gmailWindow) {
-    mailStatus.textContent =
-        'Please allow pop-ups to open your love letter 💌';
-} else {
-    mailStatus.textContent =
-        'Your letter is ready! Just press Send in Gmail 💗';
-}
+    if (mailStatus) {
+        mailStatus.textContent = gmailWindow
+            ? 'Your letter is ready! Please press Send in Gmail 💗'
+            : 'Pop-up blocked. Please allow pop-ups for Loveverse and try again 💌';
+    }
 
-    // Update the button.
-    sendMailButton.textContent =
-        'Opening your love letter... 💌';
-
-    // Explain that the email is not sent yet.
-    mailStatus.textContent =
-        'Your love letter is ready! Please press Send in your email app 💗';
-
-    // Open default email application.
-    window.location.href = mailtoURL;
-
-    // Restore the button.
-    setTimeout(() => {
+    // Keep the letter in case Jarod needs to retry.
+    if (sendMailButton) {
         sendMailButton.textContent =
             'Send to my little girl 💌';
-    }, 1500);
-
-    // Do not reset the form here.
-    // The letter stays visible in case the
-    // email application does not open.
+    }
 });
