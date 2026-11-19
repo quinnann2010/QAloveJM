@@ -950,10 +950,26 @@ Sent with love from our little Loveverse ${stamp}
 ────────────────────`;
 
     // Build mailto link.
-    const mailtoURL =
-        `mailto:${LOVE_MAIL_EMAIL}` +
-        `?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(body)}`;
+    const gmailURL = new URL(
+    'https://mail.google.com/mail/?view=cm&fs=1'
+);
+
+gmailURL.searchParams.set('to', LOVE_MAIL_EMAIL);
+gmailURL.searchParams.set('su', subject);
+gmailURL.searchParams.set('body', body);
+
+const gmailWindow = window.open(
+    gmailURL.toString(),
+    '_blank'
+);
+
+if (!gmailWindow) {
+    mailStatus.textContent =
+        'Please allow pop-ups to open your love letter 💌';
+} else {
+    mailStatus.textContent =
+        'Your letter is ready! Just press Send in Gmail 💗';
+}
 
     // Update the button.
     sendMailButton.textContent =
