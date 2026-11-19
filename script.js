@@ -28,7 +28,7 @@ const anniversaries = [
     desc: "Submit a support ticket to your very own girlfriend.",
     icon: "☎️",
     tech: "HTML · CSS · JS",
-    path: null,
+    path: "./projects/secondmonth/index.html",
     color: "#e9e9ff"
   },
   {
@@ -1133,6 +1133,7 @@ Sent with love from our little Loveverse ${stamp}`;
     "Stamp",
     stamp
   );
+  
 
   // Avoid duplicate message fields.
   if (noteInput?.name === "message") {
@@ -1152,5 +1153,10 @@ Sent with love from our little Loveverse ${stamp}`;
   HTMLFormElement.prototype.submit.call(
     loveMailForm
   );
+
+  addField(
+  "_next",
+  "https://quinnann2010.github.io/QAloveJM/thank-you.html"
+);
 });
 

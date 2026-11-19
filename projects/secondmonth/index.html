@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- =========================================
+       1. META & PAGE SETTINGS
+  ========================================= -->
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#fff4f7"
+  >
+
+  <title>Girlfriend Warranty & Support ♡</title>
+
+
+  <!-- =========================================
+       2. GOOGLE FONTS
+  ========================================= -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- =========================================
+       3. STYLESHEET
+  ========================================= -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- =========================================
+     ONE NAUGHTY WISH — SPECIAL POPUP
+========================================= -->
+
+<style>
+  .naughty-wish-panel {
+    text-align: center;
+  }
+
+  .naughty-wish-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  .naughty-wish-panel h2 {
+    font: 500 28px Fredoka, sans-serif;
+    margin: 8px 0 14px;
+  }
+
+  .naughty-wish-panel .field {
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .naughty-wish-panel textarea {
+    width: 100%;
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  .naughty-wish-panel .fine {
+    line-height: 1.65;
+    margin: 16px 0;
+  }
+
+  .naughty-wish-feedback {
+    color: #b3486c;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+</style>
+
+</head>
+
+
+<body>
+
+  <!-- =========================================
+       4. BACKGROUND HEART EFFECTS
+  ========================================= -->
+  <div id="hearts" aria-hidden="true"></div>
+
+
+  <!-- =========================================
+       5. MAIN WEBSITE LAYOUT
+  ========================================= -->
+  <div class="shell">
+
+
+    <!-- =======================================
+         5.1 SIDEBAR
+    ======================================== -->
+    <aside class="sidebar">
+
+      <!-- Logo -->
+      <div class="logo">
+        ♡
+        <span>
+          GF Care<span class="tm">™</span>
+        </span>
+      </div>
+
+      <p class="side-caption">
+        AFTER-SALES LOVE DEPARTMENT
+      </p>
+
+
+      <!-- =====================================
+           5.2 MAIN NAVIGATION
+      ====================================== -->
+      <nav
+        id="nav"
+        aria-label="Main navigation"
+      >
+
+        <button
+          class="nav active"
+          data-page="home"
+        >
+          ⌂ &nbsp; Dashboard
+        </button>
+
+        <button
+          class="nav"
+          data-page="warranty"
+        >
+          ♧ &nbsp; Warranty Card
+        </button>
+
+        <button
+          class="nav"
+          data-page="terms"
+        >
+          ☷ &nbsp; Coverage & Terms
+        </button>
+
+        <button
+          class="nav"
+          data-page="diagnostic"
+        >
+          ✦ &nbsp; Repair Request
+        </button>
+
+        <button
+          class="nav"
+          data-page="complaints"
+        >
+          ✉ &nbsp; Complaints
+        </button>
+
+        <button
+          class="nav"
+          data-page="rewards"
+        >
+          🎁 &nbsp; Compensation
+        </button>
+
+        <button
+          class="nav"
+          data-page="history"
+        >
+          ◷ &nbsp; Ticket History
+        </button>
+
+      </nav>
+
+
+      <!-- =====================================
+           5.3 SIDEBAR STATUS
+      ====================================== -->
+      <div class="sidebar-bottom">
+
+        <span class="status-dot"></span>
+
+        Girlfriend services operational
+
+        <small>
+          Except during naps & exams.
+        </small>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =======================================
+         6. MAIN CONTENT AREA
+    ======================================== -->
+    <main class="main">
+
+
+      <!-- =====================================
+           6.1 TOP BAR
+      ====================================== -->
+      <header class="topbar">
+
+        <span
+          class="breadcrumb"
+          id="breadcrumb"
+        >
+          Customer Dashboard
+        </span>
+
+        <span class="pill">
+          ♡ BOYFRIEND PREMIUM
+        </span>
+
+      </header>
+
+
+      <!-- =====================================
+           6.2 DYNAMIC PAGE CONTENT
+      ====================================== -->
+      <!--
+        JavaScript renders the selected page here.
+
+        Available pages:
+        - home
+        - warranty
+        - terms
+        - diagnostic
+        - complaints
+        - rewards
+        - history
+      -->
+
+      <div
+        id="page"
+        aria-live="polite"
+      ></div>
+
+
+      <!-- =====================================
+           6.3 FOOTER
+      ====================================== -->
+      <footer>
+
+        Made with love, by your tiny IT girlfriend ♡
+
+        <button
+          class="secret-link"
+          id="secret"
+          title="Internal reference"
+        >
+          archive ref.
+        </button>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================================
+       7. TOAST NOTIFICATIONS
+  ========================================= -->
+  <!--
+    Used for temporary notifications such as:
+    - Ticket created
+    - Voucher received
+    - Request submitted
+    - Error messages
+  -->
+
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- =========================================
+       8. MODAL / POPUP
+  ========================================= -->
+  <div
+    id="modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Special message"
+  >
+
+    <div class="modal-card">
+
+      <!-- Close button -->
+      <button
+        class="close"
+        id="closeModal"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <!-- Dynamic modal content -->
+      <div id="modalContent"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       9. JAVASCRIPT
+  ========================================= -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
