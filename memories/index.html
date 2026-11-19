@@ -60,5 +60,36 @@
     <p id="dialog-story"></p>
     <p id="dialog-detail" class="dialog-detail"></p>
   </dialog>
+
+  <dialog id="christmas-letter-dialog" class="christmas-letter-dialog" aria-label="Our first Christmas letter">
+    <button type="button" id="christmas-close" class="christmas-close" aria-label="Close Christmas letter">×</button>
+    <div class="christmas-sparkles" aria-hidden="true">✦ · ✧ · ✦</div>
+    <div id="christmas-envelope" class="christmas-envelope-stage">
+      <button type="button" id="christmas-open" class="christmas-envelope" aria-label="Open your Christmas letter">
+        <span class="envelope-flap"></span><span class="envelope-pocket"></span><span class="envelope-seal">♡</span>
+      </button>
+      <p class="envelope-instruction">To Jarod — Open when you miss our first Christmas ♡</p>
+      <p class="envelope-hint">Tap the little heart to open your letter</p>
+    </div>
+    <article id="christmas-paper" class="christmas-paper" hidden>
+      <div class="letter-topline">LOVEVERSE · CHRISTMAS 2026 <span>✧</span></div>
+      <div class="letter-heading">
+        <img src="../assets/christmas/quynh-anh-christmas.png" alt="Christmas Quỳnh Anh chibi" class="letter-avatar">
+        <div><span class="letter-date">25 DECEMBER 2026</span><h2>Our First Christmas ♡</h2><p>To Jarod, from your little girl</p></div>
+      </div>
+      <div class="letter-divider">✦ ♡ ✦</div>
+      <div class="letter-body">
+        <p>My dearest Jarod,</p>
+        <p>Can you believe this is our very first Christmas together? And actually… it's my first time really celebrating Christmas, too. 🥺🎄</p>
+        <p>I know that sounds a little funny, because I studied in Canada, where Christmas was everywhere — the snow, the decorations, the lights, all of it. But I grew up with Eastern traditions, so Christmas was never really a holiday I celebrated myself. I mostly watched the magic happen around me.</p>
+        <p>And now, somehow, my first real Christmas gets to be with you. That makes this little day feel extra special to me. ♡</p>
+        <p>I don't know what all our future Christmases will look like, but I really, really hope this is only the first of many. I hope we'll get to make our own silly traditions, share warm hugs on cold days, laugh at little things, and keep choosing to spend these moments together.</p>
+        <p>So here's a tiny piece of Christmas magic from your little girl. It's not a big present, but I made it with a whole lot of love — just for you.</p>
+        <p class="letter-signature">With a million little kisses,<br>Your little girl, Quỳnh Anh 💗</p>
+      </div>
+      <div class="letter-wish"><div>✧ A WISH UPON A CHRISTMAS STAR ✧</div><span>✩</span><p id="christmas-saved-wish"></p><small>May this little wish come true ♡</small></div>
+      <button type="button" id="christmas-fold" class="christmas-fold">♡ Fold the letter back</button>
+    </article>
+  </dialog>
 </body>
 </html>
