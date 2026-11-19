@@ -5,131 +5,132 @@
    LOVEVERSE ♡ QUỲNH ANH & JAROD
 ========================================= */
 
+
 /* =========================================
    1. ANNIVERSARY COLLECTION
 ========================================= */
 
 const anniversaries = [
-    {
-        n: 1,
-        date: '2026-11-20',
-        title: 'Love Subscription',
-        desc: 'An adorable renewal notice for a love that deserves a lifetime subscription.',
-        icon: '💌',
-        tech: 'HTML · CSS · JS',
-        path: './projects/firstmonth/index.html',
-        color: '#ffe3ec'
-    },
-    {
-        n: 2,
-        date: '2026-12-20',
-        title: 'LoveOS',
-        desc: 'A tiny desktop with little apps and surprises, made just for you.',
-        icon: '💻',
-        tech: 'JavaScript',
-        path: null,
-        color: '#e9e9ff'
-    },
-    {
-        n: 3,
-        date: '2027-01-20',
-        title: 'Us Wrapped',
-        desc: 'Our first three months, told through cute charts and little statistics.',
-        icon: '📊',
-        tech: 'Python · Plotly',
-        path: null,
-        color: '#e7f3ee'
-    },
-    {
-        n: 4,
-        date: '2027-02-20',
-        title: 'Girlfriend Vending Machine',
-        desc: 'Exchange love coins for kisses, dates, and very special coupons.',
-        icon: '🎟️',
-        tech: 'Java · Spring',
-        path: null,
-        color: '#fff0d9'
-    },
-    {
-        n: 5,
-        date: '2027-03-20',
-        title: 'Letters From Your Little Girl',
-        desc: 'Pick a mood and receive a little love letter made for you.',
-        icon: '✉️',
-        tech: 'Python · Pillow',
-        path: null,
-        color: '#fce5ee'
-    },
-    {
-        n: 6,
-        date: '2027-04-20',
-        title: 'Love Passport',
-        desc: 'A scrapbook map of all the places our story takes us.',
-        icon: '🗺️',
-        tech: 'Python · Folium',
-        path: null,
-        color: '#e9f3e2'
-    },
-    {
-        n: 7,
-        date: '2027-05-20',
-        title: 'Jarod.exe',
-        desc: 'A very scientific boyfriend system check — with a birthday surprise.',
-        icon: '🎂',
-        tech: 'Python · JS',
-        path: null,
-        color: '#fff0df'
-    },
-    {
-        n: 8,
-        date: '2027-06-20',
-        title: 'Pocket Quỳnh Anh',
-        desc: 'Your own tiny virtual girlfriend, with hugs and lots of personality.',
-        icon: '🧸',
-        tech: 'Java · OOP',
-        path: null,
-        color: '#fbe7ed'
-    },
-    {
-        n: 9,
-        date: '2027-07-20',
-        title: 'Girlfriend Mood Decoder',
-        desc: 'A playfully trained model to decode your little programmer.',
-        icon: '🧠',
-        tech: 'Python · ML',
-        path: null,
-        color: '#e7ecfa'
-    },
-    {
-        n: 10,
-        date: '2027-08-20',
-        title: 'Recipe for Us',
-        desc: 'Our favourite meals, recipes, and cooking memories.',
-        icon: '🍓',
-        tech: 'Python · SQLite',
-        path: null,
-        color: '#fff0df'
-    },
-    {
-        n: 11,
-        date: '2027-09-20',
-        title: 'Our Little Photobooth',
-        desc: 'Make photo strips with frames, stickers, and our memories.',
-        icon: '📸',
-        tech: 'JS · Pillow',
-        path: null,
-        color: '#eee8fa'
-    },
-    {
-        n: 12,
-        date: '2027-10-20',
-        title: 'Museum of Us',
-        desc: 'A little museum for our first year, one memory at a time.',
-        icon: '🏛️',
-        tech: 'Web · Python',
-        path: null,
-        color: '#f8e6e8'
-    }
+  {
+    n: 1,
+    date: "2026-11-20",
+    title: "Love Subscription",
+    desc: "A very special renewal notice for our love.",
+    icon: "💌",
+    tech: "HTML · CSS · JS",
+    path: "./projects/firstmonth/index.html",
+    color: "#ffe3ec"
+  },
+  {
+    n: 2,
+    date: "2026-12-20",
+    title: "Girlfriend Customer Support",
+    desc: "Submit a support ticket to your very own girlfriend.",
+    icon: "☎️",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#e9e9ff"
+  },
+  {
+    n: 3,
+    date: "2027-01-20",
+    title: "Girlfriend Vending Machine",
+    desc: "Earn Love Coins and discover the sweetest rewards.",
+    icon: "🎰",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#e7f3ee"
+  },
+  {
+    n: 4,
+    date: "2027-02-20",
+    title: "Girlfriend's Secret Laboratory",
+    desc: "Mix ingredients and discover unexpected love potions.",
+    icon: "🧪",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#fff0d9"
+  },
+  {
+    n: 5,
+    date: "2027-03-20",
+    title: "Letters From Your Little Girl",
+    desc: "Pick your mood and open a little letter from me.",
+    icon: "✉️",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#fce5ee"
+  },
+  {
+    n: 6,
+    date: "2027-04-20",
+    title: "Pocket Quỳnh Anh",
+    desc: "Take care of your tiny virtual girlfriend.",
+    icon: "🧸",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#e9f3e2"
+  },
+  {
+    n: 7,
+    date: "2027-05-20",
+    title: "Love Delivery Tracking",
+    desc: "Track a mysterious package sent with love.",
+    icon: "📦",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#fff0df"
+  },
+  {
+    n: 8,
+    date: "2027-06-20",
+    title: "The Girlfriend Investigation Bureau",
+    desc: "Investigate the case of a stolen heart.",
+    icon: "🔎",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#fbe7ed"
+  },
+  {
+    n: 9,
+    date: "2027-07-20",
+    title: "Love Claw Machine",
+    desc: "Grab a little surprise with the claw machine.",
+    icon: "🕹️",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#e7ecfa"
+  },
+  {
+    n: 10,
+    date: "2027-08-20",
+    title: "Love Arcade",
+    desc: "Play a collection of tiny games made for you.",
+    icon: "🎮",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#fff0df"
+  },
+  {
+    n: 11,
+    date: "2027-09-20",
+    title: "The Girlfriend Factory",
+    desc: "Build your own adorable chibi girlfriend.",
+    icon: "🎀",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#eee8fa"
+  },
+  {
+    n: 12,
+    date: "2027-10-20",
+    title: "Our Little World — Project 365",
+    desc: "Explore a little world and uncover a year of secrets.",
+    icon: "🏙️",
+    tech: "HTML · CSS · JS",
+    path: null,
+    color: "#f8e6e8"
+  }
 ];
 
 
@@ -138,60 +139,78 @@ const anniversaries = [
 ========================================= */
 
 const specials = [
-    {
-        date: '2026-12-25',
-        title: 'Our Little Christmas',
-        desc: 'A tiny festive surprise, wrapped in pixels and love.',
-        icon: '🎄',
-        tech: 'Holiday special',
-        path: null,
-        color: '#e8f3e6'
-    },
-    {
-        date: '2027-02-06',
-        title: 'Lucky Love Envelope',
-        desc: 'A little Vietnamese Tết gift, just for you.',
-        icon: '🧧',
-        tech: 'Lunar New Year',
-        path: null,
-        color: '#fff0df'
-    },
-    {
-        date: '2027-02-14',
-        title: "Cupid's Delivery Service",
-        desc: 'A mysterious Valentine package from your little girl.',
-        icon: '💘',
-        tech: "Valentine's Day",
-        path: null,
-        color: '#ffe3ec'
-    },
-    {
-        date: '2027-05-25',
-        title: 'Jarod Appreciation Awards',
-        desc: 'A very exclusive birthday ceremony celebrating you.',
-        icon: '🏆',
-        tech: "Jarod's birthday",
-        path: null,
-        color: '#fff0d9'
-    },
-    {
-        date: '2027-10-20',
-        title: "Your Girlfriend's Birthday Quest",
-        desc: 'A tiny quest with a very cute birthday wishlist.',
-        icon: '🎀',
-        tech: "Quỳnh Anh's birthday",
-        path: null,
-        color: '#f7e7f4'
-    },
-    {
-        date: '2027-10-31',
-        title: 'The Haunted Love House',
-        desc: 'A silly little haunted house full of heart-shaped mysteries.',
-        icon: '👻',
-        tech: 'Halloween',
-        path: null,
-        color: '#eee8fa'
-    }
+  {
+    date: "2026-12-25",
+    title: "A Little Gift for You",
+    desc: "Unwrap a tiny Christmas surprise from me.",
+    icon: "🎄",
+    tech: "Holiday Special",
+    path: null,
+    color: "#ffe3ec"
+  },
+  {
+    date: "2027-01-01",
+    title: "The Future Prediction Machine",
+    desc: "Discover some suspicious predictions for our 2027.",
+    icon: "🔮",
+    tech: "Holiday Special",
+    path: null,
+    color: "#e9e9ff"
+  },
+  {
+    date: "2027-02-06",
+    title: "Mission: Become a Vietnamese Son-in-Law",
+    desc: "Can you survive your first Vietnamese Tết mission?",
+    icon: "🧧",
+    tech: "Holiday Special",
+    path: null,
+    color: "#e7f3ee"
+  },
+  {
+    date: "2027-02-14",
+    title: "Cupid Has Resigned",
+    desc: "Cupid quit. You are in charge of love now.",
+    icon: "💘",
+    tech: "Holiday Special",
+    path: null,
+    color: "#fff0d9"
+  },
+  {
+    date: "2027-04-01",
+    title: "The Unclickable Button",
+    desc: "Catch the runaway button to claim a kiss.",
+    icon: "🃏",
+    tech: "Holiday Special",
+    path: null,
+    color: "#fce5ee"
+  },
+  {
+    date: "2027-05-25",
+    title: "The Jarod Experience™",
+    desc: "A VIP birthday experience for one very special boy.",
+    icon: "👑",
+    tech: "Birthday Special",
+    path: null,
+    color: "#e9f3e2"
+  },
+  {
+    date: "2027-07-06",
+    title: "The Kiss Tax Department",
+    desc: "An official audit of your unpaid kisses.",
+    icon: "💋",
+    tech: "Holiday Special",
+    path: null,
+    color: "#fff0df"
+  },
+  {
+    date: "2027-10-15",
+    title: "The Second First Date",
+    desc: "Design another first date for the two of us.",
+    icon: "🎟️",
+    tech: "First Date Anniversary",
+    path: null,
+    color: "#fbe7ed"
+  }
 ];
 
 
@@ -279,124 +298,170 @@ function updateClock() {
 }
 
 
-/* =========================================
-   5. SECRET GIFT CARD SYSTEM
 
-   Month 01 is always unlocked.
-   Other projects unlock when path exists.
+/* =========================================
+   5. AUTOMATIC GIFT UNLOCK SYSTEM ♡
 ========================================= */
 
-function card(item, special = false) {
-    const now = todayISO();
+// Number of days before the special date.
+const EARLY_UNLOCK_DAYS = 2;
 
-    const published = item.date <= now;
+// Use France's timezone.
+const LOVEVERSE_TIME_ZONE = "Europe/Paris";
 
-    const isFirstMonth =
-        !special && item.n === 1;
+function parisTodayISO() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: LOVEVERSE_TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
 
-    const ready = isFirstMonth
-        ? true
-        : Boolean(item.path);
+  const get = type =>
+    parts.find(part => part.type === type).value;
 
-    const el = document.createElement('article');
-
-    el.className = 'gift-card';
-
-    el.dataset.state =
-        ready ? 'available' : 'upcoming';
-
-    el.style.setProperty(
-        '--card-bg',
-        ready ? item.color : '#ffe9ef'
-    );
-
-    const dateLabel = special
-        ? dateText(item.date)
-        : `MONTH ${String(item.n).padStart(2, '0')} · ${dateText(item.date)}`;
-
-    const statusLabel = ready
-        ? 'UNLOCKED'
-        : published
-            ? 'IN PROGRESS'
-            : 'SECRET';
-
-    const title = ready
-        ? item.title
-        : 'A Secret Little Surprise ♡';
-
-    const description = ready
-        ? item.desc
-        : published
-            ? 'Your little programmer is preparing something special just for you. A little more patience, please! ♡'
-            : 'Psst... this one is still a secret! Come back on our special day to see what your little girl has made.';
-
-    const icon = ready
-        ? item.icon
-        : '🎁';
-
-    const tech = ready
-        ? item.tech
-        : 'TOP SECRET ♡';
-
-    el.innerHTML = `
-        <div class="gift-visual">
-            <span class="gift-emoji" aria-hidden="true">
-                ${icon}
-            </span>
-        </div>
-
-        <div class="gift-body">
-
-            <div class="gift-meta">
-                <span>${dateLabel}</span>
-
-                <span class="status ${ready ? 'ready' : ''}">
-                    ${statusLabel}
-                </span>
-            </div>
-
-            <h3>${title}</h3>
-
-            <p>${description}</p>
-
-            <div class="gift-bottom">
-                <span class="tech">${tech}</span>
-            </div>
-
-        </div>
-    `;
-
-    const bottom = el.querySelector('.gift-bottom');
-
-    if (ready) {
-        const link = document.createElement('a');
-
-        link.className = 'open-gift';
-
-        link.href = isFirstMonth
-            ? './projects/firstmonth/index.html'
-            : item.path;
-
-        link.textContent = 'Open gift ♡';
-
-        bottom.append(link);
-
-    } else {
-        const button = document.createElement('button');
-
-        button.className = 'open-gift';
-        button.type = 'button';
-        button.disabled = true;
-
-        button.textContent = published
-            ? 'Still making magic ✨'
-            : 'Locked 🔒';
-
-        bottom.append(button);
-    }
-
-    return el;
+  return `${get("year")}-${get("month")}-${get("day")}`;
 }
+
+function daysBeforeISO(date, days) {
+  const value = new Date(`${date}T12:00:00Z`);
+
+  value.setUTCDate(
+    value.getUTCDate() - days
+  );
+
+  return value.toISOString().slice(0, 10);
+}
+
+function card(item, special = false) {
+
+  const now = parisTodayISO();
+
+  const unlockDate = daysBeforeISO(
+    item.date,
+    EARLY_UNLOCK_DAYS
+  );
+
+  // Has the unlock date arrived?
+  const unlockedByDate = now >= unlockDate;
+
+  // Has the actual project been uploaded?
+  const hasProject = Boolean(item.path);
+
+  // Both conditions must be true.
+  const ready = unlockedByDate && hasProject;
+
+  const el = document.createElement("article");
+
+  el.className = "gift-card";
+
+  el.dataset.state = ready
+    ? "available"
+    : "upcoming";
+
+  el.style.setProperty(
+    "--card-bg",
+    ready ? item.color : "#ffe9ef"
+  );
+
+  const dateLabel = special
+    ? dateText(item.date)
+    : `MONTH ${String(item.n).padStart(2, "0")} · ${dateText(item.date)}`;
+
+  let statusLabel;
+
+  if (ready) {
+    statusLabel = "UNLOCKED";
+  } else if (unlockedByDate) {
+    statusLabel = "COMING SOON";
+  } else {
+    statusLabel = "SECRET";
+  }
+
+  // Hide the title before the unlock date.
+  const title = unlockedByDate
+    ? item.title
+    : "A Secret Little Surprise ♡";
+
+  let description;
+
+  if (ready) {
+    description = item.desc;
+  } else if (unlockedByDate) {
+    description =
+      "Your little programmer is preparing something special just for you. A little more patience, please! ♡";
+  } else {
+    description =
+      `Psst... a surprise is coming! Unlocks ${dateText(unlockDate)} ♡`;
+  }
+
+  const icon = unlockedByDate
+    ? item.icon
+    : "🎁";
+
+  const tech = ready
+    ? item.tech
+    : "TOP SECRET ♡";
+
+  el.innerHTML = `
+    <div class="gift-visual">
+      <span class="gift-emoji" aria-hidden="true">
+        ${icon}
+      </span>
+    </div>
+
+    <div class="gift-body">
+
+      <div class="gift-meta">
+        <span>${dateLabel}</span>
+
+        <span class="status ${ready ? "ready" : ""}">
+          ${statusLabel}
+        </span>
+      </div>
+
+      <h3>${title}</h3>
+
+      <p>${description}</p>
+
+      <div class="gift-bottom">
+        <span class="tech">${tech}</span>
+      </div>
+
+    </div>
+  `;
+
+  const bottom = el.querySelector(".gift-bottom");
+
+  if (ready) {
+
+    const link = document.createElement("a");
+
+    link.className = "open-gift";
+    link.href = item.path;
+
+    link.textContent = "Open gift ♡";
+
+    bottom.append(link);
+
+  } else {
+
+    const button = document.createElement("button");
+
+    button.className = "open-gift";
+    button.type = "button";
+    button.disabled = true;
+
+    button.textContent = unlockedByDate
+      ? "Still making magic ✨"
+      : "Locked 🔒";
+
+    bottom.append(button);
+  }
+
+  return el;
+}
+
 
 
 /* =========================================
@@ -871,86 +936,154 @@ document.addEventListener('visibilitychange', () => {
 });
 
 
-/* =========================================
-   14. LOVE POST OFFICE ♡ — FORMSUBMIT
 
-   Native HTML form POST (no AJAX, Gmail login,
-   Firebase, or backend).
+/* =========================================
+   14. LOVE POST OFFICE ♡
 ========================================= */
 
-const LOVE_MAIL_EMAIL = 'quinnann.hoang.2010@gmail.com';
-const loveMailForm = document.querySelector('#love-mail-form');
-const noteInput = document.querySelector('#jarod-note');
-const noteLength = document.querySelector('#note-length');
-const mailStatus = document.querySelector('#mail-status');
-const sendMailButton = document.querySelector('#send-love-note');
+const LOVE_MAIL_EMAIL =
+  "quinnann.hoang.2010@gmail.com";
 
-noteInput?.addEventListener('input', () => {
-    if (noteLength) {
-        noteLength.textContent = `${noteInput.value.length} / 2000`;
-    }
+const loveMailForm =
+  document.querySelector("#love-mail-form");
+
+const noteInput =
+  document.querySelector("#jarod-note");
+
+const noteLength =
+  document.querySelector("#note-length");
+
+const mailStatus =
+  document.querySelector("#mail-status");
+
+const sendMailButton =
+  document.querySelector("#send-love-note");
+
+noteInput?.addEventListener("input", () => {
+  if (noteLength) {
+    noteLength.textContent =
+      `${noteInput.value.length} / 2000`;
+  }
 });
 
 function setLoveMailField(form, name, value) {
-    let field = Array.from(form.querySelectorAll('input[type="hidden"]'))
-        .find(input => input.name === name);
 
-    if (!field) {
-        field = document.createElement('input');
-        field.type = 'hidden';
-        field.name = name;
-        form.appendChild(field);
-    }
+  let field = Array.from(
+    form.querySelectorAll('input[type="hidden"]')
+  ).find(input => input.name === name);
 
-    field.value = value;
+  if (!field) {
+    field = document.createElement("input");
+    field.type = "hidden";
+    field.name = name;
+    form.appendChild(field);
+  }
+
+  field.value = value;
 }
 
-loveMailForm?.addEventListener('submit', event => {
-    event.preventDefault();
+loveMailForm?.addEventListener("submit", event => {
 
-    const message = noteInput?.value.trim() || '';
-    if (!message) {
-        if (mailStatus) {
-            mailStatus.textContent = 'Write a little something first, handsome! ♡';
-        }
-        noteInput?.focus();
-        return;
-    }
+  event.preventDefault();
 
-    const stamp = loveMailForm.querySelector('input[name="stamp"]:checked')?.value || '💗';
-    const subject = `${stamp} A Little Love Letter from Jarod`;
-    const body = `Dear Quỳnh Anh,\n\n${message}\n\nLove,\nJarod ♡\n\nSent with love from our little Loveverse ${stamp}`;
+  const message = noteInput?.value.trim() || "";
 
-    // FormSubmit's standard form endpoint: no JavaScript fetch or CORS needed.
-    loveMailForm.action = `https://formsubmit.co/${LOVE_MAIL_EMAIL}`;
-    loveMailForm.method = 'POST';
-    loveMailForm.target = '_self';
-
-    // _next must be a full public URL; GitHub Pages hosts this project here.
-    const thankYouURL = 'https://quinnann2010.github.io/QAloveJM/thank-you.html';
-
-    setLoveMailField(loveMailForm, '_subject', subject);
-    setLoveMailField(loveMailForm, '_next', thankYouURL);
-    setLoveMailField(loveMailForm, '_template', 'table');
-    setLoveMailField(loveMailForm, '_captcha', 'true');
-    setLoveMailField(loveMailForm, 'message', body);
-    setLoveMailField(loveMailForm, 'From', 'Jarod — Loveverse');
-    setLoveMailField(loveMailForm, 'Stamp', stamp);
-
-    // Prevent sending duplicate message fields if the textarea has name="message".
-    // The textarea is still used for typing, while the hidden field holds the
-    // formatted letter that FormSubmit receives.
-    if (noteInput && noteInput.name === 'message') {
-        noteInput.name = 'loveverse_draft';
-    }
-
+  if (!message) {
     if (mailStatus) {
-        mailStatus.textContent = 'Sending your letter securely... 💌';
-    }
-    if (sendMailButton) {
-        sendMailButton.disabled = true;
+      mailStatus.textContent =
+        "Write a little something first, handsome! ♡";
     }
 
-    // Native submit bypasses the event handler, so it won't loop.
-    HTMLFormElement.prototype.submit.call(loveMailForm);
+    noteInput?.focus();
+    return;
+  }
+
+  const stamp =
+    loveMailForm.querySelector(
+      'input[name="stamp"]:checked'
+    )?.value || "💗";
+
+  const subject =
+    `${stamp} A Little Love Letter from Jarod`;
+
+  const body =
+`Dear Quỳnh Anh,
+
+${message}
+
+Love,
+Jarod ♡
+
+Sent with love from our little Loveverse ${stamp}`;
+
+  loveMailForm.action =
+    `https://formsubmit.co/${LOVE_MAIL_EMAIL}`;
+
+  loveMailForm.method = "POST";
+  loveMailForm.target = "_self";
+
+  const thankYouURL =
+    "https://quinnann2010.github.io/QAloveJM/thank-you.html";
+
+  setLoveMailField(
+    loveMailForm,
+    "_subject",
+    subject
+  );
+
+  setLoveMailField(
+    loveMailForm,
+    "_next",
+    thankYouURL
+  );
+
+  setLoveMailField(
+    loveMailForm,
+    "_template",
+    "table"
+  );
+
+  setLoveMailField(
+    loveMailForm,
+    "_captcha",
+    "true"
+  );
+
+  setLoveMailField(
+    loveMailForm,
+    "message",
+    body
+  );
+
+  setLoveMailField(
+    loveMailForm,
+    "From",
+    "Jarod — Loveverse"
+  );
+
+  setLoveMailField(
+    loveMailForm,
+    "Stamp",
+    stamp
+  );
+
+  // Avoid duplicate message fields.
+  if (noteInput?.name === "message") {
+    noteInput.name = "loveverse_draft";
+  }
+
+  if (mailStatus) {
+    mailStatus.textContent =
+      "Sending your letter... 💌";
+  }
+
+  if (sendMailButton) {
+    sendMailButton.disabled = true;
+  }
+
+  // Submit the actual HTML form.
+  HTMLFormElement.prototype.submit.call(
+    loveMailForm
+  );
 });
+
