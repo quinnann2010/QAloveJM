@@ -1183,21 +1183,23 @@ function walletRender() {
   const summary = document.getElementById("wallet-summary");
   if (!list || !summary) return;
   const rewards = walletRead();
-  const available = rewards.filter(r => !r.redeemed).length;
+  const available = rewards.filter(r => r.type !== "certificate" && !r.redeemed).length;
   summary.textContent = `${rewards.length} collected ♡  ·  ${available} available`;
   list.innerHTML = rewards.length ? rewards.map(r => {
+    const certificate = r.type === "certificate";
+    const expired = certificate && r.expiresAt && Date.now() >= Date.parse(r.expiresAt);
     const pending = r.status === "pending_approval" || r.redeemed;
     return `<article class="wallet-voucher">
-      <div class="wallet-voucher-top"><span>🎟️ LOVEVERSE REWARD</span><span>${pending ? "💌 REQUESTED" : "✨ AVAILABLE"}</span></div>
+      <div class="wallet-voucher-top"><span>${certificate ? "🏆 LOVEVERSE CERTIFICATE" : "🎟️ LOVEVERSE REWARD"}</span><span>${certificate ? (expired ? "⌛ EXPIRED" : "💗 ACTIVE") : (pending ? "💌 REQUESTED" : "✨ AVAILABLE")}</span></div>
       <h3>${walletEscape(r.title)}</h3>
-      <p>${pending ? "Request submitted · awaiting girlfriend confirmation" : "A little gift from your girlfriend, just for you ♡"}</p>
+      <p>${certificate ? `Plan: ${walletEscape(r.plan)} · ${walletEscape(r.duration)} · ${r.expiresAt ? (expired ? "Expired " : "Valid until ") + walletEscape(new Date(r.expiresAt).toLocaleDateString("en-GB")) : "Never expires ♾️"}` : (pending ? "Request submitted · awaiting girlfriend confirmation" : "A little gift from your girlfriend, just for you ♡")}</p>
       <small>Voucher ID: ${walletEscape(r.id)}</small>
-      ${pending ? "" : `<button class="wallet-redeem" data-wallet-redeem="${walletEscape(r.id)}">Request Redemption ♡</button>`}
+      ${pending || certificate ? "" : `<button class="wallet-redeem" data-wallet-redeem="${walletEscape(r.id)}">Request Redemption ♡</button>`}
     </article>`;
   }).join("") : `<div class="wallet-empty">🎀<h3>No vouchers yet!</h3><p>Explore our chapters to collect your first little surprise. ♡</p></div>`;
 }
 function walletOpen(id) {
-  const reward = walletRead().find(r => r.id === id && !r.redeemed);
+  const reward = walletRead().find(r => r.id === id && !r.redeemed && r.type !== "certificate");
   if (!reward) return;
   const naughty = reward.title === "One Naughty Wish 😈";
   const body = document.getElementById("wallet-dialog-body");
@@ -1227,7 +1229,7 @@ document.addEventListener("submit", e => {
   e.preventDefault();
   const form = e.target, id = form.dataset.voucher;
   const rewards = walletRead();
-  const reward = rewards.find(r => r.id === id && !r.redeemed);
+  const reward = rewards.find(r => r.id === id && !r.redeemed && r.type !== "certificate");
   if (!reward) return;
   const naughty = reward.title === "One Naughty Wish 😈";
   const data = new FormData(form);

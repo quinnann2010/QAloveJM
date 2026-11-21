@@ -748,3 +748,5 @@ footer {
         transition-duration: 0.01ms !important;
     }
 }
+
+.subscription-status {text-align:center;color:#ffcae8;font-weight:700;line-height:1.6;margin:14px 0;}
