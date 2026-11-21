@@ -123,15 +123,9 @@ try {
 /* Add a keepsake by replacing the example below.
    To keep the drawer empty for now, leave the array empty. */
 const keepsakes = [
-  {
-    id: 'new-year-greeting-2027',
-    date: '2027-01-01',
-    title: 'Our First New Year Card ♡',
-    emoji: '💌',
-    photo: '../assets/new-year/new-year-chibi.png',
-    story: 'A little letter to begin our first New Year together.',
-    detail: '1 January 2027 · From Quỳnh Anh to Jarod'
-  },
+  // New Year Card:
+  // Only appears after Jarod saves it from the New Year page.
+  
   ...(christmasCard ? [{
     id: 'christmas-first-2026',
     date: '2026-12-25',
@@ -142,6 +136,16 @@ const keepsakes = [
     detail: christmasCard.wish
       ? "Jarod's Christmas wish: " + christmasCard.wish
       : '25 December 2026 · A letter from your little girl'
+  }] : []),
+
+  ...(newYearGreetingSaved ? [{
+    id: 'new-year-greeting-2027',
+    date: '2027-01-01',
+    title: 'Our First New Year Card ♡',
+    emoji: '💌',
+    photo: '../assets/new-year/new-year-chibi.png',
+    story: 'A little letter to begin our first New Year together.',
+    detail: '1 January 2027 · From Quỳnh Anh to Jarod'
   }] : []),
 
   // New Year 2027 is now a resolutions + future-mail experience.
