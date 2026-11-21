@@ -1488,3 +1488,64 @@ footer {
 
 }
 
+
+/* ==========================================
+   BACK TO LOVEVERSE BUTTON
+   ========================================== */
+
+.back-to-loveverse {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 17px;
+
+  background: rgba(255, 255, 255, 0.94);
+  color: #b85f88;
+
+  border: 1px solid #f0c9dc;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 6px 20px rgba(185, 95, 136, 0.12);
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.back-to-loveverse:hover {
+  background: #ffe8f2;
+  color: #a94b77;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(185, 95, 136, 0.2);
+}
+
+.back-to-loveverse span {
+  font-size: 19px;
+  line-height: 1;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .back-to-loveverse {
+    top: 12px;
+    left: 12px;
+
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+}

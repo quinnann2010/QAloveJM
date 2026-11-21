@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Girlfriend.exe · Loveverse M03</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       BACKGROUND DECORATION
+  ====================================================== -->
+
+  <div class="stars">
+    ✦　♡　✧　♡　✦
+  </div>
+
+
+  <!-- =====================================================
+       MAIN CONTAINER
+  ====================================================== -->
+
+  <main class="wrap">
+
+    <!-- ===================================================
+         HEADER / NAVIGATION
+    ==================================================== -->
+
+    <header>
+
+      <a href="../../index.html">
+        ← Loveverse
+      </a>
+
+      <span>
+        CHAPTER 03 · 20 JAN 2027
+      </span>
+
+      <a href="../../index.html#wallet">
+        Love Wallet ↗
+      </a>
+
+    </header>
+
+
+    <!-- ===================================================
+         HERO SECTION
+    ==================================================== -->
+
+    <div class="hero">
+
+      <div class="eyebrow">
+        GF-3000 · LOVEVERSE ARCADE
+      </div>
+
+      <h1>
+        Girlfriend<span>.exe</span> 🎰
+      </h1>
+
+      <p>
+        One vending machine.
+        One complicated girlfriend.
+        A suspicious amount of love.
+      </p>
+
+    </div>
+
+
+    <!-- ===================================================
+         GAME STATISTICS
+    ==================================================== -->
+
+    <div class="stats">
+
+      <!-- Love Coins -->
+      <div>
+        🪙
+        <b id="coins">20</b>
+        <small>LOVE COINS</small>
+      </div>
+
+      <!-- Heart Energy -->
+      <div>
+        💗
+        <b id="energy">0</b>
+        <small>HEART ENERGY</small>
+      </div>
+
+      <!-- Missions -->
+      <div>
+        ⭐
+        <b id="missions">0/4</b>
+        <small>MISSIONS</small>
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         MAIN GAME LAYOUT
+    ==================================================== -->
+
+    <div class="layout">
+
+      <!-- =================================================
+           GIRLFRIEND VENDING MACHINE
+      ================================================== -->
+
+      <aside class="machine">
+
+        <!-- Machine Header -->
+        <div class="machine-title">
+
+          ♡ GF-3000 ♡
+
+          <small>
+            GIRLFRIEND DISPENSER
+          </small>
+
+        </div>
+
+
+        <!-- Machine Display -->
+        <div class="glass">
+
+          <div>
+            🧳
+            <small>TRIPS</small>
+          </div>
+
+          <div>
+            🎟️
+            <small>DATES</small>
+          </div>
+
+          <div>
+            💌
+            <small>SECRETS</small>
+          </div>
+
+          <div>
+            🎁
+            <small>GIFTS</small>
+          </div>
+
+          <div>
+            🎨
+            <small>DATES</small>
+          </div>
+
+          <!-- Secret Reward -->
+          <div id="machineSecret">
+            🔒
+            <small>???</small>
+          </div>
+
+        </div>
+
+
+        <!-- Machine Screen -->
+        <div
+          class="screen"
+          id="machineScreen"
+        >
+          WELCOME, JAROD ♡
+          <br>
+          Girlfriend currently out of stock.
+          <br>
+          Complete missions to restore service.
+        </div>
+
+
+        <!-- Coin Slot -->
+        <div class="slot">
+          INSERT LOVE HERE　🪙 → ♡
+        </div>
+
+
+        <!-- Machine Footer -->
+        <div class="machine-foot">
+          GF-3000 · MADE BY YOUR LITTLE IT GIRLFRIEND
+        </div>
+
+      </aside>
+
+
+      <!-- =================================================
+           MAIN CONTENT COLUMN
+      ================================================== -->
+
+      <div class="maincol">
+
+        <!-- ===============================================
+             TAB NAVIGATION
+        ================================================ -->
+
+        <nav class="tabs">
+
+          <button
+            class="active"
+            data-tab="arcade"
+          >
+            🎮 Missions
+          </button>
+
+          <button data-tab="shop">
+            🎟️ Shop
+          </button>
+
+          <button data-tab="mystery">
+            🎁 Mystery
+          </button>
+
+          <button data-tab="secret">
+            🔐 Archive
+          </button>
+
+        </nav>
+
+
+        <!-- ===============================================
+             TAB 1 — MISSIONS / ARCADE
+        ================================================ -->
+
+        <section
+          id="arcade"
+          class="panel active"
+        >
+
+          <h2>
+            Restore Girlfriend.exe
+          </h2>
+
+          <p class="muted">
+            Four different challenges.
+            Play them in order to unlock
+            the final system meltdown.
+            Replay for extra coins!
+          </p>
+
+
+          <!-- Mission List -->
+          <div
+            class="missionlist"
+            id="missionlist"
+          ></div>
+
+
+          <!-- Active Game Area -->
+          <div
+            id="gameArea"
+            class="gamearea"
+            aria-live="polite"
+          >
+
+            <div class="empty">
+              Select a mission to begin ♡
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================================
+             TAB 2 — GIRLFRIEND SHOP
+        ================================================ -->
+
+        <section
+          id="shop"
+          class="panel"
+        >
+
+          <h2>
+            The Girlfriend Shop
+          </h2>
+
+          <p class="muted">
+            Adventures for the two of us,
+            saved in Love Wallet.
+            The anniversary letter is a separate keepsake.
+          </p>
+
+
+          <!-- Shop Products -->
+          <div
+            id="products"
+            class="products"
+          ></div>
+
+
+          <!-- Legendary Reward -->
+          <div
+            class="legend"
+            id="legend"
+          ></div>
+
+        </section>
+
+
+        <!-- ===============================================
+             TAB 3 — MYSTERY BOXES
+        ================================================ -->
+
+        <section
+          id="mystery"
+          class="panel"
+        >
+
+          <h2>
+            Suspicious Mystery Boxes
+          </h2>
+
+          <p class="muted">
+            30 LC per box · one opening per day.
+            Pick any box again tomorrow!
+            Your first opening also reveals
+            a clue from our first date.
+          </p>
+
+
+          <!-- Mystery Box Selection -->
+          <div
+            class="boxes"
+            id="boxes"
+          >
+
+            <button data-box="0">
+              🎁
+              <small>BOX 01</small>
+            </button>
+
+            <button data-box="1">
+              🎁
+              <small>BOX 02</small>
+            </button>
+
+            <button data-box="2">
+              🎁
+              <small>BOX 03</small>
+            </button>
+
+          </div>
+
+
+          <!-- Mystery Box Result -->
+          <div
+            id="boxResult"
+            class="gamearea"
+          ></div>
+
+        </section>
+
+
+        <!-- ===============================================
+             TAB 4 — SECRET ARCHIVE
+        ================================================ -->
+
+        <section
+          id="secret"
+          class="panel"
+        >
+
+          <h2>
+            Classified Archive #002
+          </h2>
+
+
+          <!-- First Date Archive Clue -->
+          <div
+            id="archive"
+            class="archive"
+          ></div>
+
+
+          <!-- Secret Ending Progress -->
+          <div
+            id="progress"
+            class="progress"
+          ></div>
+
+
+          <!-- Secret Ending -->
+          <div
+            id="ending"
+            class="ending"
+          ></div>
+
+        </section>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         FOOTER
+    ==================================================== -->
+
+    <footer>
+      Made with ♡ by your little IT girlfriend
+      · Loveverse 2027
+    </footer>
+
+  </main>
+
+
+  <!-- =====================================================
+       TOAST NOTIFICATIONS
+  ====================================================== -->
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+  ></div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

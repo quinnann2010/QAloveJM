@@ -38,7 +38,7 @@ const anniversaries = [
     desc: "Earn Love Coins and discover the sweetest rewards.",
     icon: "🎰",
     tech: "HTML · CSS · JS",
-    path: null,
+    path: "./projects/thirdmonth/index.html",
     color: "#e7f3ee"
   },
   {

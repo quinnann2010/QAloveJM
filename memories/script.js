@@ -158,6 +158,25 @@ const keepsakes = [
     } catch { return []; }
   })(),
 
+  // M03 anniversary letter is added only after Jarod reads and saves it.
+  ...(() => {
+    try {
+      const items = JSON.parse(localStorage.getItem('loveverse_m03_anniversary_letter_v1') || '[]');
+      if (!Array.isArray(items)) return [];
+      const letter = items.find(x => x && x.id === 'm03-three-month-letter-2027');
+      return letter ? [{
+        id: 'm03-three-month-letter-2027',
+        date: '2027-01-20',
+        title: 'Three Months of Us ♡',
+        emoji: '💌',
+        photo: '',
+        story: 'A letter for our third month, and the almost-one-hundred days that brought us here.',
+        detail: '20 January 2027 · From Quỳnh Anh to Jarod',
+        paragraphs: Array.isArray(letter.paragraphs) ? letter.paragraphs : []
+      }] : [];
+    } catch { return []; }
+  })(),
+
   // { id: 'ticket-1', title: 'Our First Ticket', date: '2026-10-15', emoji: '🎟️', photo: '', story: 'A tiny souvenir from our day.' }
 ];
 
@@ -273,6 +292,10 @@ function moveGallery(step) {
 }
 
 function openMemory(item) {
+  if (item.id === 'm03-three-month-letter-2027') {
+    openM03AnniversaryKeepsake(item);
+    return;
+  }
   if (item.id === 'new-year-2027-resolutions') {
     openResolutionKeepsake();
     return;
@@ -644,5 +667,29 @@ function openResolutionKeepsake() {
     empty.textContent = 'Our little adventures will appear here ♡';
     list.append(empty);
   }
+  dlg.showModal();
+}
+
+/* M03: A saved anniversary letter is opened as a letter, not a photo memory. */
+function openM03AnniversaryKeepsake(item) {
+  let dlg = document.querySelector('#m03-anniversary-keepsake');
+  if (!dlg) {
+    dlg = document.createElement('dialog');
+    dlg.id = 'm03-anniversary-keepsake';
+    dlg.innerHTML = `<button class="m03-close" type="button" aria-label="Close">×</button><article class="m03-paper"><div class="m03-ornament">✦ ♡ ✦</div><small>LOVEVERSE · CHAPTER THREE · 20 JANUARY 2027</small><h2>Three Months of Us ♡</h2><p class="m03-subtitle">A little letter to my favourite human</p><div id="m03-keepsake-paragraphs"></div></article>`;
+    document.body.appendChild(dlg);
+    dlg.querySelector('.m03-close').onclick = () => dlg.close();
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    const style = document.createElement('style');
+    style.textContent = `#m03-anniversary-keepsake{width:min(92vw,650px);max-height:88vh;overflow-y:auto;border:1px solid #f0c8da;border-radius:26px;background:#fff8fa;color:#614159;padding:20px;box-shadow:0 22px 70px #3c203c70}#m03-anniversary-keepsake::backdrop{background:#3c203c99;backdrop-filter:blur(4px)}#m03-anniversary-keepsake .m03-close{float:right;position:sticky;top:0;background:white;border:0;border-radius:50%;font-size:28px;color:#9b6481;cursor:pointer}#m03-anniversary-keepsake .m03-paper{background:#fffefa;border:1px solid #f0dbe3;border-radius:18px;padding:clamp(18px,5vw,42px);font:16px/1.85 Georgia,serif}#m03-anniversary-keepsake .m03-ornament{text-align:center;color:#d68db0;font-size:26px}#m03-anniversary-keepsake .m03-paper small{display:block;text-align:center;letter-spacing:.14em;font:700 10px sans-serif;color:#bc7196}#m03-anniversary-keepsake h2{text-align:center;color:#9f557b;font:700 clamp(26px,5vw,38px) Georgia,serif;margin:12px 0}#m03-anniversary-keepsake .m03-subtitle{text-align:center;font-style:italic;color:#a87592}#m03-anniversary-keepsake #m03-keepsake-paragraphs p{margin:0 0 18px}`;
+    document.head.appendChild(style);
+  }
+  const container = dlg.querySelector('#m03-keepsake-paragraphs');
+  container.replaceChildren();
+  (item.paragraphs || []).forEach(text => {
+    const p = document.createElement('p');
+    p.textContent = text;
+    container.appendChild(p);
+  });
   dlg.showModal();
 }

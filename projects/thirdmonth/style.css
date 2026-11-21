@@ -1,0 +1,919 @@
+
+/* ============================================================
+   LOVEVERSE M03 — GIRLFRIEND.EXE
+   Stylesheet
+   ============================================================ */
+
+
+/* ============================================================
+   1. COLOR PALETTE
+   ============================================================ */
+
+:root {
+  --bg: #fff7fb;
+  --ink: #56394f;
+  --pink: #f5a9c9;
+  --rose: #cc648e;
+  --line: #f0d7e5;
+  --lav: #eee5ff;
+  --cream: #fffdf9;
+}
+
+
+/* ============================================================
+   2. GLOBAL STYLES
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      #ffe2ef,
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 90% 50%,
+      #efe4ff,
+      transparent 40%
+    ),
+    var(--bg);
+
+  color: var(--ink);
+  font: 15px "DM Sans", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+a {
+  color: var(--rose);
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   3. MAIN CONTAINER
+   ============================================================ */
+
+.wrap {
+  max-width: 1150px;
+  margin: auto;
+  padding: 24px 22px;
+}
+
+.stars {
+  text-align: center;
+  color: #df8fb6;
+  letter-spacing: 18px;
+  padding-top: 10px;
+}
+
+
+/* ============================================================
+   4. HEADER
+   ============================================================ */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+header span {
+  color: #b18ca4;
+}
+
+
+/* ============================================================
+   5. HERO SECTION
+   ============================================================ */
+
+.hero {
+  text-align: center;
+  margin: 38px auto 25px;
+}
+
+.eyebrow {
+  letter-spacing: 3px;
+  font-size: 11px;
+  color: var(--rose);
+  font-weight: 800;
+}
+
+.hero h1 {
+  font: 700 clamp(38px, 6vw, 66px) Fredoka;
+  margin: 7px;
+}
+
+.hero h1 span {
+  color: var(--rose);
+}
+
+.hero p,
+.muted {
+  color: #977a90;
+}
+
+
+/* ============================================================
+   6. GAME STATISTICS
+   ============================================================ */
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  margin: 20px 0 28px;
+}
+
+.stats > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  padding: 12px 20px;
+
+  box-shadow: 0 8px 20px #a24c7910;
+}
+
+.stats b {
+  font-size: 22px;
+}
+
+.stats small {
+  font-size: 10px;
+  color: #aa8da1;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   7. MAIN GAME LAYOUT
+   ============================================================ */
+
+.layout {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  align-items: start;
+  gap: 24px;
+}
+
+
+/* ============================================================
+   8. GIRLFRIEND VENDING MACHINE
+   ============================================================ */
+
+.machine {
+  position: sticky;
+  top: 18px;
+
+  background: linear-gradient(
+    140deg,
+    #f5a8ca,
+    #d989b8
+  );
+
+  border: 9px solid #f9cce1;
+  outline: 3px solid #eaa5c5;
+  border-radius: 30px;
+
+  padding: 17px;
+
+  box-shadow:
+    12px 18px 0 #eed1e1,
+    0 20px 50px #b84b8b30;
+}
+
+
+/* Machine Header */
+
+.machine-title {
+  text-align: center;
+  color: white;
+  font: 700 25px Fredoka;
+}
+
+.machine-title small {
+  display: block;
+
+  font: 800 9px "DM Sans";
+  letter-spacing: 2px;
+
+  margin: 5px;
+}
+
+
+/* Machine Glass */
+
+.glass {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  background: linear-gradient(
+    145deg,
+    #fffafde8,
+    #f8e9ffdd
+  );
+
+  border: 7px solid #e7a4c6;
+  border-radius: 18px;
+
+  padding: 15px;
+
+  box-shadow: inset 0 8px 20px #8f588326;
+}
+
+.glass div {
+  background: white;
+  border-radius: 12px;
+
+  text-align: center;
+  font-size: 31px;
+
+  padding: 14px 4px;
+
+  box-shadow: 0 5px 0 #e9cddd;
+}
+
+.glass small {
+  display: block;
+
+  font-size: 8px;
+  font-weight: 800;
+  color: #b3819d;
+
+  margin-top: 7px;
+}
+
+
+/* Machine Screen */
+
+.screen {
+  background: #35253c;
+  color: #ffbadd;
+
+  font: 13px/1.6 monospace;
+
+  border-radius: 12px;
+  margin: 16px 0;
+  padding: 13px;
+
+  min-height: 103px;
+}
+
+
+/* Coin Slot */
+
+.slot {
+  background: #fff4fa;
+
+  border: 4px solid #d982af;
+  border-radius: 10px;
+
+  text-align: center;
+  font-size: 11px;
+  font-weight: 800;
+
+  padding: 13px;
+}
+
+
+/* Machine Footer */
+
+.machine-foot {
+  color: white;
+
+  font-size: 8px;
+  text-align: center;
+  letter-spacing: 1px;
+
+  margin-top: 12px;
+}
+
+
+/* ============================================================
+   9. MAIN CONTENT COLUMN
+   ============================================================ */
+
+.maincol {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   10. TAB NAVIGATION
+   ============================================================ */
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  margin-bottom: 14px;
+}
+
+.tabs button {
+  background: white;
+
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  padding: 12px 14px;
+
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.tabs button.active {
+  background: var(--rose);
+  color: white;
+  border-color: var(--rose);
+}
+
+
+/* ============================================================
+   11. CONTENT PANELS
+   ============================================================ */
+
+.panel {
+  display: none;
+
+  background: #ffffffd9;
+
+  border: 1px solid var(--line);
+  border-radius: 24px;
+
+  padding: 23px;
+  min-height: 440px;
+
+  box-shadow: 0 12px 32px #a24c7910;
+}
+
+.panel.active {
+  display: block;
+}
+
+
+/* ============================================================
+   12. TYPOGRAPHY
+   ============================================================ */
+
+h2 {
+  font: 700 27px Fredoka;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font: 700 21px Fredoka;
+  margin: 5px 0 9px;
+}
+
+
+/* ============================================================
+   13. MISSION SELECTION
+   ============================================================ */
+
+.missionlist {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 11px;
+
+  margin: 20px 0;
+}
+
+.mission {
+  background: #fff7fb;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  padding: 15px;
+
+  text-align: left;
+  color: var(--ink);
+}
+
+.mission b {
+  display: block;
+
+  font-size: 14px;
+  margin: 7px 0;
+}
+
+.mission small {
+  display: block;
+  color: #a07891;
+}
+
+.mission .symbol {
+  font-size: 28px;
+}
+
+.mission.done {
+  border-color: #d1addd;
+  background: #f7f0ff;
+}
+
+.mission.selected {
+  outline: 2px solid var(--rose);
+}
+
+
+/* ============================================================
+   14. GAME AREA & ARCHIVE
+   ============================================================ */
+
+.gamearea,
+.archive,
+.progress,
+.ending {
+  background: #fffafd;
+
+  border: 1px dashed #e5b9d0;
+  border-radius: 18px;
+
+  padding: 18px;
+  margin-top: 14px;
+}
+
+.gamearea:empty,
+.ending:empty {
+  display: none;
+}
+
+.empty {
+  text-align: center;
+  color: #ac87a0;
+
+  padding: 25px;
+}
+
+
+/* ============================================================
+   15. BUTTONS
+   ============================================================ */
+
+.primary,
+.choice,
+.products button,
+.gamearea button,
+.archive button,
+.ending button {
+  background: var(--rose);
+  color: white;
+
+  border: 0;
+  border-radius: 12px;
+
+  font-weight: 800;
+
+  padding: 11px 16px;
+  margin: 5px 5px 5px 0;
+}
+
+.choice {
+  background: #f6e3ed;
+  color: var(--ink);
+
+  border: 1px solid #e9bdd3;
+}
+
+
+/* ============================================================
+   16. GIRLFRIEND SHOP
+   ============================================================ */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.product {
+  background: #fff;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  padding: 15px;
+}
+
+.product .emoji {
+  font-size: 29px;
+}
+
+.product p {
+  font-size: 12px;
+  color: #997d91;
+
+  min-height: 44px;
+}
+
+.product strong {
+  display: block;
+  margin: 8px 0;
+}
+
+
+/* ============================================================
+   17. LEGENDARY REWARD
+   ============================================================ */
+
+.legend {
+  margin-top: 20px;
+  padding: 17px;
+
+  background: #f9efff;
+  border-radius: 18px;
+}
+
+
+/* ============================================================
+   18. MYSTERY BOXES
+   ============================================================ */
+
+.boxes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 25px 0;
+}
+
+.boxes button {
+  background: #fff0f8;
+
+  border: 2px solid #efb6d1;
+  border-radius: 18px;
+
+  font-size: 55px;
+
+  padding: 20px;
+
+  transition: transform 0.2s;
+}
+
+.boxes button:hover {
+  transform: translateY(-7px) rotate(-3deg);
+}
+
+.boxes small {
+  display: block;
+
+  font-size: 10px;
+  color: var(--rose);
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   19. GAME 1 — CATCH MY HEART
+   ============================================================ */
+
+.catchfield {
+  position: relative;
+  overflow: hidden;
+
+  height: 260px;
+
+  background: linear-gradient(
+    #fff2fb,
+    #eee7ff
+  );
+
+  border: 2px solid #e9d1eb;
+  border-radius: 14px;
+}
+
+.fall {
+  position: absolute;
+  top: -36px;
+
+  font-size: 30px;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.basket {
+  position: absolute;
+  bottom: 4px;
+
+  font-size: 44px;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.gamebar {
+  display: flex;
+  justify-content: space-between;
+
+  font-weight: 800;
+
+  margin: 10px 0;
+}
+
+
+/* ============================================================
+   20. GAME 2 — LOVE FACTORY
+   ============================================================ */
+
+.conveyor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 130px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #f4e1ed 0 25px,
+    #f8e9f3 25px 50px
+  );
+
+  border-radius: 14px;
+  margin: 14px 0;
+
+  font-size: 58px;
+}
+
+
+/* ============================================================
+   21. GAME CHOICES
+   ============================================================ */
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choices button {
+  flex: 1;
+}
+
+.status {
+  color: var(--rose);
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   22. GAME 4 — CIRCUIT PUZZLE
+   ============================================================ */
+
+.circuit {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  gap: 7px;
+
+  justify-content: center;
+
+  margin: 18px auto;
+}
+
+.tile {
+  width: 70px;
+  height: 70px;
+
+  background: #fff;
+
+  border: 2px solid #dca4c5;
+  border-radius: 10px;
+
+  font-size: 30px;
+  color: var(--rose);
+
+  transition: transform 0.15s;
+}
+
+.tile.fixed {
+  background: #eee1fa;
+}
+
+
+/* ============================================================
+   23. SECRET ENDING
+   ============================================================ */
+
+.ending {
+  background: #21172d;
+  color: #ffe3f0;
+
+  border: 0;
+}
+
+.ending h3 {
+  color: #ffb8d6;
+}
+
+.ending p {
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   24. ARCHIVE RIDDLE
+   ============================================================ */
+
+.archive blockquote {
+  font: 600 20px/1.5 Fredoka;
+  color: #9d557b;
+  text-align: center;
+}
+
+.archive input {
+  border: 1px solid #e6bfd3;
+  border-radius: 12px;
+
+  padding: 12px;
+
+  max-width: 100%;
+}
+
+
+/* ============================================================
+   25. TOAST NOTIFICATIONS
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  z-index: 20;
+
+  transform: translate(-50%, 120px);
+
+  background: #56394f;
+  color: white;
+
+  padding: 14px 20px;
+  border-radius: 14px;
+
+  opacity: 0;
+
+  transition: 0.25s;
+
+  box-shadow: 0 8px 25px #0003;
+}
+
+.toast.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+
+/* ============================================================
+   26. FOOTER
+   ============================================================ */
+
+footer {
+  text-align: center;
+  color: #a68b9f;
+
+  padding: 55px 0 20px;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   27. ANNIVERSARY LETTER SLOT
+   ============================================================ */
+
+.m03-anniversary-slot {
+  margin-top: 18px;
+  padding: 24px;
+
+  border: 1px solid #f1c9dd;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    #fff0f6,
+    #f6efff
+  );
+
+  text-align: center;
+
+  box-shadow: 0 8px 25px #a24c7910;
+}
+
+.m03-anniversary-slot p {
+  color: #926d83;
+  line-height: 1.6;
+}
+
+.m03-anniversary-slot button {
+  border: 0;
+  border-radius: 99px;
+
+  background: #cc648e;
+  color: white;
+
+  padding: 13px 20px;
+
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.m03-anniversary-slot small {
+  display: block;
+
+  margin-top: 12px;
+
+  color: #a16e89;
+}
+
+
+/* ============================================================
+   28. RESPONSIVE — TABLETS
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .machine {
+    position: static;
+
+    max-width: 340px;
+    width: 100%;
+
+    margin: 0 auto 20px;
+  }
+
+  .stats > div {
+    padding: 10px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+}
+
+
+/* ============================================================
+   29. RESPONSIVE — MOBILE
+   ============================================================ */
+
+@media (max-width: 440px) {
+
+  .products,
+  .missionlist {
+    grid-template-columns: 1fr;
+  }
+
+  .boxes button {
+    font-size: 38px;
+    padding: 12px;
+  }
+
+  .circuit {
+    grid-template-columns: repeat(3, 60px);
+  }
+
+  .tile {
+    width: 60px;
+    height: 60px;
+  }
+
+  header {
+    font-size: 10px;
+  }
+
+}
