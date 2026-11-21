@@ -1178,14 +1178,84 @@ function walletEscape(value) {
   return String(value ?? "").replace(/[&<>"']/g, c =>
     ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
+// M01 membership is a persistent card, not a redeemable voucher.
+// Read the original M01 subscription directly; do not create another storage format.
+const LOVE_MEMBERSHIP_KEY = "loveverse_m01_subscription_v1";
+
+function walletMembershipRead() {
+  try {
+    const value = JSON.parse(localStorage.getItem(LOVE_MEMBERSHIP_KEY) || "null");
+    return value && typeof value === "object" && value.activatedAt && value.duration
+      ? value : null;
+  } catch { return null; }
+}
+
+function walletMembershipDate(value) {
+  if (!value || !Number.isFinite(Date.parse(value))) return "—";
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "numeric", month: "short", year: "numeric"
+  }).format(new Date(value));
+}
+
+function walletMembershipCard(subscription) {
+  if (!subscription) return "";
+
+  const duration = String(subscription.duration || "");
+  const lifetime = duration.toLowerCase().includes("lifetime") ||
+    duration.toLowerCase().includes("life");
+  const expiry = !lifetime && subscription.expiresAt &&
+    Number.isFinite(Date.parse(subscription.expiresAt))
+    ? new Date(subscription.expiresAt) : null;
+  const now = Date.now();
+  const remaining = expiry ? Math.ceil((expiry.getTime() - now) / 86400000) : null;
+  const expired = expiry ? expiry.getTime() <= now : false;
+  const expiring = expiry && !expired && remaining <= 7;
+  const status = lifetime ? "♾️ LIFETIME" : expired ? "⌛ EXPIRED" :
+    expiring ? "⏳ RENEW SOON" : "✨ ACTIVE";
+  const statusClass = expired ? "expired" : expiring ? "expiring" : "active";
+  const note = lifetime
+    ? "Forever subscribed. No renewal required ♡"
+    : expired
+      ? "Your membership has expired. Renew to reactivate Girlfriend Support ♡"
+      : expiring
+        ? `Only ${remaining} day${remaining === 1 ? "" : "s"} left! Renew your membership ♡`
+        : `${remaining} day${remaining === 1 ? "" : "s"} remaining ♡`;
+  const renewal = !lifetime && (expired || expiring)
+    ? `<a class="wallet-membership-renew" href="projects/firstmonth/index.html">Renew Membership ♡</a>`
+    : "";
+  const progress = expiry && Number.isFinite(Date.parse(subscription.activatedAt))
+    ? Math.max(0, Math.min(100,
+        ((now - Date.parse(subscription.activatedAt)) /
+        (expiry.getTime() - Date.parse(subscription.activatedAt))) * 100))
+    : 0;
+
+  return `<article class="wallet-membership ${statusClass}" aria-label="Girlfriend Support membership">
+    <div class="wallet-membership-top"><span>♡ LOVEVERSE OFFICIAL MEMBERSHIP</span><span>${status}</span></div>
+    <div class="wallet-membership-title"><span aria-hidden="true">💳</span><div>
+      <h3>Girlfriend Support ♡</h3><p>Exclusive member: Jarod</p>
+    </div></div>
+    <div class="wallet-membership-details">
+      <div><small>MEMBERSHIP PLAN</small><strong>${walletEscape(subscription.plan || "Girlfriend Support")} · ${walletEscape(duration)}</strong></div>
+      <div><small>MEMBER SINCE</small><strong>${walletMembershipDate(subscription.activatedAt)}</strong></div>
+      <div><small>EXPIRATION DATE</small><strong>${lifetime ? "Never ♾️" : walletMembershipDate(subscription.expiresAt)}</strong></div>
+      <div><small>STATUS</small><strong>${lifetime ? "Lifetime" : expired ? "Expired" : "Active"}</strong></div>
+    </div>
+    ${expiry && Number.isFinite(progress) ? `<div class="wallet-membership-meter" aria-label="Membership time elapsed"><span style="width:${progress.toFixed(1)}%"></span></div>` : ""}
+    <p class="wallet-membership-note">${note}</p>${renewal}
+    <p class="wallet-membership-footer">Made with love · This is a membership card, not a redeemable voucher ♡</p>
+  </article>`;
+}
+
 function walletRender() {
   const list = document.getElementById("love-wallet-list");
   const summary = document.getElementById("wallet-summary");
   if (!list || !summary) return;
   const rewards = walletRead();
-  const available = rewards.filter(r => !r.redeemed).length;
-  summary.textContent = `${rewards.length} collected ♡  ·  ${available} available`;
-  list.innerHTML = rewards.length ? rewards.map(r => {
+  const membership = walletMembershipRead();
+  const available = rewards.filter(r => !r.redeemed && r.status !== "pending_approval").length;
+  summary.textContent = `${rewards.length} collected ♡  ·  ${available} available` +
+    (membership ? "  ·  1 membership card 💗" : "");
+  const voucherHTML = rewards.map(r => {
     const pending = r.status === "pending_approval" || r.redeemed;
     return `<article class="wallet-voucher">
       <div class="wallet-voucher-top"><span>🎟️ LOVEVERSE REWARD</span><span>${pending ? "💌 REQUESTED" : "✨ AVAILABLE"}</span></div>
@@ -1194,8 +1264,11 @@ function walletRender() {
       <small>Voucher ID: ${walletEscape(r.id)}</small>
       ${pending ? "" : `<button class="wallet-redeem" data-wallet-redeem="${walletEscape(r.id)}">Request Redemption ♡</button>`}
     </article>`;
-  }).join("") : `<div class="wallet-empty">🎀<h3>No vouchers yet!</h3><p>Explore our chapters to collect your first little surprise. ♡</p></div>`;
+  }).join("");
+  list.innerHTML = walletMembershipCard(membership) + (voucherHTML ||
+    (!membership ? `<div class="wallet-empty">🎀<h3>No vouchers yet!</h3><p>Explore our chapters to collect your first little surprise. ♡</p></div>` : ""));
 }
+
 function walletOpen(id) {
   const reward = walletRead().find(r => r.id === id && !r.redeemed);
   if (!reward) return;

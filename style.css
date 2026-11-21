@@ -1346,3 +1346,35 @@ footer {
 .wallet-dialog textarea {min-height:110px;resize:vertical}
 .wallet-error {color:#b3486c}
 @media(max-width:600px){.wallet-section{padding:20px 14px;margin-top:40px}}
+
+
+/* ============================================================
+   M01 — GIRLFRIEND SUPPORT MEMBERSHIP (NOT A VOUCHER)
+   ============================================================ */
+.wallet-membership {
+  grid-column: 1 / -1;
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid #eabbd1;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #fff0f6 0%, #fffafd 54%, #f4edff 100%);
+  box-shadow: 0 14px 36px #a15b7a15;
+  color: #694054;
+}
+.wallet-membership-top {display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;font-weight:900;letter-spacing:1px;color:#a9537e}
+.wallet-membership.expired .wallet-membership-top span:last-child {color:#a94464}
+.wallet-membership.expiring .wallet-membership-top span:last-child {color:#ad7335}
+.wallet-membership-title {display:flex;align-items:center;gap:15px;margin:22px 0}
+.wallet-membership-title > span {display:grid;place-items:center;width:68px;height:68px;border-radius:18px;background:#f8d5e6;font-size:36px}
+.wallet-membership-title h3 {margin:0 0 5px;font-size:clamp(22px,3vw,30px);color:#93486e}
+.wallet-membership-title p {margin:0;color:#99758a}
+.wallet-membership-details {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:20px 0;border-top:1px solid #ebd2df;border-bottom:1px solid #ebd2df}
+.wallet-membership-details div {min-width:0}
+.wallet-membership-details small {display:block;font-size:10px;letter-spacing:1px;font-weight:800;color:#a58098;margin-bottom:6px}
+.wallet-membership-details strong {font-size:15px;overflow-wrap:anywhere}
+.wallet-membership-meter {height:8px;border-radius:99px;background:#f0d9e6;overflow:hidden;margin:20px 0 10px}
+.wallet-membership-meter span {display:block;height:100%;border-radius:99px;background:#d56c92}
+.wallet-membership-note {color:#9b587c;font-weight:700;margin:15px 0}
+.wallet-membership-renew {display:inline-block;background:#d56c92;color:white;border-radius:13px;padding:12px 18px;font-weight:800;text-decoration:none}
+.wallet-membership-renew:hover {background:#b94e7d;color:white}
+.wallet-membership-footer {font-size:11px;color:#a88a9a;margin:20px 0 0}
+@media(max-width:500px){.wallet-membership-details{gap:14px}.wallet-membership-details strong{font-size:13px}.wallet-membership-title > span{width:54px;height:54px;font-size:29px}}
