@@ -111,9 +111,27 @@ try {
   console.warn('Christmas card could not be loaded', error);
 }
 
+// New Year greeting is added only after Jarod presses “Keep This Memory”.
+let newYearGreetingSaved = false;
+try {
+  const cards = JSON.parse(localStorage.getItem('loveverse_newyear_memories_v1') || '[]');
+  newYearGreetingSaved = Array.isArray(cards) && cards.some(item => item?.id === 'new-year-greeting-2027');
+} catch (error) {
+  console.warn('New Year greeting could not be loaded', error);
+}
+
 /* Add a keepsake by replacing the example below.
    To keep the drawer empty for now, leave the array empty. */
 const keepsakes = [
+  {
+    id: 'new-year-greeting-2027',
+    date: '2027-01-01',
+    title: 'Our First New Year Card ♡',
+    emoji: '💌',
+    photo: '../assets/new-year/new-year-chibi.png',
+    story: 'A little letter to begin our first New Year together.',
+    detail: '1 January 2027 · From Quỳnh Anh to Jarod'
+  },
   ...(christmasCard ? [{
     id: 'christmas-first-2026',
     date: '2026-12-25',
@@ -125,6 +143,16 @@ const keepsakes = [
       ? "Jarod's Christmas wish: " + christmasCard.wish
       : '25 December 2026 · A letter from your little girl'
   }] : []),
+
+  // New Year 2027 is now a resolutions + future-mail experience.
+  // Letters are stored by Apps Script, not in browser memory or this drawer.
+  ...(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('loveverse.newyear2027.resolutions.v1') || '[]');
+      if (!Array.isArray(saved) || !saved.length) return [];
+      return [{id:'new-year-2027-resolutions',date:'2027-01-01',title:'Our 2027 Resolutions ♡',emoji:'✨',photo:'',story:'Little promises and adventures we hope to share in 2027.',detail:saved.map(x => (x.done?'✓ ':'○ ')+String(x.text||'')).join(' · ')}];
+    } catch { return []; }
+  })(),
 
   // { id: 'ticket-1', title: 'Our First Ticket', date: '2026-10-15', emoji: '🎟️', photo: '', story: 'A tiny souvenir from our day.' }
 ];
@@ -241,6 +269,14 @@ function moveGallery(step) {
 }
 
 function openMemory(item) {
+  if (item.id === 'new-year-2027-resolutions') {
+    openResolutionKeepsake();
+    return;
+  }
+  if (item.id === 'new-year-greeting-2027') {
+    openNewYearKeepsake();
+    return;
+  }
   if (item.id === 'christmas-first-2026') {
     openChristmasLetter();
     return;
@@ -448,3 +484,161 @@ document.querySelector('#christmas-close').addEventListener(
 christmasDialog.addEventListener('click', e => {
   if (e.target === christmasDialog) christmasDialog.close();
 });
+
+// Standalone New Year letter dialog is injected so the existing Memories HTML
+// and Christmas dialog do not need to change.
+function openNewYearKeepsake() {
+  let card = document.querySelector('#newyear-keepsake-dialog');
+  if (!card) {
+    card = document.createElement('dialog');
+    card.id = 'newyear-keepsake-dialog';
+    card.setAttribute('aria-label', 'Our First New Year Letter');
+    card.innerHTML = `
+      <button type="button" class="ny-close" aria-label="Close">×</button>
+      <div class="ny-envelope">
+        <div class="ny-icon">💌</div>
+        <h2>A little wish from the beginning of 2027 ♡</h2>
+        <button type="button" class="ny-unfold">Unfold our New Year letter</button>
+      </div>
+      <article class="ny-paper" hidden>
+        <small>JANUARY 1, 2027 · FROM ME TO YOU</small>
+        <img src="../assets/new-year/new-year-chibi.png" alt="Chibi Quỳnh Anh and Jarod kissing">
+        <h2>Happy New Year, my love! ✨</h2>
+        <p>My dearest Jarod,</p>
+        <p>Happy New Year, my love! ♡</p>
+        <p>Before we say hello to 2027, I want to say one last little thank you to 2026.</p>
+        <p>Thank you, 2026, for all the unexpected turns, the little surprises, and especially for bringing you into my life.</p>
+        <p>And thank you, universe, for somehow making our paths cross. Out of all the people in this big, big world, you brought me to you. I don&#x27;t know how you did it, but I think that was a pretty lovely decision. ♡</p>
+        <p>If someone had told me at the beginning of 2026 that I&#x27;d be ending the year with a boyfriend who makes me smile at my phone like a silly little girl, I probably wouldn&#x27;t have believed them. But here we are!</p>
+        <p>I don&#x27;t know what 2027 has waiting for us, and that&#x27;s actually one of the things I&#x27;m most excited about.</p>
+        <p>There are so many places we haven&#x27;t explored, so many things we haven&#x27;t tried, so many kisses I haven&#x27;t stolen, and so many ordinary little days that haven&#x27;t become our favourite memories yet.</p>
+        <p>I want more dates, more silly jokes, more cooking experiments, more cuddles, more sunsets, and more moments when we look at each other and think, ‘I&#x27;m so glad it&#x27;s you.’</p>
+        <p>Of course, I know not every day will be sunshine and butterflies. There might be difficult days, misunderstandings, and moments when we drive each other a little crazy. But I hope we&#x27;ll always find our way back to each other, with patience, kindness, and lots and lots of love.</p>
+        <p>My little wish for 2027 is simple: I hope we keep growing together, discovering new things about each other, and choosing each other, even on the ordinary days.</p>
+        <p>And maybe I&#x27;m being a little greedy, but I don&#x27;t want just one more year with you.</p>
+        <p>I want many, many more.</p>
+        <p>I want to collect New Year&#x27;s memories with you until we lose count. I want us to look back one day and laugh at how young and silly we were when we celebrated our very first New Year together.</p>
+        <p>So, dear universe, if you&#x27;re listening, thank you for bringing him to me. Please let us have a whole lot more chapters together. ♡</p>
+        <p>Here&#x27;s to 2027, to all the beautiful things we haven&#x27;t experienced yet, and to us.</p>
+        <p>Happy New Year, my favourite person.</p>
+        <p class="ny-signature">With all my love, a thousand kisses, and a very hopeful little heart,</p>
+        <p class="ny-signature">Your little girlfriend,</p>
+        <p class="ny-signature">Quỳnh Anh ♡</p>
+        <button type="button" class="ny-fold">Fold the letter ♡</button>
+      </article>`;
+    document.body.append(card);
+    const style = document.createElement('style');
+    style.textContent = `
+      #newyear-keepsake-dialog{width:min(92vw,640px);max-height:88vh;overflow-y:auto;position:fixed;border:1px solid #efd4df;border-radius:26px;padding:30px;background:#fff9f7;color:#563e4a;box-shadow:0 20px 70px #61354c50}
+      #newyear-keepsake-dialog::backdrop{background:#3c203c90;backdrop-filter:blur(3px)}
+      #newyear-keepsake-dialog .ny-close{position:absolute;top:12px;right:17px;border:0;background:transparent;font-size:30px;color:#9b6b82;cursor:pointer}
+      #newyear-keepsake-dialog .ny-envelope{text-align:center;padding:40px 8px 24px}
+      #newyear-keepsake-dialog .ny-icon{font-size:100px}
+      #newyear-keepsake-dialog h2{font-family:Georgia,serif;line-height:1.3}
+      #newyear-keepsake-dialog .ny-paper{background:#fffefa;border:1px solid #f0dbe3;border-radius:18px;padding:22px clamp(15px,4vw,32px);font-family:Georgia,serif;line-height:1.85}
+      #newyear-keepsake-dialog .ny-paper h2,#newyear-keepsake-dialog .ny-paper small{text-align:center;display:block}
+      #newyear-keepsake-dialog .ny-paper img{display:block;width:min(100%,340px);height:auto;margin:8px auto}
+      #newyear-keepsake-dialog .ny-paper p{margin:0 0 16px}
+      #newyear-keepsake-dialog .ny-signature{color:#b76687;font-style:italic}
+      #newyear-keepsake-dialog .ny-unfold,#newyear-keepsake-dialog .ny-fold{border:0;border-radius:99px;background:#d56c92;color:white;padding:12px 22px;cursor:pointer}
+      #newyear-keepsake-dialog [hidden]{display:none!important}`;
+    document.head.append(style);
+    const envelope = card.querySelector('.ny-envelope');
+    const paper = card.querySelector('.ny-paper');
+    card.querySelector('.ny-close').onclick = () => card.close();
+    card.querySelector('.ny-unfold').onclick = () => {
+      envelope.hidden = true;
+      paper.hidden = false;
+      card.scrollTop = 0;
+    };
+    card.querySelector('.ny-fold').onclick = () => {
+      paper.hidden = true;
+      envelope.hidden = false;
+      card.scrollTop = 0;
+    };
+    card.addEventListener('click', e => { if (e.target === card) card.close(); });
+  }
+  card.querySelector('.ny-envelope').hidden = false;
+  card.querySelector('.ny-paper').hidden = true;
+  card.showModal();
+}
+
+
+/* =========================================================
+   NEW YEAR RESOLUTIONS — KEEPSAKE VIEW
+   A separate, readable bucket-list display in Memory Drawer.
+   Uses the same localStorage key as the New Year activity.
+   ========================================================= */
+function openResolutionKeepsake() {
+  let dlg = document.querySelector('#ny-resolution-dialog');
+  if (!dlg) {
+    dlg = document.createElement('dialog');
+    dlg.id = 'ny-resolution-dialog';
+    dlg.innerHTML = `
+      <button class="ny-res-close" type="button" aria-label="Close">×</button>
+      <div class="ny-res-head">
+        <span class="ny-res-sparkles">✨ ♡ ✨</span>
+        <small>OUR LITTLE ADVENTURES · 2027</small>
+        <h2>Our 2027 Resolutions ♡</h2>
+        <p>One little dream at a time, together.</p>
+      </div>
+      <div class="ny-res-progress"></div>
+      <ol class="ny-res-list"></ol>
+      <p class="ny-res-foot">Here's to all the memories still waiting for us. ♡</p>`;
+    document.body.append(dlg);
+    dlg.querySelector('.ny-res-close').onclick = () => dlg.close();
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    const css = document.createElement('style');
+    css.textContent = `
+      #ny-resolution-dialog{width:min(92vw,650px);max-height:88vh;overflow-y:auto;border:1px solid #f0d7e2;border-radius:26px;padding:30px clamp(16px,5vw,40px);background:#fffaf8;color:#583e4b;box-shadow:0 20px 70px #61354c50}
+      #ny-resolution-dialog::backdrop{background:#3c203c90;backdrop-filter:blur(3px)}
+      #ny-resolution-dialog .ny-res-close{position:absolute;top:12px;right:16px;border:0;background:transparent;font-size:30px;color:#9b6b82;cursor:pointer}
+      #ny-resolution-dialog .ny-res-head{text-align:center;padding:16px 0}
+      #ny-resolution-dialog .ny-res-sparkles{display:block;font-size:38px;margin-bottom:10px}
+      #ny-resolution-dialog .ny-res-head small{font-size:11px;letter-spacing:.15em;color:#c17a96;font-weight:700}
+      #ny-resolution-dialog h2{font-family:Georgia,serif;font-size:clamp(25px,5vw,36px);margin:12px 0}
+      #ny-resolution-dialog .ny-res-progress{text-align:center;background:#fff0f5;border-radius:99px;padding:10px 15px;color:#b45d82;font-weight:700;margin:12px 0 20px}
+      #ny-resolution-dialog .ny-res-list{list-style:none;counter-reset:ny;display:grid;gap:12px;padding:0;margin:0}
+      #ny-resolution-dialog .ny-res-item{display:flex;gap:14px;align-items:center;padding:16px;background:#fff;border:1px solid #f1dce4;border-radius:17px;box-shadow:0 6px 18px #b8668a0b}
+      #ny-resolution-dialog .ny-res-num{flex:0 0 34px;height:34px;display:grid;place-items:center;background:#fff0f5;color:#c16a8e;border-radius:50%;font-size:12px;font-weight:700}
+      #ny-resolution-dialog .ny-res-copy{flex:1;overflow-wrap:anywhere;line-height:1.5}
+      #ny-resolution-dialog .ny-res-state{font-size:12px;color:#ad718b;white-space:nowrap}
+      #ny-resolution-dialog .ny-res-item.is-done{background:#fff2f7;border-color:#edbed1}
+      #ny-resolution-dialog .ny-res-item.is-done .ny-res-state{color:#bd6485;font-weight:700}
+      #ny-resolution-dialog .ny-res-foot{text-align:center;font-family:Georgia,serif;font-style:italic;color:#b76687;margin:22px 0 0}
+      @media(max-width:460px){#ny-resolution-dialog .ny-res-item{gap:9px;padding:12px}#ny-resolution-dialog .ny-res-state{font-size:11px}}
+    `;
+    document.head.append(css);
+  }
+  let items = [];
+  try {
+    const data = JSON.parse(localStorage.getItem('loveverse.newyear2027.resolutions.v1') || '[]');
+    if (Array.isArray(data)) items = data;
+  } catch {}
+  const completed = items.filter(item => item.done).length;
+  dlg.querySelector('.ny-res-progress').textContent = `${completed} / ${items.length} little dreams completed ♡`;
+  const list = dlg.querySelector('.ny-res-list');
+  list.replaceChildren();
+  items.forEach((item, i) => {
+    const li = document.createElement('li');
+    li.className = 'ny-res-item' + (item.done ? ' is-done' : '');
+    const number = document.createElement('span');
+    number.className = 'ny-res-num';
+    number.textContent = String(i + 1).padStart(2, '0');
+    const content = document.createElement('span');
+    content.className = 'ny-res-copy';
+    content.textContent = String(item.text || '');
+    const state = document.createElement('span');
+    state.className = 'ny-res-state';
+    state.textContent = item.done ? 'We did it! ♡' : '♡ To do';
+    li.append(number, content, state);
+    list.append(li);
+  });
+  if (!items.length) {
+    const empty = document.createElement('li');
+    empty.className = 'ny-res-item';
+    empty.textContent = 'Our little adventures will appear here ♡';
+    list.append(empty);
+  }
+  dlg.showModal();
+}

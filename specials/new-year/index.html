@@ -1,0 +1,719 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Our First New Year Together ♡ | Loveverse</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       1. HEADER
+       ===================================================== -->
+
+  <header>
+    <a href="../../index.html">
+      ← Back to Loveverse ♡
+    </a>
+
+    <span>LOVEVERSE · NEW YEAR 2027</span>
+  </header>
+
+
+  <main>
+
+    <!-- ===================================================
+         2. HERO SECTION
+         =================================================== -->
+
+    <section class="hero">
+      <span class="eyebrow">
+        OUR FIRST NEW YEAR TOGETHER
+      </span>
+
+      <h1>
+        Here's to <em>us</em> in 2027 ♡
+      </h1>
+
+      <p>
+        New memories to make, little promises to keep,
+        and two letters waiting for the future.
+      </p>
+
+      <div class="sparkles">
+        ✦　♡　✧　♡　✦
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         3. NEW YEAR GREETING CARD
+         =================================================== -->
+
+    <section
+      class="greeting-section"
+      aria-labelledby="greeting-title"
+    >
+
+      <div class="greeting-card">
+
+        <div class="greeting-ribbon">
+          A LITTLE SOMETHING FOR YOU ♡
+        </div>
+
+        <span class="greeting-emoji" aria-hidden="true">
+          💌
+        </span>
+
+        <p class="greeting-kicker">
+          OUR FIRST NEW YEAR TOGETHER · 2027
+        </p>
+
+        <h2 id="greeting-title">
+          A New Year wish, just for you
+        </h2>
+
+        <p class="greeting-intro">
+          One little letter to begin our year,
+          and two waiting for its last evening.
+        </p>
+
+        <button
+          class="primary greeting-button"
+          id="open-greeting"
+          type="button"
+        >
+          Open your New Year card ♡
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         4. NEW YEAR ACTIVITIES NAVIGATION
+         =================================================== -->
+
+    <nav class="tabs" aria-label="New year activities">
+
+      <button
+        data-tab="resolutions"
+        class="active"
+      >
+        ✎ Our Resolutions
+      </button>
+
+      <button data-tab="letters">
+        ✉ Future Mail
+      </button>
+
+      <button data-tab="cookies">
+        🥠 Fortune Cookies
+      </button>
+
+    </nav>
+
+
+    <!-- ===================================================
+         5. OUR 2027 RESOLUTIONS
+         =================================================== -->
+
+    <section id="resolutions" class="page active">
+
+      <div class="card">
+
+        <span class="eyebrow">
+          01 / LITTLE PROMISES
+        </span>
+
+        <h2>Our 2027 Resolutions</h2>
+
+        <p>
+          Let's collect things we'd love to do together.
+          No pressure — just tiny adventures.
+        </p>
+
+
+        <!-- Add New Resolution -->
+
+        <form id="resolution-form" class="inline">
+
+          <input
+            id="resolution-text"
+            maxlength="160"
+            required
+            placeholder="Something we should do together…"
+            aria-label="New resolution"
+          >
+
+          <button>Add ♡</button>
+
+        </form>
+
+
+        <!-- Suggested Resolutions -->
+
+        <div class="suggestions">
+
+          <button data-suggest="Try a new recipe together">
+            Cook something new
+          </button>
+
+          <button data-suggest="Take a photo together every month">
+            Monthly photos
+          </button>
+
+          <button data-suggest="Plan a little day trip">
+            Little getaway
+          </button>
+
+        </div>
+
+
+        <!-- Saved Resolution List -->
+
+        <ul id="resolution-list" class="checklist"></ul>
+
+
+        <!-- Backup Actions -->
+
+        <div class="actions">
+
+          <button
+            id="export-resolutions"
+            class="soft"
+          >
+            ↓ Export backup
+          </button>
+
+          <label class="soft file-label">
+            ↑ Import backup
+
+            <input
+              type="file"
+              id="import-resolutions"
+              accept="application/json"
+              hidden
+            >
+          </label>
+
+        </div>
+
+        <p class="note">
+          Saved in this browser only.
+          Export a backup if you want to keep them
+          when changing devices.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         6. FUTURE MAIL
+         =================================================== -->
+
+    <section id="letters" class="page">
+
+      <div class="card">
+
+        <span class="eyebrow">
+          02 / TWO LETTERS, ONE EVENING
+        </span>
+
+        <h2>Letters Across Time 💌</h2>
+
+        <p>
+          Two letters, two little promises.
+          Both are waiting for
+          <strong>
+            December 31, 2027 at 8:00 PM (Paris time)
+          </strong>.
+        </p>
+
+
+        <div class="letter-grid">
+
+          <!-- -----------------------------------------------
+               6.1 QUỲNH ANH → JAROD
+               ----------------------------------------------- -->
+
+          <article class="letter-panel">
+
+            <div class="letter-emoji">
+              💗
+            </div>
+
+            <h3>From Quỳnh Anh, to Jarod</h3>
+
+            <p>
+              A letter I've written just for you,
+              waiting here until the last evening of 2027.
+            </p>
+
+
+            <!-- Locked Letter -->
+
+            <div id="qa-locked">
+
+              <p
+                class="countdown"
+                id="qa-countdown"
+              ></p>
+
+              <p class="note">
+                A little piece of my heart
+                is waiting for you. ♡
+              </p>
+
+            </div>
+
+
+            <!-- Unlocked Letter -->
+
+            <div id="qa-open" hidden>
+
+              <div
+                class="future-paper"
+                id="qa-letter"
+              ></div>
+
+            </div>
+
+          </article>
+
+
+          <!-- -----------------------------------------------
+               6.2 JAROD → QUỲNH ANH
+               ----------------------------------------------- -->
+
+          <article class="letter-panel">
+
+            <div class="letter-emoji">
+              💙
+            </div>
+
+            <h3>From Jarod, to Quỳnh Anh</h3>
+
+            <p>
+              Write a letter now.
+              It will be delivered to her email
+              on the same evening.
+            </p>
+
+
+            <!-- Future Letter Form -->
+
+            <form
+              id="letter-form"
+              method="POST"
+              target="_blank"
+            >
+
+              <input
+                type="hidden"
+                name="sender"
+                value="jarod"
+              >
+
+              <label for="message">
+                Your letter to future Quỳnh Anh ♡
+              </label>
+
+              <textarea
+                name="message"
+                id="message"
+                minlength="10"
+                maxlength="10000"
+                rows="9"
+                required
+                placeholder="Dear future you,&#10;&#10;I hope that when you read this…"
+              ></textarea>
+
+
+              <!-- Spam Protection -->
+
+              <input
+                class="trap"
+                name="website"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              >
+
+
+              <!-- Storage Consent -->
+
+              <label class="confirm">
+
+                <input
+                  type="checkbox"
+                  id="consent"
+                  required
+                >
+
+                I understand my letter will be stored
+                in a private Google Sheet until delivery.
+
+              </label>
+
+
+              <!-- Submit -->
+
+              <button
+                class="primary"
+                type="submit"
+              >
+                Seal &amp; Schedule ♡
+              </button>
+
+              <p
+                id="mail-status"
+                role="status"
+                class="note"
+              ></p>
+
+            </form>
+
+            <p class="note">
+              A new tab displays the server's
+              save confirmation.
+              No email is sent when you submit.
+            </p>
+
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================
+         7. FORTUNE COOKIES
+         =================================================== -->
+
+    <section id="cookies" class="page">
+
+      <div class="card">
+
+        <span class="eyebrow">
+          03 / A LITTLE LUCK EVERY DAY
+        </span>
+
+        <h2>Fortune Cookies</h2>
+
+        <p>
+          100 sweet messages,
+          one new cookie per day.
+        </p>
+
+
+        <!-- Cookie Illustration -->
+
+        <div
+          id="cookie-display"
+          class="cookie-display"
+        >
+          🥠
+        </div>
+
+
+        <!-- Daily Fortune -->
+
+        <div id="cookie-content"></div>
+
+
+        <!-- Collection Button -->
+
+        <div class="actions">
+
+          <button
+            class="soft"
+            id="cookie-collection"
+          >
+            View my collection
+          </button>
+
+        </div>
+
+
+        <!-- Saved Fortunes -->
+
+        <div
+          id="cookie-archive"
+          hidden
+        ></div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       8. NEW YEAR GREETING DIALOG
+       ===================================================== -->
+
+  <dialog
+    id="newyear-greeting-dialog"
+    class="newyear-greeting-dialog"
+    aria-labelledby="newyear-dialog-title"
+  >
+
+    <!-- Close Button -->
+
+    <button
+      type="button"
+      id="close-greeting"
+      class="greeting-close"
+      aria-label="Close card"
+    >
+      ×
+    </button>
+
+
+    <!-- ===================================================
+         8.1 SEALED ENVELOPE
+         =================================================== -->
+
+    <div
+      id="greeting-envelope"
+      class="greeting-envelope-stage"
+    >
+
+      <div
+        class="greeting-envelope-art"
+        aria-hidden="true"
+      >
+        💌
+      </div>
+
+      <p>
+        A little New Year wish
+        from me to you ♡
+      </p>
+
+      <button
+        type="button"
+        id="reveal-greeting"
+        class="primary"
+      >
+        Unfold my letter ♡
+      </button>
+
+    </div>
+
+
+    <!-- ===================================================
+         8.2 NEW YEAR LETTER
+         =================================================== -->
+
+    <article
+      id="greeting-letter"
+      class="greeting-letter-paper"
+      hidden
+    >
+
+      <p class="greeting-kicker">
+        JANUARY 1, 2027 · FROM ME TO YOU
+      </p>
+
+
+      <!-- Chibi Illustration -->
+
+      <img
+        class="greeting-chibi"
+        src="../../assets/new-year/new-year-chibi.png"
+        alt="Chibi illustration of Quỳnh Anh and Jarod kissing"
+      >
+
+
+      <h2 id="newyear-dialog-title">
+        Happy New Year, my love! ✨
+      </h2>
+
+
+      <!-- Letter Content -->
+
+      <div class="greeting-letter-text">
+
+        <p>My dearest Jarod,</p>
+
+        <p>Happy New Year, my love! ♡</p>
+
+        <p>
+          Before we say hello to 2027,
+          I want to say one last little thank you to 2026.
+        </p>
+
+        <p>
+          Thank you, 2026, for all the unexpected turns,
+          the little surprises, and especially
+          for bringing you into my life.
+        </p>
+
+        <p>
+          And thank you, universe, for somehow making
+          our paths cross. Out of all the people in this
+          big, big world, you brought me to you.
+          I don't know how you did it, but I think
+          that was a pretty lovely decision. ♡
+        </p>
+
+        <p>
+          If someone had told me at the beginning of 2026
+          that I'd be ending the year with a boyfriend
+          who makes me smile at my phone like a silly
+          little girl, I probably wouldn't have
+          believed them. But here we are!
+        </p>
+
+        <p>
+          I don't know what 2027 has waiting for us,
+          and that's actually one of the things
+          I'm most excited about.
+        </p>
+
+        <p>
+          There are so many places we haven't explored,
+          so many things we haven't tried,
+          so many kisses I haven't stolen,
+          and so many ordinary little days
+          that haven't become our favourite memories yet.
+        </p>
+
+        <p>
+          I want more dates, more silly jokes,
+          more cooking experiments, more cuddles,
+          more sunsets, and more moments when
+          we look at each other and think,
+          ‘I'm so glad it's you.’
+        </p>
+
+        <p>
+          Of course, I know not every day will be
+          sunshine and butterflies. There might be
+          difficult days, misunderstandings, and moments
+          when we drive each other a little crazy.
+          But I hope we'll always find our way back
+          to each other, with patience, kindness,
+          and lots and lots of love.
+        </p>
+
+        <p>
+          My little wish for 2027 is simple:
+          I hope we keep growing together,
+          discovering new things about each other,
+          and choosing each other, even on the ordinary days.
+        </p>
+
+        <p>
+          And maybe I'm being a little greedy,
+          but I don't want just one more year with you.
+        </p>
+
+        <p>I want many, many more.</p>
+
+        <p>
+          I want to collect New Year's memories with you
+          until we lose count. I want us to look back
+          one day and laugh at how young and silly
+          we were when we celebrated our very first
+          New Year together.
+        </p>
+
+        <p>
+          So, dear universe, if you're listening,
+          thank you for bringing him to me.
+          Please let us have a whole lot more
+          chapters together. ♡
+        </p>
+
+        <p>
+          Here's to 2027, to all the beautiful things
+          we haven't experienced yet, and to us.
+        </p>
+
+        <p>
+          Happy New Year, my favourite person.
+        </p>
+
+
+        <!-- Signature -->
+
+        <p class="greeting-signature">
+          With all my love, a thousand kisses,
+          and a very hopeful little heart,
+        </p>
+
+        <p class="greeting-signature">
+          Your little girlfriend,
+        </p>
+
+        <p class="greeting-signature">
+          Quỳnh Anh ♡
+        </p>
+
+      </div>
+
+
+      <!-- Letter Actions -->
+
+      <div class="greeting-actions">
+
+        <button
+          type="button"
+          class="primary"
+          id="save-greeting"
+        >
+          Keep This Memory ♡
+        </button>
+
+        <button
+          type="button"
+          class="soft"
+          id="fold-greeting"
+        >
+          Fold the letter
+        </button>
+
+      </div>
+
+
+      <!-- Save Status -->
+
+      <p
+        id="greeting-save-status"
+        role="status"
+        class="note"
+      ></p>
+
+    </article>
+
+  </dialog>
+
+
+  <!-- =====================================================
+       9. JAVASCRIPT
+       ===================================================== -->
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

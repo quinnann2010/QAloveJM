@@ -1,14 +1,552 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#110d27"><title>A Little Gift for You ✨</title><link rel="stylesheet" href="style.css"><script src="script.js" defer></script></head><body>
-<div class="ambient"></div><div class="sparkle-layer" id="sparkles" aria-hidden="true"></div>
-<header><a href="../../index.html">← Loveverse</a><span>25 DECEMBER 2026 · A CHRISTMAS SPECIAL</span><span class="no-music">✧ made with love ✧</span></header>
-<main>
-<section id="intro" class="screen intro"><p class="overline">A LITTLE CHRISTMAS MAGIC</p><h1>A Little Gift <em>for You</em></h1><p class="sub">A tiny Christmas wish, made just for Jarod. ♡</p><div class="tree-shell"><canvas id="tree" width="760" height="760" aria-label="A magical spinning Christmas tree made of glowing dots"></canvas><div class="tree-floor"></div><button id="secretStar" class="secret-star" aria-label="Discover the hidden star" title="A little secret...">✦</button><div id="secretHint" class="secret-hint" aria-live="polite"></div><div class="tree-caption">✦ THE MAGIC OF CHRISTMAS ✦</div></div><div class="controls"><button id="wishBtn" class="primary">Make a Christmas wish ✨</button><p class="hint">Drag the tree to spin it. Can you find the little pink star? ✦</p></div></section>
-<section id="wish" class="screen wish" hidden><p class="overline">ONE LITTLE CHRISTMAS WISH</p><h2>Close your eyes for a second…</h2><div class="wish-orb">✧</div><p class="sub">If you could wish for one thing this Christmas, what would it be?</p><label for="wishText" class="sr">Your Christmas wish</label><textarea id="wishText" maxlength="300" placeholder="I wish for..." rows="3"></textarea><button id="sendWish" class="primary">Send my wish to the stars ♡</button><p class="hint">Your wish stays in this browser. Only the stars get to see it.</p></section>
-<section id="reveal" class="screen reveal" hidden><div class="magic-transition" id="magicTransition"><canvas id="morph" width="760" height="660"></canvas><p id="magicCaption">Your wish is becoming something magical…</p></div><div id="revealContent" class="reveal-content" hidden><p class="overline">WISH RECEIVED · CHRISTMAS MAGIC ACTIVATED</p><h2>Someone heard your wish…</h2><div class="chibi-stage"><div class="halo"></div><img id="chibi" src="../../assets/christmas/quynh-anh-christmas.png" alt="Quỳnh Anh Christmas chibi with glasses and a Santa hat"></div><div class="bubble">Surpriiiiise, Daddyyyy! 🎄💗</div><p class="sub">Santa couldn't fit all my hugs into one box, so he sent a tiny me instead!</p><button id="letterBtn" class="primary">A little letter for you 💌</button></div></section>
-<section id="card" class="screen card-screen" hidden><p class="overline">A CHRISTMAS LETTER · 2026</p><article class="letter"><div class="letter-stars">✧ ✦ ✧</div><p class="letter-kicker">To my favourite boy</p><h2>Merry Christmas, Jarod! ♡</h2><p>Hi babyyyy,</p><p>Can you believe this is our very first Christmas together? And actually… it's my first time really celebrating Christmas, too. 🥺🎄</p>
-<p>I know that sounds a little funny, because I studied in Canada, where Christmas was everywhere — the snow, the decorations, the lights, all of it. But I grew up with Eastern traditions, so Christmas was never really a holiday I celebrated myself. I mostly watched the magic happen around me.</p>
-<p>And now, somehow, my first real Christmas gets to be with you. That makes this little day feel extra special to me. ♡</p>
-<p>I don't know what all our future Christmases will look like, but I really, really hope this is only the first of many. I hope we'll get to make our own silly traditions, share warm hugs on cold days, laugh at little things, and keep choosing to spend these moments together.</p>
-<p>So here's a tiny piece of Christmas magic from your little girl. It's not a big present, but I made it with a whole lot of love — just for you.</p>
-<div id="jarodWish" class="jarod-wish" hidden><span class="wish-heading">✦ JAROD’S CHRISTMAS WISH ✦</span><p id="jarodWishText"></p><span class="wish-ending">May the stars make it come true ♡</span></div><p class="sign">With a million little kisses,<br><strong>Your little girl, Quỳnh Anh 💗</strong></p><div class="letter-bottom">✦ OUR FIRST CHRISTMAS · 25.12.2026 ✦</div><button id="psButton" class="ps-button">P.S. There is one more little thing… ✨</button><div id="psSecret" class="ps-secret" hidden><span>✧</span><h3>One Cozy Winter Date ♡</h3><p>Valid for one cozy date with your tiny girlfriend, including warm hugs, little kisses, and Christmas magic.</p><p class="winter-ideas">☕ Make chocolate bombs together<br>🍪 Bake something sweet<br>🎬 A movie night under a cozy blanket<br>✨ Go see the Christmas lights<br>🕯️ Or invent our own little winter tradition</p><small>No expiration date · Choose our adventure together 💗</small><div><button id="collectWinter" class="winter-collect" type="button">Collect Winter Date Voucher 🎟️</button><p id="winterStatus" class="winter-status" role="status"></p></div></div></article><div class="actions"><button id="saveCard" class="primary">Keep Our Christmas Card in the Drawer 💌</button><a class="ghost wallet-link" href="../../memories/index.html">Open the Memory Museum 🌷</a><button id="again" class="ghost">Watch the lights again ✨</button></div><p id="saveStatus" class="hint" role="status"></p></section>
-</main><footer>Made with love by your tiny programmer girlfriend ♡</footer></body></html>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#110d27">
+
+  <title>A Little Gift for You ✨</title>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JavaScript -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       1. BACKGROUND EFFECTS
+       ===================================================== -->
+
+  <div class="ambient"></div>
+
+  <div
+    class="sparkle-layer"
+    id="sparkles"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =====================================================
+       2. HEADER
+       ===================================================== -->
+
+  <header>
+
+    <a href="../../index.html">
+      ← Loveverse
+    </a>
+
+    <span>
+      25 DECEMBER 2026 · A CHRISTMAS SPECIAL
+    </span>
+
+    <span class="no-music">
+      ✧ made with love ✧
+    </span>
+
+  </header>
+
+
+  <main>
+
+    <!-- ===================================================
+         3. INTRO — MAGICAL CHRISTMAS TREE
+         =================================================== -->
+
+    <section id="intro" class="screen intro">
+
+      <p class="overline">
+        A LITTLE CHRISTMAS MAGIC
+      </p>
+
+      <h1>
+        A Little Gift <em>for You</em>
+      </h1>
+
+      <p class="sub">
+        A tiny Christmas wish, made just for Jarod. ♡
+      </p>
+
+
+      <!-- Interactive Christmas Tree -->
+
+      <div class="tree-shell">
+
+        <canvas
+          id="tree"
+          width="760"
+          height="760"
+          aria-label="A magical spinning Christmas tree made of glowing dots"
+        ></canvas>
+
+        <div class="tree-floor"></div>
+
+
+        <!-- Hidden Pink Star -->
+
+        <button
+          id="secretStar"
+          class="secret-star"
+          aria-label="Discover the hidden star"
+          title="A little secret..."
+        >
+          ✦
+        </button>
+
+        <div
+          id="secretHint"
+          class="secret-hint"
+          aria-live="polite"
+        ></div>
+
+
+        <!-- Tree Caption -->
+
+        <div class="tree-caption">
+          ✦ THE MAGIC OF CHRISTMAS ✦
+        </div>
+
+      </div>
+
+
+      <!-- Intro Actions -->
+
+      <div class="controls">
+
+        <button
+          id="wishBtn"
+          class="primary"
+        >
+          Make a Christmas wish ✨
+        </button>
+
+        <p class="hint">
+          Drag the tree to spin it.
+          Can you find the little pink star? ✦
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         4. CHRISTMAS WISH
+         =================================================== -->
+
+    <section
+      id="wish"
+      class="screen wish"
+      hidden
+    >
+
+      <p class="overline">
+        ONE LITTLE CHRISTMAS WISH
+      </p>
+
+      <h2>
+        Close your eyes for a second…
+      </h2>
+
+
+      <!-- Magical Wish Orb -->
+
+      <div class="wish-orb">
+        ✧
+      </div>
+
+
+      <p class="sub">
+        If you could wish for one thing this Christmas,
+        what would it be?
+      </p>
+
+
+      <!-- Wish Input -->
+
+      <label for="wishText" class="sr">
+        Your Christmas wish
+      </label>
+
+      <textarea
+        id="wishText"
+        maxlength="300"
+        placeholder="I wish for..."
+        rows="3"
+      ></textarea>
+
+
+      <!-- Send Wish -->
+
+      <button
+        id="sendWish"
+        class="primary"
+      >
+        Send my wish to the stars ♡
+      </button>
+
+      <p class="hint">
+        Your wish stays in this browser.
+        Only the stars get to see it.
+      </p>
+
+    </section>
+
+
+    <!-- ===================================================
+         5. CHRISTMAS MAGIC REVEAL
+         =================================================== -->
+
+    <section
+      id="reveal"
+      class="screen reveal"
+      hidden
+    >
+
+      <!-- -----------------------------------------------
+           5.1 Magical Transition Animation
+           ----------------------------------------------- -->
+
+      <div
+        class="magic-transition"
+        id="magicTransition"
+      >
+
+        <canvas
+          id="morph"
+          width="760"
+          height="660"
+        ></canvas>
+
+        <p id="magicCaption">
+          Your wish is becoming something magical…
+        </p>
+
+      </div>
+
+
+      <!-- -----------------------------------------------
+           5.2 Chibi Surprise
+           ----------------------------------------------- -->
+
+      <div
+        id="revealContent"
+        class="reveal-content"
+        hidden
+      >
+
+        <p class="overline">
+          WISH RECEIVED · CHRISTMAS MAGIC ACTIVATED
+        </p>
+
+        <h2>
+          Someone heard your wish…
+        </h2>
+
+
+        <!-- Chibi Illustration -->
+
+        <div class="chibi-stage">
+
+          <div class="halo"></div>
+
+          <img
+            id="chibi"
+            src="../../assets/christmas/quynh-anh-christmas.png"
+            alt="Quỳnh Anh Christmas chibi with glasses and a Santa hat"
+          >
+
+        </div>
+
+
+        <!-- Surprise Message -->
+
+        <div class="bubble">
+          Surpriiiiise, Daddyyyy! 🎄💗
+        </div>
+
+        <p class="sub">
+          Santa couldn't fit all my hugs into one box,
+          so he sent a tiny me instead!
+        </p>
+
+
+        <!-- Continue to Christmas Letter -->
+
+        <button
+          id="letterBtn"
+          class="primary"
+        >
+          A little letter for you 💌
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         6. CHRISTMAS LETTER
+         =================================================== -->
+
+    <section
+      id="card"
+      class="screen card-screen"
+      hidden
+    >
+
+      <p class="overline">
+        A CHRISTMAS LETTER · 2026
+      </p>
+
+
+      <!-- Letter Paper -->
+
+      <article class="letter">
+
+        <div class="letter-stars">
+          ✧ ✦ ✧
+        </div>
+
+        <p class="letter-kicker">
+          To my favourite boy
+        </p>
+
+        <h2>
+          Merry Christmas, Jarod! ♡
+        </h2>
+
+
+        <!-- ---------------------------------------------
+             6.1 Letter Content
+             --------------------------------------------- -->
+
+        <p>Hi babyyyy,</p>
+
+        <p>
+          Can you believe this is our very first
+          Christmas together? And actually…
+          it's my first time really celebrating
+          Christmas, too. 🥺🎄
+        </p>
+
+        <p>
+          I know that sounds a little funny,
+          because I studied in Canada,
+          where Christmas was everywhere —
+          the snow, the decorations, the lights,
+          all of it. But I grew up with Eastern
+          traditions, so Christmas was never really
+          a holiday I celebrated myself.
+          I mostly watched the magic happen around me.
+        </p>
+
+        <p>
+          And now, somehow, my first real Christmas
+          gets to be with you. That makes this
+          little day feel extra special to me. ♡
+        </p>
+
+        <p>
+          I don't know what all our future Christmases
+          will look like, but I really, really hope
+          this is only the first of many.
+          I hope we'll get to make our own silly
+          traditions, share warm hugs on cold days,
+          laugh at little things, and keep choosing
+          to spend these moments together.
+        </p>
+
+        <p>
+          So here's a tiny piece of Christmas magic
+          from your little girl. It's not a big present,
+          but I made it with a whole lot of love —
+          just for you.
+        </p>
+
+
+        <!-- ---------------------------------------------
+             6.2 Jarod's Christmas Wish
+             --------------------------------------------- -->
+
+        <div
+          id="jarodWish"
+          class="jarod-wish"
+          hidden
+        >
+
+          <span class="wish-heading">
+            ✦ JAROD’S CHRISTMAS WISH ✦
+          </span>
+
+          <p id="jarodWishText"></p>
+
+          <span class="wish-ending">
+            May the stars make it come true ♡
+          </span>
+
+        </div>
+
+
+        <!-- ---------------------------------------------
+             6.3 Letter Signature
+             --------------------------------------------- -->
+
+        <p class="sign">
+          With a million little kisses,
+          <br>
+          <strong>
+            Your little girl, Quỳnh Anh 💗
+          </strong>
+        </p>
+
+        <div class="letter-bottom">
+          ✦ OUR FIRST CHRISTMAS · 25.12.2026 ✦
+        </div>
+
+
+        <!-- =================================================
+             7. SECRET P.S. — WINTER DATE VOUCHER
+             ================================================= -->
+
+        <button
+          id="psButton"
+          class="ps-button"
+        >
+          P.S. There is one more little thing… ✨
+        </button>
+
+
+        <!-- Hidden Winter Date Voucher -->
+
+        <div
+          id="psSecret"
+          class="ps-secret"
+          hidden
+        >
+
+          <span>✧</span>
+
+          <h3>
+            One Cozy Winter Date ♡
+          </h3>
+
+          <p>
+            Valid for one cozy date with your tiny
+            girlfriend, including warm hugs,
+            little kisses, and Christmas magic.
+          </p>
+
+
+          <!-- Winter Date Ideas -->
+
+          <p class="winter-ideas">
+            ☕ Make chocolate bombs together
+            <br>
+            🍪 Bake something sweet
+            <br>
+            🎬 A movie night under a cozy blanket
+            <br>
+            ✨ Go see the Christmas lights
+            <br>
+            🕯️ Or invent our own little winter tradition
+          </p>
+
+
+          <small>
+            No expiration date ·
+            Choose our adventure together 💗
+          </small>
+
+
+          <!-- Collect Voucher -->
+
+          <div>
+
+            <button
+              id="collectWinter"
+              class="winter-collect"
+              type="button"
+            >
+              Collect Winter Date Voucher 🎟️
+            </button>
+
+            <p
+              id="winterStatus"
+              class="winter-status"
+              role="status"
+            ></p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           8. CHRISTMAS CARD ACTIONS
+           ================================================= -->
+
+      <div class="actions">
+
+        <!-- Save Letter to Memory Drawer -->
+
+        <button
+          id="saveCard"
+          class="primary"
+        >
+          Keep Our Christmas Card in the Drawer 💌
+        </button>
+
+
+        <!-- Open Memory Museum -->
+
+        <a
+          class="ghost wallet-link"
+          href="../../memories/index.html"
+        >
+          Open the Memory Museum 🌷
+        </a>
+
+
+        <!-- Replay Christmas Animation -->
+
+        <button
+          id="again"
+          class="ghost"
+        >
+          Watch the lights again ✨
+        </button>
+
+      </div>
+
+
+      <!-- Save Status -->
+
+      <p
+        id="saveStatus"
+        class="hint"
+        role="status"
+      ></p>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       9. FOOTER
+       ===================================================== -->
+
+  <footer>
+    Made with love by your tiny programmer girlfriend ♡
+  </footer>
+
+</body>
+</html>

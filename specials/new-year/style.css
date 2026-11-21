@@ -1,0 +1,852 @@
+
+/* =========================================================
+   LOVEVERSE — NEW YEAR 2027
+   Stylesheet
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  --bg: #fff9f7;
+  --paper: #fff;
+  --ink: #583e4b;
+  --muted: #947887;
+  --pink: #d56c92;
+  --soft: #fff0f5;
+  --border: #f1dce4;
+}
+
+
+/* =========================================================
+   2. GLOBAL STYLES
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(
+      ellipse at top,
+      #fff0f5,
+      transparent 55%
+    ),
+    var(--bg);
+  color: var(--ink);
+  font: 15px/1.65 'DM Sans', sans-serif;
+}
+
+a {
+  color: var(--pink);
+  text-decoration: none;
+}
+
+p {
+  color: var(--muted);
+}
+
+h1,
+h2 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(38px, 7vw, 67px);
+  margin: 12px 0;
+}
+
+h1 em {
+  color: var(--pink);
+}
+
+h2 {
+  font-size: clamp(27px, 4vw, 38px);
+  margin: 10px 0 15px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+
+/* =========================================================
+   3. HEADER & FOOTER
+   ========================================================= */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 22px max(20px, calc((100vw - 920px) / 2));
+  font-size: 12px;
+  letter-spacing: .12em;
+  border-bottom: 1px solid var(--border);
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 22px;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   4. MAIN LAYOUT
+   ========================================================= */
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 18px 65px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 50px #b8668a10;
+  border-radius: 26px;
+  padding: clamp(22px, 5vw, 43px);
+}
+
+.eyebrow {
+  color: var(--pink);
+  letter-spacing: .2em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   5. HERO SECTION
+   ========================================================= */
+
+.hero {
+  text-align: center;
+  padding: 65px 12px 44px;
+}
+
+.hero p {
+  max-width: 510px;
+  margin: auto;
+  color: var(--muted);
+}
+
+.sparkles {
+  color: #e6a2bc;
+  margin-top: 25px;
+}
+
+
+/* =========================================================
+   6. BUTTONS & FORM ELEMENTS
+   ========================================================= */
+
+button,
+.file-label {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--soft);
+  color: var(--ink);
+  border-radius: 100px;
+  padding: 11px 17px;
+}
+
+button:hover,
+.file-label:hover {
+  border-color: #dfa6bd;
+}
+
+.primary {
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+input:not([type=checkbox]),
+textarea,
+select {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 15px;
+  background: #fffdfd;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.inline {
+  display: flex;
+  gap: 10px;
+}
+
+.inline input {
+  flex: 1;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 17px 0;
+}
+
+.note {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   7. NAVIGATION TABS
+   ========================================================= */
+
+.tabs {
+  display: flex;
+  gap: 9px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.tabs button.active {
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+
+/* =========================================================
+   8. RESOLUTIONS — BASIC LAYOUT
+   ========================================================= */
+
+.suggestions {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin: 17px 0;
+}
+
+.suggestions button {
+  font-size: 12px;
+  padding: 7px 12px;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 13px 2px;
+  border-bottom: 1px solid var(--border);
+}
+
+.checklist li span {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.checklist li.done span {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.checklist li button {
+  padding: 5px 11px;
+}
+
+
+/* =========================================================
+   9. FUTURE LETTERS
+   ========================================================= */
+
+/* Envelope Layout */
+
+.envelopes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 23px 0;
+}
+
+.envelopes div {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  padding: 18px;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  font-size: 26px;
+}
+
+.envelopes strong {
+  font-size: 14px;
+}
+
+.envelopes small {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+
+/* Two-Letter Layout */
+
+.letter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.letter-panel {
+  background: #fff9fb;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 22px;
+  min-width: 0;
+}
+
+.letter-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.letter-emoji {
+  font-size: 43px;
+}
+
+
+/* Countdown */
+
+.countdown {
+  font-weight: 700;
+  color: var(--pink);
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+}
+
+
+/* Future Letter Paper */
+
+.future-paper {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #fffdf7;
+  border: 1px solid #eadbcf;
+  border-radius: 14px;
+  padding: 24px;
+  font-family: Georgia, serif;
+  line-height: 1.85;
+}
+
+
+/* Future Letter Form */
+
+#letter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#letter-form label {
+  font-weight: 600;
+}
+
+#letter-form .confirm {
+  font-size: 12px;
+  font-weight: 400;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.trap {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+
+/* =========================================================
+   10. FORTUNE COOKIES
+   ========================================================= */
+
+.cookie-display {
+  text-align: center;
+  font-size: 75px;
+  margin: 24px;
+}
+
+#cookie-content {
+  text-align: center;
+}
+
+
+/* Fortune Paper */
+
+.fortune-paper {
+  background: #fff7eb;
+  border: 1px dashed #e8c7a8;
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.fortune-paper p {
+  color: var(--ink);
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+}
+
+.fortune-paper small {
+  color: var(--muted);
+}
+
+
+/* Fortune Collection */
+
+.archive-list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(190px, 1fr)
+  );
+  gap: 10px;
+}
+
+.archive-list div {
+  padding: 13px;
+  background: var(--soft);
+  border-radius: 13px;
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   11. NEW YEAR GREETING CARD
+   ========================================================= */
+
+.greeting-section {
+  margin: 0 auto 34px;
+  text-align: center;
+  max-width: 710px;
+}
+
+.greeting-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #f1d4df;
+  border-radius: 30px;
+  padding: 22px clamp(20px, 5vw, 42px) 32px;
+  background: linear-gradient(
+    145deg,
+    #fffdf9 0%,
+    #fff0f5 75%,
+    #fff9fb 100%
+  );
+  box-shadow: 0 18px 50px #c6769818;
+}
+
+
+/* Decorative Sparkles */
+
+.greeting-card::before,
+.greeting-card::after {
+  content: '✧';
+  position: absolute;
+  color: #e9b2c7;
+  font-size: 32px;
+}
+
+.greeting-card::before {
+  top: 70px;
+  left: 8%;
+}
+
+.greeting-card::after {
+  top: 150px;
+  right: 9%;
+}
+
+
+/* Greeting Ribbon */
+
+.greeting-ribbon {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #f1dce4;
+  border-radius: 100px;
+  padding: 7px 17px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: #bd6485;
+}
+
+
+/* Greeting Illustration */
+
+.greeting-chibi {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  object-fit: contain;
+  margin: 7px auto 0;
+  filter: drop-shadow(
+    0 12px 12px #b27c9220
+  );
+}
+
+.greeting-emoji {
+  display: block;
+  font-size: 78px;
+  margin: 20px auto 12px;
+  filter: drop-shadow(
+    0 8px 12px #c17d9430
+  );
+}
+
+
+/* Greeting Text */
+
+.greeting-kicker {
+  font-size: 11px;
+  letter-spacing: .13em;
+  color: #c17a96;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.greeting-card h2 {
+  margin: 5px 0 8px;
+  font-size: clamp(29px, 5vw, 43px);
+}
+
+.greeting-intro {
+  margin: 0 auto 18px;
+}
+
+.greeting-button {
+  box-shadow: 0 8px 18px #c16a8e25;
+}
+
+
+/* Greeting Message */
+
+.greeting-message {
+  text-align: left;
+  margin-top: 25px;
+  padding: 25px clamp(18px, 4vw, 35px);
+  border: 1px solid #efd9d7;
+  border-radius: 18px;
+  background: #fffefa;
+  box-shadow: 0 8px 20px #b8668a0a;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.greeting-message p {
+  color: #654852;
+  margin: 0 0 16px;
+}
+
+.greeting-message .greeting-signature {
+  font-style: italic;
+  color: #b76687;
+  margin-bottom: 0;
+}
+
+.greeting-bridge {
+  font-size: 13px;
+  margin: 16px auto;
+  color: #a2798c;
+}
+
+
+/* =========================================================
+   12. NEW YEAR GREETING DIALOG
+   ========================================================= */
+
+.newyear-greeting-dialog {
+  width: min(92vw, 650px);
+  max-height: 88vh;
+  overflow-y: auto;
+  border: 1px solid #efd4df;
+  border-radius: 26px;
+  padding: 32px clamp(18px, 5vw, 42px);
+  background: #fff9f7;
+  color: #563e4a;
+  box-shadow: 0 22px 80px #6a324f4a;
+}
+
+
+/* Dialog Backdrop */
+
+.newyear-greeting-dialog::backdrop {
+  background: #3c203c90;
+  backdrop-filter: blur(3px);
+}
+
+
+/* Close Button */
+
+.greeting-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: 0;
+  font-size: 30px;
+  color: #9b6b82;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   13. GREETING ENVELOPE
+   ========================================================= */
+
+.greeting-envelope-stage {
+  text-align: center;
+  padding: 35px 5px 24px;
+}
+
+.greeting-envelope-art {
+  font-size: 110px;
+  line-height: 1.5;
+}
+
+.greeting-envelope-stage p {
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   14. GREETING LETTER
+   ========================================================= */
+
+.greeting-letter-paper {
+  text-align: center;
+  background: #fffdf9;
+  border: 1px solid #f0dbe3;
+  border-radius: 19px;
+  padding: 20px clamp(14px, 4vw, 30px);
+}
+
+.greeting-letter-paper h2 {
+  font-family: 'Playfair Display', serif;
+  margin: 10px auto 22px;
+  font-size: clamp(25px, 4vw, 36px);
+}
+
+
+/* Letter Content */
+
+.greeting-letter-text {
+  text-align: left;
+  font-family: Georgia, serif;
+  line-height: 1.85;
+  font-size: 15px;
+}
+
+.greeting-letter-text p {
+  margin: 0 0 17px;
+}
+
+.greeting-letter-text .greeting-signature {
+  color: #b76687;
+  font-style: italic;
+}
+
+
+/* Letter Actions */
+
+.greeting-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+
+/* =========================================================
+   15. RESOLUTIONS — CUTE BUCKET-LIST CARDS
+   ========================================================= */
+
+/* Resolution List Layout */
+
+#resolution-list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+  padding: 0;
+}
+
+
+/* Individual Resolution Card */
+
+#resolution-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px 16px;
+  background: #fff9fb;
+  border: 1px solid #f1dce4;
+  border-radius: 17px;
+  box-shadow: 0 6px 18px #b8668a0b;
+  transition:
+    background .2s,
+    border-color .2s;
+}
+
+
+/* Empty State */
+
+#resolution-list li:not(:has(input)) {
+  justify-content: center;
+  color: #a9798e;
+  font-style: italic;
+}
+
+
+/* Heart Checkbox */
+
+#resolution-list li input[type=checkbox] {
+  appearance: none;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  margin: 0;
+  border: 1.5px solid #e5b2c5;
+  border-radius: 9px;
+  background: white;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+#resolution-list li input[type=checkbox]::before {
+  content: '♡';
+  font-size: 19px;
+  color: #d56c92;
+  line-height: 1;
+}
+
+
+/* Completed Checkbox */
+
+#resolution-list li input[type=checkbox]:checked {
+  background: #d56c92;
+  border-color: #d56c92;
+}
+
+#resolution-list li input[type=checkbox]:checked::before {
+  content: '♥';
+  color: white;
+  font-size: 16px;
+}
+
+
+/* Resolution Text */
+
+#resolution-list li span {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.55;
+  color: #624957;
+}
+
+
+/* Completed Resolution */
+
+#resolution-list li.done {
+  background: #fff0f5;
+  border-color: #edbed1;
+}
+
+#resolution-list li.done span {
+  color: #a17c8c;
+}
+
+
+/* Delete Button */
+
+#resolution-list li button {
+  padding: 4px 11px;
+  background: #fff;
+  border: 1px solid #f1dce4;
+  color: #bc7593;
+  font-size: 19px;
+}
+
+#resolution-list li button:hover {
+  background: #ffe8f0;
+}
+
+
+/* =========================================================
+   16. RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Tablets and smaller screens */
+
+@media (max-width: 700px) {
+  .letter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Mobile Phones */
+
+@media (max-width: 550px) {
+  header {
+    font-size: 10px;
+  }
+
+  .inline {
+    flex-direction: column;
+  }
+
+  .envelopes {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 22px;
+  }
+}
