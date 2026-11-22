@@ -145,7 +145,7 @@ const specials = [
     desc: "Unwrap a tiny Christmas surprise from me.",
     icon: "🎄",
     tech: "Holiday Special",
-    path: null,
+    path: "specials/christmas/index.html",
     color: "#ffe3ec"
   },
   {
