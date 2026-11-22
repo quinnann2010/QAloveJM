@@ -130,14 +130,14 @@ function render() {
         '2-1': ['offering.jpg', 'A festive offering table'],
         '2-2': ['family-visit.jpg', 'Visitors at a traditional house (illustration of a visit, not a documented xông đất ritual)'],
         '2-3': ['lixi.jpg', 'A red lucky-money envelope being given'],
-        '3-0': ['../tet/greeting-family.jpg', 'A family greeting during Tết'],
-        '3-1': ['../tet/new-year-greeting.jpg', 'Chúc mừng năm mới — red New Year greeting decoration'],
-        '3-2': ['../tet/thank-you-cat.jpg', 'Cảm ơn ạ — a cute thank-you meme'],
+        '3-0': ['tet/greeting-family.jpg', 'A family greeting during Tết'],
+        '3-1': ['tet/new-year-greeting.jpg', 'Chúc mừng năm mới — red New Year greeting decoration'],
+        '3-2': ['tet/thank-you-cat.jpg', 'Cảm ơn ạ — a cute thank-you meme'],
         '5-0': ['family-greeting.jpg', 'Relatives greeting each other'],
         '6-0': ['family-visit.jpg', 'People visiting a traditional home'],
         '6-1': ['lixi.jpg', 'Exchanging a lucky-money envelope']
     };
-    let rows = ch[4].map((f, i) => { const photo = lessonPhotos[`${state.stage}-${i}`], hasPhoto = !!photo; const src = hasPhoto ? (photo[0].startsWith('../tet/') ? 'assets/tet/' + photo[0].split('/').pop() : 'assets/photos/' + photo[0]) : ''; return `<article class="story-row ${hasPhoto ? '' : 'text-story'}">${hasPhoto ? `<figure class="illustration real-photo"><img src="${src}" alt="${photo[1]}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="photo-fallback" hidden>📷 ${tr('Photo unavailable — open source', 'Photo indisponible — voir la source')}</div><figcaption>${photo[1]}</figcaption></figure>` : `<div class="fact-art" aria-hidden="true"><span class="fact-art-icon">${f[0]}</span><span class="fact-art-caption">${tr(f[1], f[2])}</span></div>`}<div class="story-copy"><span class="fact-number">${String(i + 1).padStart(2, '0')} / ${String(ch[4].length).padStart(2, '0')}</span><h2>${tr(f[1], f[2])}</h2><p>${tr(f[3], f[4])}</p></div></article>`; }).join('');
+    let rows = ch[4].map((f, i) => { const photo = lessonPhotos[`${state.stage}-${i}`], hasPhoto = !!photo; const src = hasPhoto ? (photo[0].startsWith('tet/') ? '../../assets/' + photo[0] : 'assets/photos/' + photo[0]) : ''; return `<article class="story-row ${hasPhoto ? '' : 'text-story'}">${hasPhoto ? `<figure class="illustration real-photo"><img src="${src}" alt="${photo[1]}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.hidden=false"><div class="photo-fallback" hidden>📷 ${tr('Photo unavailable — open source', 'Photo indisponible — voir la source')}</div><figcaption>${photo[1]}</figcaption></figure>` : `<div class="fact-art" aria-hidden="true"><span class="fact-art-icon">${f[0]}</span><span class="fact-art-caption">${tr(f[1], f[2])}</span></div>`}<div class="story-copy"><span class="fact-number">${String(i + 1).padStart(2, '0')} / ${String(ch[4].length).padStart(2, '0')}</span><h2>${tr(f[1], f[2])}</h2><p>${tr(f[3], f[4])}</p></div></article>`; }).join('');
     if (state.stage === 0) {
         const peachRow = rows.indexOf('Pink peach blossoms decorating a Vietnamese home');
         if (peachRow >= 0) {
@@ -171,12 +171,10 @@ function finale() {
             .finale .finale-content h1 { color: #fff !important; }
             .finale .finale-content p { color: #fff0f5 !important; }
             .finale .heartbeat-heart { color: #ffb3d1; }
-            .finale .sound-toggle { color: #fff; background: #151521b8;
-                border: 1px solid #ffffff66; border-radius: 999px; padding: 10px 18px; cursor: pointer; }
         `;
         document.head.appendChild(style);
     }
-    page(`<div class="finale"><canvas id="heart-canvas" aria-hidden="true"></canvas><div class="finale-content"><span class="eyebrow">🧧 CHÚC MỪNG NĂM MỚI · TẾT 2027</span><div class="heartbeat-heart" aria-hidden="true">♥</div><h1>Welcome to my culture,<br>my love. ♡</h1><p>${tr('A little piece of Vietnam, from my heart to yours.', 'Un petit morceau du Vietnam, de mon cœur au tien.')}</p><img src="${CHIBI}" alt="Your girlfriend in pink áo dài holding a lucky envelope"><p>${tr('You did it, Jarod. I have one last surprise for you…', 'Tu as réussi, Jarod. Il me reste une dernière surprise pour toi…')}</p>${button(tr('Open your graduation surprises ♡', 'Découvrir tes surprises ♡'), 'gifts')}<p><button class="sound-toggle" id="sound-toggle" type="button">🔇 ${tr('Enable fireworks sound', 'Activer le son des feux d’artifice')}</button></p></div></div>`);
+    page(`<div class="finale"><canvas id="heart-canvas" aria-hidden="true"></canvas><div class="finale-content"><span class="eyebrow">🧧 CHÚC MỪNG NĂM MỚI · TẾT 2027</span><div class="heartbeat-heart" aria-hidden="true">♥</div><h1>Welcome to my culture,<br>my love. ♡</h1><p>${tr('A little piece of Vietnam, from my heart to yours.', 'Un petit morceau du Vietnam, de mon cœur au tien.')}</p><img src="${CHIBI}" alt="Your girlfriend in pink áo dài holding a lucky envelope"><p>${tr('You did it, Jarod. I have one last surprise for you…', 'Tu as réussi, Jarod. Il me reste une dernière surprise pour toi…')}</p>${button(tr('Open your graduation surprises ♡', 'Découvrir tes surprises ♡'), 'gifts')}</div></div>`);
     heartFireworks();
 }
 function gifts() { page(`<div class="gifts"><span class="eyebrow">🎓 TRAINING COMPLETE</span><h1>Congratulations, Jarod! ♡</h1><img class="gift-chibi" src="${CHIBI}" alt="Pink áo dài chibi"><p>You have unlocked your official certificate, a real-life Tết experience voucher and a little letter from your girlfriend.</p><div class="gift-grid"><article class="gift-card"><span>🎓</span><h3>Son-in-Law Certificate</h3><p>Officially certified (by your girlfriend).</p>${button('View certificate', 'certificate')}</article><article class="gift-card"><span>💌</span><h3>A Letter From Me</h3><p>A little piece of home, written for you.</p>${button('Read my letter', 'letter')}</article></div><p>${button('Replay the heart fireworks ♡', 'fireworks', true)} ${button(tr('Back to Loveverse', 'Retour à Loveverse'), 'home', true)}</p><p class="muted">Your real Tết voucher is in Love Wallet, and your letter is in Memory Drawer — on this browser.</p></div>`); }
@@ -185,184 +183,187 @@ function showLetter() { page(`<div class="letter-page"><span class="eyebrow">�
 function heartFireworks() {
     const canvas = document.getElementById('heart-canvas');
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rockets = [], particles = [], flashes = [];
-    const palette = ['#ffd36b', '#ff515d', '#69caff', '#b78aff', '#6effb2', '#ffffff'];
+    // Lightweight canvas animation: limited DPR, particle count and glow passes.
     const rand = (a, b) => a + Math.random() * (b - a);
-    let width = 0, height = 0, lastTime = 0, elapsed = 0, nextLaunch = 0;
-    let raf = 0, running = true, soundEnabled = false, audio = null;
+    const colors = [
+        '#ff5a88', '#ff9ac3', // pink
+        '#ff324d', '#ff654e', // red
+        '#ffffff', '#e5f7ff', // white
+        '#48aaff', '#79e5ff', // blue
+        '#59f0b2', '#a4ff7a'  // green
+    ];
+    const rockets = [], sparks = [];
+    let w = 0, h = 0, scale = 1, last = 0, next = 0, frame = 0, raf = 0;
+    let active = true;
+    const MAX_SPARKS = 1250;
+    const TWO_PI = Math.PI * 2;
 
     function resize() {
-        const bounds = canvas.getBoundingClientRect();
-        width = Math.max(1, bounds.width);
-        height = Math.max(1, bounds.height);
-        canvas.width = Math.round(width * dpr);
-        canvas.height = Math.round(height * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const rect = canvas.getBoundingClientRect();
+        w = Math.max(1, rect.width);
+        h = Math.max(1, rect.height);
+        // Keeping the canvas at 1x or 1.35x prevents large GPU overdraw.
+        scale = Math.min(window.devicePixelRatio || 1, 1.35);
+        canvas.width = Math.round(w * scale);
+        canvas.height = Math.round(h * scale);
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
+        ctx.fillStyle = '#020207';
+        ctx.fillRect(0, 0, w, h);
     }
     resize();
-    window.addEventListener('resize', resize);
-
-    function playBoom() {
-        if (!soundEnabled) return;
-        try {
-            const AudioClass = window.AudioContext || window.webkitAudioContext;
-            if (!AudioClass) return;
-            audio = audio || new AudioClass();
-            if (audio.state === 'suspended') audio.resume();
-            const duration = .45, count = Math.floor(audio.sampleRate * duration);
-            const buffer = audio.createBuffer(1, count, audio.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < count; i++) {
-                const t = i / audio.sampleRate;
-                data[i] = (Math.random() * 2 - 1) * Math.exp(-t * 11);
-            }
-            const source = audio.createBufferSource(), filter = audio.createBiquadFilter();
-            const gain = audio.createGain();
-            source.buffer = buffer;
-            filter.type = 'lowpass';
-            filter.frequency.value = 480;
-            gain.gain.value = .17;
-            source.connect(filter); filter.connect(gain); gain.connect(audio.destination);
-            source.start();
-        } catch (_) { /* Sound is optional; animation continues. */ }
-    }
-
-    const soundButton = document.getElementById('sound-toggle');
-    if (soundButton) soundButton.onclick = () => {
-        soundEnabled = !soundEnabled;
-        soundButton.textContent = soundEnabled
-            ? '🔊 ' + tr('Fireworks sound on', 'Son activé')
-            : '🔇 ' + tr('Enable fireworks sound', 'Activer le son des feux d’artifice');
-    };
+    window.addEventListener('resize', resize, { passive: true });
 
     function launch() {
-        const x = rand(width * .12, width * .88);
-        const targetX = Math.max(35, Math.min(width - 35, x + rand(-width * .13, width * .13)));
-        const targetY = rand(height * .10, height * .47);
-        const speed = rand(7.5, 10.5);
-        const travelFrames = Math.max(35, (height - targetY) / speed);
-        rockets.push({ x, y: height + 8, vx: (targetX - x) / travelFrames,
-            vy: -speed, targetY, hue: palette[Math.floor(rand(0, palette.length))],
-            trail: [] });
+        if (rockets.length >= (w < 600 ? 7 : 11)) return;
+        const x = rand(w * .12, w * .88);
+        const tx = Math.max(70, Math.min(w - 70, x + rand(-w * .15, w * .15)));
+        const ty = rand(h * .12, h * .57);
+        const flight = rand(30, 49);
+        rockets.push({
+            x, y: h + 8, oldX: x, oldY: h + 8,
+            vx: (tx - x) / flight, vy: (ty - h - 8) / flight,
+            t: 0, flight, color: colors[Math.floor(rand(0, colors.length))]
+        });
     }
 
-    function explode(rocket) {
-        const count = Math.min(155, Math.max(75, Math.round(width / 9)));
-        const radius = rand(2.5, 5.3);
-        const color = rocket.hue;
-        const kind = Math.random();
-        flashes.push({ x: rocket.x, y: rocket.y, radius: 4, life: 10, color });
-        for (let i = 0; i < count; i++) {
-            const angle = (i / count) * Math.PI * 2 + rand(-.025, .025);
-            const speed = radius * rand(.65, 1.18);
-            const isGold = kind > .75 && Math.random() < .7;
-            particles.push({
-                x: rocket.x, y: rocket.y,
-                px: rocket.x, py: rocket.y,
-                vx: Math.cos(angle) * speed,
-                vy: Math.sin(angle) * speed,
-                drag: rand(.965, .984), gravity: rand(.027, .056),
-                life: rand(65, 112), maxLife: 112,
-                color: isGold ? '#ffcb67' : color,
-                sparkle: Math.random() < .25,
-                size: rand(.85, 1.8)
+    function burst(r) {
+        // Bright heart-shaped ring with a soft sparkly fringe, as in real pyrotechnics.
+        // Curve coordinates are target points, not straight-line particle rays.
+        const count = w < 600 ? 42 : 55;
+        const s = Math.min(w * .011, h * .013, 4.6) * rand(.86, 1.1);
+        for (let i = 0; i < count && sparks.length < MAX_SPARKS; i++) {
+            const t = i / count * TWO_PI;
+            const hx = 16 * Math.sin(t) ** 3;
+            const hy = -(13 * Math.cos(t) - 5 * Math.cos(2*t)
+                       - 2 * Math.cos(3*t) - Math.cos(4*t));
+            const jitter = rand(.94, 1.06);
+            const ex = r.x + hx * s * jitter;
+            const ey = r.y + hy * s * jitter;
+            const duration = rand(28, 42);
+            // Bezier curvature bends the trajectory around the heart.
+            const bend = rand(-.17, .17);
+            const cx = (r.x + ex) / 2 - (ey - r.y) * bend;
+            const cy = (r.y + ey) / 2 + (ex - r.x) * bend - rand(4, 11);
+            sparks.push({
+                x: r.x, y: r.y, oldX: r.x, oldY: r.y,
+                ox: r.x, oy: r.y, cx, cy, ex, ey,
+                t: 0, duration, life: rand(68, 91),
+                vx: 0, vy: 0, color: Math.random() < .12 ? '#fff4e8' : r.color,
+                size: rand(.75, 1.55), twinkle: Math.random() < .28
             });
         }
-        playBoom();
+        // Short-lived glowing fringe: a few scattered golden embers.
+        for (let i = 0; i < 9 && sparks.length < MAX_SPARKS; i++) {
+            const theta = rand(0, TWO_PI);
+            const speed = rand(.35, 2.2);
+            sparks.push({
+                x: r.x, y: r.y, oldX: r.x, oldY: r.y,
+                t: 999, duration: 0, life: rand(18, 37),
+                vx: Math.cos(theta) * speed, vy: Math.sin(theta) * speed,
+                color: '#ffe8b7', size: rand(.5, 1.2), twinkle: true
+            });
+        }
     }
 
-    function drawGlow(x, y, radius, color, alpha) {
-        ctx.globalAlpha = alpha;
-        ctx.shadowColor = color;
-        ctx.shadowBlur = radius * 3;
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 0;
-    }
-
-    function animate(timestamp) {
-        if (!running || document.getElementById('heart-canvas') !== canvas) {
-            running = false;
+    function animate(ms) {
+        if (!active || document.getElementById('heart-canvas') !== canvas) {
+            active = false;
             window.removeEventListener('resize', resize);
             cancelAnimationFrame(raf);
             return;
         }
-        const dt = Math.min(2, (timestamp - (lastTime || timestamp)) / 16.67);
-        lastTime = timestamp;
-        elapsed += dt;
-        nextLaunch -= dt;
-        if (nextLaunch <= 0) {
+        if (document.hidden) {
+            last = ms;
+            raf = requestAnimationFrame(animate);
+            return;
+        }
+        const dt = Math.min(1.6, (ms - (last || ms)) / 16.667);
+        last = ms;
+        frame += dt;
+        next -= dt;
+        if (next <= 0) {
             launch();
-            if (Math.random() < .28) launch();
-            nextLaunch = rand(15, 34);
+            next = rand(w < 600 ? 7 : 4, w < 600 ? 12 : 8);
+            // Frequent launches and overlapping heart bursts, capped for performance.
         }
 
-        // Nearly-black sky with subtle persistence for glowing trails.
+        // Fading background creates the luminous trails without expensive shadows.
         ctx.globalCompositeOperation = 'source-over';
-        ctx.fillStyle = 'rgba(2, 2, 7, .24)';
-        ctx.fillRect(0, 0, width, height);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = 'rgba(2, 2, 7, 0.28)';
+        ctx.fillRect(0, 0, w, h);
         ctx.globalCompositeOperation = 'lighter';
+        ctx.lineCap = 'round';
 
         for (let i = rockets.length - 1; i >= 0; i--) {
             const r = rockets[i];
-            r.trail.push({ x: r.x, y: r.y });
-            if (r.trail.length > 13) r.trail.shift();
+            r.oldX = r.x; r.oldY = r.y;
             r.x += r.vx * dt;
             r.y += r.vy * dt;
-            r.vy += .035 * dt;
-            for (let j = 1; j < r.trail.length; j++) {
-                const a = r.trail[j - 1], b = r.trail[j];
-                ctx.strokeStyle = r.hue;
-                ctx.globalAlpha = (j / r.trail.length) * .65;
-                ctx.lineWidth = 1.7;
-                ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-            }
-            drawGlow(r.x, r.y, 2.2, '#fff9dc', .95);
-            if (r.y <= r.targetY || r.vy >= -1) {
-                explode(r);
+            r.t += dt;
+            ctx.strokeStyle = r.color;
+            ctx.lineWidth = 2;
+            ctx.globalAlpha = .95;
+            ctx.beginPath();
+            ctx.moveTo(r.oldX, r.oldY + 8);
+            ctx.lineTo(r.x, r.y);
+            ctx.stroke();
+            if (r.t >= r.flight) {
+                burst(r);
                 rockets.splice(i, 1);
             }
         }
 
-        for (let i = particles.length - 1; i >= 0; i--) {
-            const p = particles[i];
-            p.px = p.x; p.py = p.y;
-            p.x += p.vx * dt;
-            p.y += p.vy * dt;
-            p.vx *= Math.pow(p.drag, dt);
-            p.vy = p.vy * Math.pow(p.drag, dt) + p.gravity * dt;
+        for (let i = sparks.length - 1; i >= 0; i--) {
+            const p = sparks[i];
+            p.oldX = p.x; p.oldY = p.y;
+            if (p.t < p.duration) {
+                p.t = Math.min(p.duration, p.t + dt);
+                const t = p.t / p.duration, u = 1 - t;
+                p.x = u*u*p.ox + 2*u*t*p.cx + t*t*p.ex;
+                p.y = u*u*p.oy + 2*u*t*p.cy + t*t*p.ey;
+                if (p.t >= p.duration) {
+                    p.vx = 2*(p.ex-p.cx)/p.duration * .24;
+                    p.vy = 2*(p.ey-p.cy)/p.duration * .24;
+                }
+            } else {
+                p.x += p.vx * dt;
+                p.y += p.vy * dt;
+                p.vx *= Math.pow(.985, dt);
+                p.vy = p.vy * Math.pow(.985, dt) + .055 * dt;
+            }
             p.life -= dt;
-            if (p.life <= 0) { particles.splice(i, 1); continue; }
-            const alpha = Math.min(1, p.life / 34) * (p.sparkle ? rand(.35, 1) : .9);
+            if (p.life <= 0) {
+                sparks.splice(i, 1);
+                continue;
+            }
+            const opacity = Math.min(1, p.life / 27) *
+                (p.twinkle && Math.random() < .1 ? .38 : .94);
             ctx.strokeStyle = p.color;
             ctx.lineWidth = p.size;
-            ctx.globalAlpha = alpha;
-            ctx.shadowColor = p.color;
-            ctx.shadowBlur = 8;
-            ctx.beginPath(); ctx.moveTo(p.px, p.py); ctx.lineTo(p.x, p.y); ctx.stroke();
-            if (p.sparkle && Math.random() < .07) drawGlow(p.x, p.y, 1.2, '#fff', alpha);
-        }
-        ctx.shadowBlur = 0;
-        for (let i = flashes.length - 1; i >= 0; i--) {
-            const f = flashes[i];
-            drawGlow(f.x, f.y, f.radius, f.color, f.life / 10);
-            f.radius += 1.5 * dt;
-            f.life -= dt;
-            if (f.life <= 0) flashes.splice(i, 1);
+            ctx.globalAlpha = opacity;
+            ctx.beginPath();
+            ctx.moveTo(p.oldX, p.oldY);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+
+            // Rare tiny pinpoints, no costly shadowBlur per particle.
+            if (p.twinkle && Math.random() < .035) {
+                ctx.fillStyle = '#fff8ef';
+                ctx.globalAlpha = opacity * .8;
+                ctx.fillRect(p.x - 1, p.y - 1, 2, 2);
+            }
         }
         ctx.globalAlpha = 1;
         ctx.globalCompositeOperation = 'source-over';
         raf = requestAnimationFrame(animate);
     }
-    ctx.fillStyle = '#020207';
-    ctx.fillRect(0, 0, width, height);
-    launch(); launch();
+
+    // Start immediately, silently.
+    for (let i = 0; i < (w < 600 ? 5 : 8); i++) launch();
     raf = requestAnimationFrame(animate);
 }
 
